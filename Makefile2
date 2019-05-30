@@ -1,0 +1,13 @@
+all: hello
+
+hello: main.o hellotext.o
+	g++ main.o hellotext.o -o hello
+
+main.o: main.cpp
+	g++ -c main.cpp
+
+hellotext.o: hellotext.cpp
+	g++ -c hellotext.cpp
+
+clean:
+	rm -rf *.o hello
