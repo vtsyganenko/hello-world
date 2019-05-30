@@ -1,0 +1,16 @@
+CC=g++
+CFLAGS=-c -std=c++11 -Wall -Wextra -Werror
+
+all: hello
+
+hello: main.o hellotext.o
+	$(CC) main.o hellotext.o -o hello
+
+main.o: main.cpp
+	$(CC) $(CFLAGS) main.cpp
+
+hellotext.o: hellotext.cpp
+	$(CC) $(CFLAGS) hellotext.cpp
+
+clean:
+	rm -rf *.o hello

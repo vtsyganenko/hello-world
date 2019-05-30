@@ -14,6 +14,13 @@ int main()
     int b = a * 2;
     std::cout << "b = " << b << std::endl;
 
+    // second part of code
+    std::vector<int> v = {1, 2, 3};
+    std::cout << "vector: ";
+    for(auto& elem : v)
+        std::cout << elem << " ";
+    std::cout << std::endl;
+
     return 0;
 }
 
