@@ -15,9 +15,10 @@ void error(const char* msg)
 
 int main()
 {
-    char buf[25];
-    const char* SOCK_CLIENT_PATH = "../../socket_client";
-    const char* SOCK_SERVER_PATH = "../../socket_server";
+    const int MSG_SIZE = 30;
+    char buf[MSG_SIZE];
+    const char* SOCK_CLIENT_PATH = "../../socket_client";  // my address
+    const char* SOCK_SERVER_PATH = "../../socket_server";  // server address
 
     int socket_fd = socket(PF_UNIX, SOCK_DGRAM, 0);
     if(socket_fd == -1) error("socket not created");
@@ -26,22 +27,26 @@ int main()
     // cause we a client - bind to client path - send responce to server path
     // we already know server path
 
-    // delete name from filesystem before bind
-    unlink(SOCK_CLIENT_PATH);
-
     // address settings
     struct sockaddr_un client_addr;
     memset(&client_addr, 0, sizeof(client_addr));
     client_addr.sun_family = AF_UNIX;
     strncpy(client_addr.sun_path, SOCK_CLIENT_PATH, sizeof(client_addr.sun_path)-1);
 
+    // delete name from filesystem before bind
+    unlink(SOCK_CLIENT_PATH);
+
 //    int connect_res = connect(socket_fd, (struct sockaddr*)&client_addr, sizeof(client_addr.sun_path));
 //    if(connect_res == -1) error("connect error");
 //    else std::cout << "connect result " << connect_res << std::endl;
 //    std::cout << "Client ready to send:" << std::endl;
 
-    int bind_res = bind(socket_fd, (struct sockaddr*)(&client_addr), sizeof(struct sockaddr_un));
+    // bind for client (my) address
+    int bind_res = bind(socket_fd, (struct sockaddr*)(&client_addr), sizeof(client_addr));
     if(bind_res == -1) error("bind error");
+    else std::cout << "bind result " << bind_res << std::endl;
+
+    std::cout << "Client start!" << std::endl;
 
     // fill server address
     struct sockaddr_un server_addr;
@@ -50,7 +55,7 @@ int main()
     strncpy(server_addr.sun_path, SOCK_SERVER_PATH, sizeof(server_addr.sun_path)-1);
 
 
-    ssize_t bytes = 0;
+
     /*
     const char* data = "Hello from client";
     std::cout << "data =[" << data << std::endl;
@@ -60,40 +65,26 @@ int main()
 
     std::cout << "send " << bytes << " bytes" << std::endl;
 */
-    char info[] = "Important information";
+    ssize_t send_bytes = 0;
+    ssize_t receive_bytes = 0;
+
+    char info[] = "Important information !";
     std::cout << "info size " << sizeof(info) << std::endl;
-    int size = sizeof(info);
 
-    bytes = sendto(socket_fd, info, size, 0,
+    send_bytes = sendto(socket_fd, info, sizeof(info), 0,
                    (struct sockaddr*)(&server_addr), sizeof(struct sockaddr_un));
+    if(send_bytes < 0) error("send error");
+    else std::cout << "send " << send_bytes << " bytes" << std::endl;
 
-    std::cout << "send " << bytes << " bytes" << std::endl;
-
-
-
-
-    recvfrom(socket_fd, buf, sizeof(buf), 0,
-             nullptr, nullptr);
-    std::cout << "responce from server [" << buf << "] " << sizeof(buf) << std::endl;
-
-    /*
-
-
-
-    ssize_t readingSize = 0;
-    // reading from stdin
-    while( (readingSize = read(STDIN_FILENO, buf, sizeof(buf))) > 0)
-    {
-        // and send it to server
-        if (write(socket_fd, buf, readingSize) != readingSize)
-        {
-            error("write error");
-            exit(EXIT_FAILURE);
-        }
-
-        if(readingSize < 0) error("reading error");
+    memset(&buf, 0, sizeof(buf));
+    receive_bytes = recvfrom(socket_fd, buf, sizeof(buf), 0,
+                             nullptr, nullptr);
+    if(receive_bytes < 0) error("receive error");
+    else {
+        std::cout << "responce from server " << receive_bytes << " bytes" << std::endl;
+        std::cout << "data=[" << buf << "] " << sizeof(buf) << std::endl;
     }
-*/
+
     close(socket_fd);
     std::cout << "Client stopped" << std::endl;
     return 0;
