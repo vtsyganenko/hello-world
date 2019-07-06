@@ -6,6 +6,7 @@
 #include <unistd.h>
 
 #include <iostream>
+#include <vector>
 
 void error(const char* msg)
 {
@@ -36,11 +37,6 @@ int main()
     // delete name from filesystem before bind
     unlink(SOCK_CLIENT_PATH);
 
-//    int connect_res = connect(socket_fd, (struct sockaddr*)&client_addr, sizeof(client_addr.sun_path));
-//    if(connect_res == -1) error("connect error");
-//    else std::cout << "connect result " << connect_res << std::endl;
-//    std::cout << "Client ready to send:" << std::endl;
-
     // bind for client (my) address
     int bind_res = bind(socket_fd, (struct sockaddr*)(&client_addr), sizeof(client_addr));
     if(bind_res == -1) error("bind error");
@@ -55,34 +51,38 @@ int main()
     strncpy(server_addr.sun_path, SOCK_SERVER_PATH, sizeof(server_addr.sun_path)-1);
 
 
+    std::vector<std::string> postal = {"Hello from client", "really important info !",
+                                       "msg", "Goodbye from client"};
 
-    /*
-    const char* data = "Hello from client";
-    std::cout << "data =[" << data << std::endl;
-    std::cout << "sizeof data " << sizeof(data) << " sizeof struct " << sizeof(struct sockaddr_un) << std::endl;
-    bytes = sendto(socket_fd, data, 17, 0,
-                  (struct sockaddr*)(&server_addr), sizeof(struct sockaddr_un));
+    std::cout << "sizeof char " << sizeof(char) << " sizeof uchar " << sizeof(unsigned char) << std::endl;
 
-    std::cout << "send " << bytes << " bytes" << std::endl;
-*/
-    ssize_t send_bytes = 0;
-    ssize_t receive_bytes = 0;
+    for(auto& mail : postal)
+    {
+        ssize_t send_bytes = 0;
+        ssize_t receive_bytes = 0;
+        /*
+        char info[] = "Important information !";
+        std::cout << "info size " << sizeof(info) << std::endl;
+        send_bytes = sendto(socket_fd, info, sizeof(info), 0,
+                       (struct sockaddr*)(&server_addr), sizeof(struct sockaddr_un));
+        */
 
-    char info[] = "Important information !";
-    std::cout << "info size " << sizeof(info) << std::endl;
+        auto str_size = mail.size() * sizeof(unsigned char);
+        std::cout << "calculated size " << str_size << std::endl;
 
-    send_bytes = sendto(socket_fd, info, sizeof(info), 0,
-                   (struct sockaddr*)(&server_addr), sizeof(struct sockaddr_un));
-    if(send_bytes < 0) error("send error");
-    else std::cout << "send " << send_bytes << " bytes" << std::endl;
+        send_bytes = sendto(socket_fd, mail.c_str(), str_size, 0,
+                       (struct sockaddr*)(&server_addr), sizeof(struct sockaddr_un));
+        if(send_bytes < 0) error("send error");
+        else std::cout << "send " << send_bytes << " bytes" << std::endl;
 
-    memset(&buf, 0, sizeof(buf));
-    receive_bytes = recvfrom(socket_fd, buf, sizeof(buf), 0,
-                             nullptr, nullptr);
-    if(receive_bytes < 0) error("receive error");
-    else {
-        std::cout << "responce from server " << receive_bytes << " bytes" << std::endl;
-        std::cout << "data=[" << buf << "] " << sizeof(buf) << std::endl;
+        memset(&buf, 0, sizeof(buf));
+        receive_bytes = recvfrom(socket_fd, buf, sizeof(buf), 0,
+                                 nullptr, nullptr);
+        if(receive_bytes < 0) error("receive error");
+        else {
+            std::cout << "responce from server " << receive_bytes << " bytes" << std::endl;
+            std::cout << "data=[" << buf << "] " << sizeof(buf) << std::endl;
+        }
     }
 
     close(socket_fd);
