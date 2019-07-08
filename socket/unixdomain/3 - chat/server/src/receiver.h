@@ -17,9 +17,12 @@ public:
              MessageQueue* queue,
              ClientBase* base,
              std::condition_variable& cv);
+    ~Receiver() { std::cout << "Receiver destruct" << std::endl; }
 
     // receiver loop
     void operator() ();
+
+    void subscribeInterrupt();
 
 private:
     const int socket_;
@@ -30,6 +33,8 @@ private:
     static void handler(int signum, siginfo_t* info, void* context)
     {
         std::cout << "receiver get a sig " << signum << std::endl;
+        //exit(EXIT_SUCCESS);
+        //std::terminate();
     }
 };
 

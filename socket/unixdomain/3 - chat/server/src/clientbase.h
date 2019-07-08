@@ -15,6 +15,8 @@ public:
 
     std::vector<ClientInfo*> others(const ClientInfo& client);
 
+    void deleteFrom(ClientInfo* info);
+
 private:
     std::vector<ClientInfo*> clients_;
 };

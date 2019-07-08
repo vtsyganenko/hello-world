@@ -15,7 +15,18 @@
 #include <mutex>
 #include <condition_variable>
 
+// TO DO: correct exit from all thread server and client!
 
+static std::mutex cv_mutex;
+static std::condition_variable main_thread_cv;
+static bool exit_flag;
+
+void handler(int signum, siginfo_t* info, void* context)
+{
+    std::cout << "main get a sig " << signum << std::endl;
+    exit_flag = true;
+    main_thread_cv.notify_one();
+}
 
 void error(const char* msg)
 {
@@ -25,6 +36,11 @@ void error(const char* msg)
 
 int main()
 {
+    struct sigaction sa, source;
+    sa.sa_sigaction = handler;
+    sa.sa_flags = SA_SIGINFO;
+    sigaction(SIGINT, &sa, nullptr);
+
 
     const int MSG_SIZE = 50;
     //char buf[MSG_SIZE];
@@ -54,8 +70,8 @@ int main()
     if(bind_res == -1) error("bind fail");
     else std::cout << "bind result " << bind_res << std::endl;
 
-    std::cout << "Server ready..." << std::endl;
-    ssize_t readingBytes = 0;
+
+    //ssize_t readingBytes = 0;
 
     // client address (client path)
 //    struct sockaddr_un client_addr;
@@ -94,22 +110,22 @@ int main()
     MessageQueue messageQueue;
     ClientBase clientBase;
 
-    std::mutex mutex;       // need to correct !
-    std::condition_variable dataCondition;
 
-    Receiver r(socket_fd, &messageQueue, &clientBase, dataCondition);
+    exit_flag = false;
+
+    Receiver r(socket_fd, &messageQueue, &clientBase, main_thread_cv);
     std::thread t(std::ref(r));
 
-
+    std::cout << "Server ready..." << std::endl;
 
     while(true)
     {
-        std::unique_lock<std::mutex> lock(mutex);
-        dataCondition.wait(lock, [&messageQueue](){ return messageQueue.isFilled(); });
-
-
+        std::unique_lock<std::mutex> lock(cv_mutex);
+        main_thread_cv.wait(lock, [&messageQueue]()
+        { return messageQueue.isFilled() || exit_flag; });
         std::cout << "main thread wake up" << std::endl;
-        //continue;
+
+        if(exit_flag) break;
 
         MessageInfo info(nullptr, std::string());
         if(messageQueue.first(info))
@@ -130,7 +146,13 @@ int main()
                     auto send_bytes = sendto(socket_fd, info.msg.c_str(), str_size, 0,
                                  (struct sockaddr*)(&abonent->client_addr),
                                              abonent->len);
-                    if(send_bytes != str_size) error("send error");
+                    std::cout << "send res " << send_bytes << std::endl;
+                    // DELETE ABONENT FROM BASE ON send res == -1
+                    if(send_bytes == -1)
+                    {
+                        clientBase.deleteFrom(abonent);
+                    }
+                    //if(send_bytes != str_size) error("send error");
 
                 }
             }
@@ -138,8 +160,13 @@ int main()
         }
     }
 
+    std::cout << "server stopping" << std::endl;
+    //r.subscribeInterrupt();
+        sigaction(SIGINT, &source, nullptr);
 
-
+    std::cout << "send receiver interrupt" << std::endl;
+    pthread_kill(t.native_handle(), SIGINT);
+    t.join();
     close(socket_fd);
     std::cout << "Server stopped" << std::endl;
     return 0;

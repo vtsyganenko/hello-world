@@ -75,3 +75,17 @@ std::vector<ClientInfo *> ClientBase::others(const ClientInfo &client)
 
     return vec;
 }
+
+void ClientBase::deleteFrom(ClientInfo *info)
+{
+    std::cout << "before remove size " << clients_.size() << std::endl;
+    auto newEnd = std::remove_if(clients_.begin(), clients_.end(),
+    [&info](ClientInfo* elem)
+    {
+        int res = strcmp(elem->client_addr.sun_path, info->client_addr.sun_path);
+        std::cout << "strcmp " << res << std::endl;
+        return (res == 0);
+    });
+    clients_.erase(newEnd, clients_.end());
+    std::cout << "after remove size " << clients_.size() << std::endl;
+}

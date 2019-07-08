@@ -8,10 +8,7 @@
 Receiver::Receiver(const int &socket_fd, MessageQueue* queue, ClientBase *base, std::condition_variable &cv)
     : socket_(socket_fd), messages_(queue), clientsBase_(base), cv_(cv)
 {
-    struct sigaction sa;
-    sa.sa_sigaction = handler;
-    sa.sa_flags = SA_SIGINFO;
-    sigaction(SIGINT, &sa, nullptr);
+
 }
 
 void Receiver::operator()()
@@ -61,4 +58,14 @@ void Receiver::operator()()
         std::cout << "notifyed" << std::endl;
 
     }
+}
+
+void Receiver::subscribeInterrupt()
+{
+
+    struct sigaction sa;
+    sa.sa_sigaction = handler;
+    sa.sa_flags = SA_SIGINFO;
+    sigaction(SIGINT, &sa, nullptr);
+
 }
