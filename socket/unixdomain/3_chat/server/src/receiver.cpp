@@ -8,7 +8,6 @@
 Receiver::Receiver(const int &socket_fd, MessageQueue* queue, ClientBase *base, std::condition_variable &cv)
     : socket_(socket_fd), messages_(queue), clientsBase_(base), cv_(cv)
 {
-
 }
 
 void Receiver::operator()()
@@ -59,7 +58,7 @@ void Receiver::operator()()
 
     }
 }
-
+/*
 void Receiver::subscribeInterrupt()
 {
 
@@ -69,3 +68,4 @@ void Receiver::subscribeInterrupt()
     sigaction(SIGINT, &sa, nullptr);
 
 }
+*/

@@ -10,10 +10,15 @@
 #include <thread>
 #include <chrono>
 
+//#include <mutex>
+
 const int MESSAGE_SIZE = 50;
+
+//std::mutex print_mutex;
 
 void print(std::string s)
 {
+    //std::lock_guard<std::mutex> lock(print_mutex);
     std::cout << "Input message [" << s << "]" << std::endl;
 }
 
@@ -21,19 +26,21 @@ class Receiver
 {
     const int socket_;
 
-//    static void handler(int signum, siginfo_t* info, void* context)
-//    {
-//        std::cout << "get a sig " << signum << std::endl;
-//    }
+    static void handler(int signum, siginfo_t* info, void* context)
+    {
+        //std::cout << "receiver get a sig " << signum << std::endl;
+        pthread_exit(nullptr);
+    }
 
 public:
     Receiver(const int& socket_fd): socket_(socket_fd)
     {
-//        struct sigaction sa;
-//        sa.sa_sigaction = handler;
-//        sa.sa_flags = SA_SIGINFO;
-//        sigaction(SIGINT, &sa, nullptr);
+        struct sigaction sa;
+        sa.sa_sigaction = handler;
+        sa.sa_flags = SA_SIGINFO;
+        sigaction(SIGINT, &sa, nullptr);
     }
+    ~Receiver() { std::cout << "Receiver destr" << std::endl; /*print("Receiver destr");*/ }
 
     void operator() () // receiver loop
     {
@@ -42,7 +49,6 @@ public:
             memset(&buf, 0, sizeof(buf));
             auto receive_bytes = recvfrom(socket_, buf, sizeof(buf), 0,
                                      nullptr, nullptr);
-
             print(buf);
         }
     }
@@ -59,13 +65,8 @@ int main()
 {
     auto pid = getpid();
     std::string client_path = "/tmp/unixdomainchat/" + std::to_string(pid) + "_client";
+    std::cout << "My address " << client_path << std::endl;
     std::string server_path = "/tmp/unixdomainchat/server";
-
-
-
-    print(client_path);
-
-
 
     int socket_fd = socket(PF_UNIX, SOCK_DGRAM, 0);
     if(socket_fd == -1) error("socket not created");
@@ -88,7 +89,7 @@ int main()
     if(bind_res == -1) error("bind error");
     else std::cout << "bind result " << bind_res << std::endl;
 
-    std::cout << "Client start!" << std::endl;
+    std::cout << "Client start! Enter q to quit" << std::endl;
 
     // fill server address
     struct sockaddr_un server_addr;
@@ -97,10 +98,8 @@ int main()
     strncpy(server_addr.sun_path, server_path.c_str(), sizeof(server_addr.sun_path)-1);
 
 
-
     Receiver r(socket_fd);
     std::thread t(std::ref(r));
-
 
     while(true)
     {
@@ -115,14 +114,15 @@ int main()
         auto send_bytes = sendto(socket_fd, msg.c_str(), str_size, 0,
                                (struct sockaddr*)(&server_addr), sizeof(struct sockaddr_un));
         if(send_bytes < 0) error("send error");
-        else std::cout << "send " << send_bytes << " bytes" << std::endl;
-
+        //else std::cout << "send " << send_bytes << " bytes" << std::endl;
     }
 
     std::cout << "client stopping" << std::endl;
     pthread_kill(t.native_handle(), SIGINT);
 
     t.join();
-    std::cout << "stop" << std::endl;
+    //t.detach();
+
+    std::cout << "main thread end" << std::endl;
     return 0;
 }

@@ -30,12 +30,12 @@ private:
     ClientBase* clientsBase_;
     std::condition_variable& cv_;
 
-    static void handler(int signum, siginfo_t* info, void* context)
-    {
-        std::cout << "receiver get a sig " << signum << std::endl;
-        //exit(EXIT_SUCCESS);
-        //std::terminate();
-    }
+//    static void handler(int signum, siginfo_t* info, void* context)
+//    {
+//        std::cout << "receiver get a sig " << signum << std::endl;
+//        //exit(EXIT_SUCCESS);
+//        //std::terminate();
+//    }
 };
 
 #endif // RECEIVER_H
