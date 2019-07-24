@@ -8,7 +8,7 @@ import Calculator 1.0
 Window {
     visible: true
     width: 550
-    height: 120
+    height: 140
     title: caption
 
     property int textWidth: 100
@@ -25,6 +25,8 @@ Window {
     Row {
         anchors.fill: parent
         spacing: 5
+        anchors.leftMargin: 20
+        anchors.topMargin: 20
 
         Rectangle {
             width: textWidth; height: textHeight
@@ -109,6 +111,8 @@ Window {
         id: delegateComponent
         Label {
             text: modelData
+            color: action.model[action.currentIndex] === modelData ? "red" : "black"
+
             opacity: 1.0 - Math.abs(Tumbler.displacement) / (Tumbler.tumbler.visibleItemCount / 2)
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
@@ -118,6 +122,12 @@ Window {
 
     Text {
         id: currentResult
-        x: parent.width - 20; y: parent.height - 20
+        // instead
+        //x: parent.width - 20; y: parent.height - 20
+        // use this
+        anchors.right: parent.right
+        anchors.rightMargin: 20
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 5
     }
 }
