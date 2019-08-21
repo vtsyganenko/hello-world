@@ -5,9 +5,9 @@
 #include <sys/socket.h>
 #include <sys/un.h>
 
-const int MESSAGE_SIZE = 50;
-
 #include <iostream>
+
+const int MESSAGE_SIZE = 50;
 
 struct ClientInfo
 {
@@ -23,8 +23,6 @@ struct ClientInfo
 
     ClientInfo(const ClientInfo& other)
     {
-        //std::cout << "copy ctor" << std::endl;
-
         name = other.name;
         client_addr.sun_family = other.client_addr.sun_family;
         auto length = sizeof(client_addr.sun_path);
@@ -33,9 +31,6 @@ struct ClientInfo
         len = other.len;
 
         std::cout << other.client_addr.sun_family << " " << client_addr.sun_family << std::endl;
-
-        //std::cout << "other [" << other.client_addr.sun_path << "]" << std::endl;
-        //std::cout << "ctored [" << client_addr.sun_path << "]" << std::endl;
     }
 
     ClientInfo& operator= (const ClientInfo& other)
@@ -49,8 +44,6 @@ struct ClientInfo
         len = other.len;
         return *this;
     }
-
-    //ClientInfo(ClientInfo&& other) = default;
 
     bool operator==(const ClientInfo& other)
     {

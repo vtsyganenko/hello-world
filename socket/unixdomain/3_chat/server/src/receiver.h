@@ -22,20 +22,12 @@ public:
     // receiver loop
     void operator() ();
 
-    void subscribeInterrupt();
-
 private:
     const int socket_;
     MessageQueue* messages_;
     ClientBase* clientsBase_;
     std::condition_variable& cv_;
 
-//    static void handler(int signum, siginfo_t* info, void* context)
-//    {
-//        std::cout << "receiver get a sig " << signum << std::endl;
-//        //exit(EXIT_SUCCESS);
-//        //std::terminate();
-//    }
 };
 
 #endif // RECEIVER_H

@@ -41,13 +41,8 @@ int main()
     sa.sa_flags = SA_SIGINFO;
     sigaction(SIGINT, &sa, nullptr);
 
-
-    const int MSG_SIZE = 50;
-    //char buf[MSG_SIZE];
-    const char* SOCK_SERVER_PATH = "/tmp/unixdomainchat/server";
-    //const char* SOCK_CLIENT_PATH = "../../socket_client"; - not need for server
-
-
+    // server socket file name
+    const char* SOCK_SERVER_PATH = "/tmp/unixdomainchat_server";
 
     int socket_fd = socket(AF_UNIX, SOCK_DGRAM, 0);
     if(socket_fd == -1) error("socket not created");
@@ -70,12 +65,8 @@ int main()
     if(bind_res == -1) error("bind fail");
     else std::cout << "bind result " << bind_res << std::endl;
 
-
-
-
     MessageQueue messageQueue;
     ClientBase clientBase;
-
 
     exit_flag = false;
 
@@ -118,8 +109,6 @@ int main()
                     {
                         clientBase.deleteFrom(abonent);
                     }
-                    //if(send_bytes != str_size) error("send error");
-
                 }
             }
             messageQueue.pop();

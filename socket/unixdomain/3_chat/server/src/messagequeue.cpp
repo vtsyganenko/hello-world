@@ -2,7 +2,6 @@
 
 MessageQueue::MessageQueue()
 {
-
 }
 
 void MessageQueue::push(const MessageInfo &info)

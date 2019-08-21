@@ -19,8 +19,8 @@ void Receiver::operator()()
 
         memset(&buf, 0, sizeof(buf));
         auto receive_bytes = recvfrom(socket_, buf, sizeof(buf), 0,
-                                      (struct sockaddr*)(&client.client_addr),
-                                      &client.len);
+                                     (struct sockaddr*)(&client.client_addr),
+                                     &client.len);
         std::cout << "receive " << sizeof (buf) << " bytes, from "
                   << client.client_addr.sun_path << std::endl;
         if(receive_bytes < 1)
@@ -48,24 +48,11 @@ void Receiver::operator()()
 
 */
 
-
         MessageInfo info(pClient, std::string(buf));
         messages_->push(info);
 
         //std::cout << "end cycle" << std::endl;
         cv_.notify_one();
         std::cout << "notifyed" << std::endl;
-
     }
 }
-/*
-void Receiver::subscribeInterrupt()
-{
-
-    struct sigaction sa;
-    sa.sa_sigaction = handler;
-    sa.sa_flags = SA_SIGINFO;
-    sigaction(SIGINT, &sa, nullptr);
-
-}
-*/

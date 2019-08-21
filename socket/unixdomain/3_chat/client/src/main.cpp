@@ -22,13 +22,13 @@ void print(std::string s)
     std::cout << "Input message [" << s << "]" << std::endl;
 }
 
+// functor class for message receiving
 class Receiver
 {
     const int socket_;
 
     static void handler(int signum, siginfo_t* info, void* context)
     {
-        //std::cout << "receiver get a sig " << signum << std::endl;
         pthread_exit(nullptr);
     }
 
@@ -40,7 +40,7 @@ public:
         sa.sa_flags = SA_SIGINFO;
         sigaction(SIGINT, &sa, nullptr);
     }
-    ~Receiver() { std::cout << "Receiver destr" << std::endl; /*print("Receiver destr");*/ }
+    ~Receiver() { std::cout << "Receiver destr" << std::endl; }
 
     void operator() () // receiver loop
     {
@@ -52,7 +52,6 @@ public:
             print(buf);
         }
     }
-
 };
 
 void error(const char* msg)
@@ -64,9 +63,9 @@ void error(const char* msg)
 int main()
 {
     auto pid = getpid();
-    std::string client_path = "/tmp/unixdomainchat/" + std::to_string(pid) + "_client";
+    std::string client_path = "/tmp/unixdomainchat_" + std::to_string(pid) + "_client";
     std::cout << "My address " << client_path << std::endl;
-    std::string server_path = "/tmp/unixdomainchat/server";
+    std::string server_path = "/tmp/unixdomainchat_server";
 
     int socket_fd = socket(PF_UNIX, SOCK_DGRAM, 0);
     if(socket_fd == -1) error("socket not created");
@@ -109,12 +108,10 @@ int main()
         if(msg == "q") break;
 
         auto str_size = msg.size() * sizeof(unsigned char);
-        //std::cout << "calculated size " << str_size << std::endl;
 
         auto send_bytes = sendto(socket_fd, msg.c_str(), str_size, 0,
-                               (struct sockaddr*)(&server_addr), sizeof(struct sockaddr_un));
+                                (struct sockaddr*)(&server_addr), sizeof(struct sockaddr_un));
         if(send_bytes < 0) error("send error");
-        //else std::cout << "send " << send_bytes << " bytes" << std::endl;
     }
 
     std::cout << "client stopping" << std::endl;
