@@ -10,6 +10,7 @@
 class MessageQueue;
 class ClientBase;
 
+// Functor which receiving messages
 class Receiver
 {
 public:
@@ -28,6 +29,7 @@ private:
     ClientBase* clientsBase_;
     std::condition_variable& cv_;
 
+    const int MESSAGE_SIZE = 50;
 };
 
 #endif // RECEIVER_H

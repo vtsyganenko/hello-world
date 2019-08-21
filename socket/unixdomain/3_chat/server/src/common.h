@@ -7,8 +7,7 @@
 
 #include <iostream>
 
-const int MESSAGE_SIZE = 50;
-
+// connected client info: name and address
 struct ClientInfo
 {
     std::string name;
@@ -51,6 +50,7 @@ struct ClientInfo
     }
 };
 
+// received message info: sender and message string
 struct MessageInfo
 {
     ClientInfo* sender;

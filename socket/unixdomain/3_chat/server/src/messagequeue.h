@@ -7,6 +7,7 @@
 #include <string>
 #include <mutex>
 
+// queue of received messages
 class MessageQueue
 {
 public:

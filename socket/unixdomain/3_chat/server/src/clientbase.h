@@ -5,6 +5,7 @@
 
 #include <vector>
 
+// pool of connected clients
 class ClientBase
 {
 public:
