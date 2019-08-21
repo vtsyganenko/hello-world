@@ -20,7 +20,6 @@ void error(const char* msg)
 int main()
 {
     char buf[25];
-    const char* SOCK_PATH = "../../socket";
 
     int socket_fd = socket(AF_INET, SOCK_DGRAM, 0);
     if(socket_fd == -1) error("socket not created");
@@ -32,26 +31,32 @@ int main()
     addr.sin_family = AF_INET;
     addr.sin_addr.s_addr = inet_addr("127.0.0.1");
     addr.sin_port = htons(60000);
-/*
-    int connect_res = connect(socket_fd, (struct sockaddr*)&addr, sizeof(addr.sun_path));
-    if(connect_res == -1) error("connect error");
-    else std::cout << "connect result " << connect_res << std::endl;
-    std::cout << "Client ready to send:" << std::endl;
-*/
+
     ssize_t readingSize = 0;
     // reading from stdin
     while( (readingSize = read(STDIN_FILENO, buf, sizeof(buf))) > 0)
     {
         // and send it to server
-        //if (write(socket_fd, buf, readingSize) != readingSize)
         if(sendto(socket_fd, buf, readingSize, 0,
-               (struct sockaddr*)&addr, sizeof(addr)) != readingSize)
+                 (struct sockaddr*)&addr, sizeof(addr)) != readingSize)
         {
             error("write error");
             exit(EXIT_FAILURE);
         }
 
         if(readingSize < 0) error("reading error");
+
+        // wait for server responce
+        memset(&buf, 0, sizeof(buf));
+        int receive_bytes = recvfrom(socket_fd, buf, sizeof(buf), 0,
+                                     nullptr, nullptr);
+        if(receive_bytes < 0) error("receive error");
+        else {
+            std::cout << "responce from server " << receive_bytes << " bytes" << std::endl;
+            std::cout << "data=[" << buf << "] " << sizeof(buf) << std::endl;
+        }
+
+        memset(&buf, 0, sizeof(buf));
     }
 
     close(socket_fd);
