@@ -15,15 +15,13 @@
 #include <mutex>
 #include <condition_variable>
 
-// TO DO: correct exit from all thread server and client!
-
 static std::mutex cv_mutex;
 static std::condition_variable main_thread_cv;
 static bool exit_flag;
 
 void handler(int signum, siginfo_t* info, void* context)
 {
-    std::cout << "main get a sig " << signum << std::endl;
+    //std::cout << "main get a sig " << signum << std::endl;
     exit_flag = true;
     main_thread_cv.notify_one();
 }
@@ -77,6 +75,7 @@ int main()
 
     while(true)
     {
+        // main thread wake up when Receiver receive a message or exit flag is up
         std::unique_lock<std::mutex> lock(cv_mutex);
         main_thread_cv.wait(lock, [&messageQueue]()
         { return messageQueue.isFilled() || exit_flag; });
@@ -87,23 +86,28 @@ int main()
         MessageInfo info(nullptr, std::string());
         if(messageQueue.first(info))
         {
-            std::cout << "get message" << std::endl;
+            // push a header to message
+            std::string header(info.sender->name + " says: ");
+            info.msg.insert(0, header, 0, header.length());
 
             auto str_size = info.msg.size() * sizeof(unsigned char);
-            std::cout << "main: client " << info.sender->client_addr.sun_path
-                      << " says " << info.msg << std::endl;
+            std::cout << "main: client named " << info.sender->name
+                      << " address [" << info.sender->client_addr.sun_path << "]"
+                      << " msg: " << info.msg << std::endl;
 
+            // need to send a message of one participant to others
             std::vector<ClientInfo*> others = clientBase.others(*info.sender);
-            std::cout << "others abonents " << others.size() << std::endl;
+            //std::cout << "others abonents " << others.size() << std::endl;
             if(others.size() > 0)
             {
                 for(auto& abonent : others)
                 {
-                    std::cout << "send" << std::endl;
+                    //std::cout << "send" << std::endl;
                     auto send_bytes = sendto(socket_fd, info.msg.c_str(), str_size, 0,
                                  (struct sockaddr*)(&abonent->client_addr),
                                              abonent->len);
-                    std::cout << "send res " << send_bytes << std::endl;
+                    //std::cout << "send res " << send_bytes << std::endl;
+
                     // DELETE ABONENT FROM BASE ON send res == -1
                     if(send_bytes == -1)
                     {

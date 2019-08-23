@@ -5,7 +5,6 @@
 #include <sys/socket.h>
 #include <sys/un.h>
 
-#include <iostream>
 
 // connected client info: name and address
 struct ClientInfo
@@ -29,7 +28,7 @@ struct ClientInfo
         client_addr.sun_path[length-1] = '\0';
         len = other.len;
 
-        std::cout << other.client_addr.sun_family << " " << client_addr.sun_family << std::endl;
+        //std::cout << other.client_addr.sun_family << " " << client_addr.sun_family << std::endl;
     }
 
     ClientInfo& operator= (const ClientInfo& other)
@@ -48,7 +47,16 @@ struct ClientInfo
     {
         return (this->client_addr.sun_path == other.client_addr.sun_path);
     }
+
+    void setNameByMessage(const std::string& msg)
+    {
+        // if name is not setted
+        if(name.empty()) {
+            name = msg;
+        }
+    }
 };
+
 
 // received message info: sender and message string
 struct MessageInfo

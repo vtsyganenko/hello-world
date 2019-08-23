@@ -12,6 +12,8 @@ public:
     ClientBase();
     ~ClientBase();
 
+    // add a new client to base
+    // return a ptr to already storaged client or new added client
     ClientInfo* add(const ClientInfo& client);
 
     std::vector<ClientInfo*> others(const ClientInfo& client);

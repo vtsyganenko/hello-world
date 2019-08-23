@@ -19,7 +19,9 @@ const int MESSAGE_SIZE = 50;
 void print(std::string s)
 {
     //std::lock_guard<std::mutex> lock(print_mutex);
-    std::cout << "Input message [" << s << "]" << std::endl;
+
+    //std::cout << "Input message [" << s << "]" << std::endl;
+    std::cout << " " << s << std::endl;
 }
 
 // functor class for message receiving
@@ -88,7 +90,7 @@ int main()
     if(bind_res == -1) error("bind error");
     else std::cout << "bind result " << bind_res << std::endl;
 
-    std::cout << "Client start! Enter q to quit" << std::endl;
+    std::cout << "Client start! Enter q to quit (Your first message will be your name in chat)" << std::endl;
 
     // fill server address
     struct sockaddr_un server_addr;
