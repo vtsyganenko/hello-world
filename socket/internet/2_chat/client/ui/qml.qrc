@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
+        <file>NameRequestPopup.qml</file>
     </qresource>
 </RCC>

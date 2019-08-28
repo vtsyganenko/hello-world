@@ -27,8 +27,7 @@ set(HEADERS
     ./src/common.h
     ./src/protectedqueue.h
     )
-set(QMLSRC 
-    ./ui/qml.qrc)
+set(QMLSRC ./ui/qml.qrc)
 add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS} ${QMLSRC})
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)

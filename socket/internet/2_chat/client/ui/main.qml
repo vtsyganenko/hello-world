@@ -16,6 +16,29 @@ Window {
 
     signal sendMessage(string s);
 
+    Component.onCompleted: /*popup.open()*/ start_timer.start()
+
+    Timer {
+        id: start_timer
+        interval: 200;
+        onTriggered: popup.open() //PopupUtils.open(dialog, rect)
+    }
+
+    NameRequestPopup {
+        id: popup
+        onNameRequestResult: {
+            console.log("name request " + accepted + " " + name)
+
+            //if(!accepted) exit()
+            popup.close()
+
+            if(accepted)
+                sendMessage(name);
+            else
+                Qt.quit()
+        }
+    }
+
     ListModel
     {
         id: listModel
