@@ -1,0 +1,13 @@
+@startuml
+
+[*] -> Wait
+
+Wait -> Work : нажата 1
+Work -down-> Stopping : нажата 2
+Work -up-> Error : нажата 3
+
+Stopping -> Wait : [прошло 3 сек]
+
+Error -> Wait : нажата 2
+
+@enduml
