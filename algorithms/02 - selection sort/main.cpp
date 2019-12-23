@@ -16,11 +16,11 @@ template <typename T>
 using SortingFunc = std::function<bool(T, T)>;
 
 template <typename T>
-int findMoreSuitableIndex(const std::vector<T>& v, SortingFunc<T> f)
+unsigned int findMoreSuitableIndex(const std::vector<T>& v, SortingFunc<T> f)
 {
     T suitable = v[0];
-    int index = 0;
-    for(int i=0; i<v.size(); ++i)
+    unsigned int index = 0;
+    for(unsigned int i=0; i<v.size(); ++i)
     {
         if( f(v[i], suitable) )
         {
@@ -40,9 +40,12 @@ void selectionSort(std::vector<T> v, SortingFunc<T> f)
 
     while(!v.empty())
     {
-        int index = findMoreSuitableIndex(v, f);
+        auto index = findMoreSuitableIndex(v, f);
         sorted.push_back(v[index]);
-        v.erase(v.begin() + index);
+
+        auto remove_iter = v.begin();
+        std::advance(remove_iter, index);
+        v.erase(remove_iter);
     }
 
     print(sorted, "After sorting:");
