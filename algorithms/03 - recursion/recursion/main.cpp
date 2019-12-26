@@ -36,6 +36,26 @@ int fib(int count, int a = 0, int b = 1)
     return fib(count - 1, b, a+b);
 }
 
+// divide and rule
+int recursiveTotalCalc(int current_total, unsigned int processed_index, const std::vector<int>& vec)
+{
+    if(vec.empty()) return 0;
+
+    unsigned int processed_size = processed_index + 1;
+    if(processed_size > vec.size())
+    {
+        return current_total;
+    }
+    else
+    {
+        current_total += vec[processed_index];
+        processed_index++;
+        return recursiveTotalCalc(current_total, processed_index, vec);
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------
+
 int main()
 {
     for(unsigned int i = 0; i < 10; ++i)
@@ -54,6 +74,9 @@ int main()
         std::cout << fib(i) << " ";
     }
     std::cout << std::endl;
+
+    std::vector<int> v = {10, 1, 2};
+    std::cout << "sum = " << recursiveTotalCalc(0, 0, v) << std::endl;
 
     return 0;
 }
