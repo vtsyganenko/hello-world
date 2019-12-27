@@ -1,3 +1,4 @@
+#!/bin/python3
 
 def recursion_total_calc(array, current_total=0):
     if len(array) == 0:
