@@ -37,10 +37,10 @@ private:
 
 template <class Key, class Type, class HashFunc>
 ChainHashTable<Key, Type, HashFunc>::ChainHashTable()
-    : n_(256), hash_(HashFunc(n_))
+    : n_(128), hash_(HashFunc(n_))
 {
+    // lets start hash table with size 128
     std::cout << "ChainHashTable ctor" << std::endl;
-    //n_ = 256;
     data_.resize(n_, nullptr);
 }
 
