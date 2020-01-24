@@ -3,13 +3,10 @@
 
 #include "hash.h"
 
-
 #include <iostream>
+
 #include <list>
 #include <vector>
-
-
-
 
 template <class Key, class Type, class HashFunc = Hash<Key>>
 class ChainHashTable

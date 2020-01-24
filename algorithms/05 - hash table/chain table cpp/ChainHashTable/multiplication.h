@@ -3,20 +3,13 @@
 
 #include <iostream>
 
-#include <exception>    // std::exception
+#include "exceptions.h"
+
 #include <cassert>      // assert
 #include <limits>       // numeric_limits & CHAR_BIT
-#include <cmath>        // log2
+#include <cmath>        // log2, pow
 #include <type_traits>  // is_integral
 
-class incorrect_key_type_exception : public std::exception
-{
-public:
-    virtual const char* what() const noexcept
-    {
-        return "Key type is incorrect! Type shall be integral\n";
-    }
-};
 
 struct MultiplicationHashVol1
 {
@@ -51,7 +44,7 @@ struct MultiplicationHashVol1
         if(std::is_integral<T>::value == false)
             throw incorrect_key_type_exception();
 
-        std::cout << "call Hash (int) with " << key << std::endl;
+        std::cout << "call Hash MultiplicationHashVol1 with " << key << std::endl;
 
         std::size_t hash = 0;
         switch (indexType_) {
@@ -103,6 +96,38 @@ private:
             return sizeof(unsigned int) * CHAR_BIT;     // 32
         }
     }
+};
+
+//-----------------------------------------------------------------------------------------
+
+struct MultiplicationHashVol2
+{
+    explicit MultiplicationHashVol2(std::size_t tableSize)
+        : tableSize_(tableSize)
+    {
+        std::cout << "MultiplicationHashVol2 ctor" << std::endl;
+        A_ = (std::sqrt(5) - 1) / 2;
+    }
+
+    template<typename T>
+    std::size_t calc(T key) noexcept(false) // throw incorrect_key_type_exception
+    {
+        if(std::is_integral<T>::value == false)
+            throw incorrect_key_type_exception();
+
+        std::cout << "call MultiplicationHashVol2 with " << key << std::endl;
+
+        std::size_t hash = static_cast<std::size_t>(
+                    std::floor(tableSize_ * std::fmod(key * A_, 1)));
+
+        std::cout << "hash is " << hash << std::endl;
+        assert(hash < tableSize_);
+        return hash;
+    }
+
+private:
+    std::size_t tableSize_;
+    double A_;                  // constant based on gold ratio
 };
 
 #endif // MULTIPLICATION_H

@@ -4,6 +4,7 @@
 #include <iostream>
 
 #include "multiplication.h"
+#include "string_method.h"
 
 template <class T>
 struct Hash
@@ -22,8 +23,8 @@ struct Hash<int> : public MultiplicationHashVol1
 {
     explicit Hash(std::size_t tableSize): MultiplicationHashVol1(tableSize) {}
 
-    std::size_t operator()(const int& value){
-        return calc(value);
+    std::size_t operator()(const int& key){
+        return calc(key);
     }
 };
 
@@ -32,8 +33,28 @@ struct Hash<unsigned int> : public MultiplicationHashVol1
 {
     explicit Hash(std::size_t tableSize): MultiplicationHashVol1(tableSize) {}
 
-    std::size_t operator()(const unsigned int& value){
-        return calc(value);
+    std::size_t operator()(const unsigned int& key){
+        return calc(key);
+    }
+};
+
+template <>
+struct Hash<const char*> : public StringMethodHashVol1
+{
+    explicit Hash(std::size_t tableSize): StringMethodHashVol1(tableSize) {}
+
+    std::size_t operator()(const char* key){
+        return 0;
+    }
+};
+
+template <>
+struct Hash<std::string> : public StringMethodHashVol1
+{
+    explicit Hash(std::size_t tableSize): StringMethodHashVol1(tableSize) {}
+
+    std::size_t operator()(const std::string& key){
+        return calc(key.c_str());
     }
 };
 
