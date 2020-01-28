@@ -3,6 +3,8 @@
 #include <iostream>
 #include <unordered_map>
 
+#include "division.h"
+
 struct Team
 {
     int points;
@@ -20,13 +22,13 @@ int main()
     //Team d2 = {32, "Spartak"};
     //Team d3 = {35, "CSKA"};
 
-    /*
+
     ChainHashTable<unsigned int, std::string> table;
     table.add(10, "spartak");
     table.add(20, "dynamo");
     table.add(30, "cska");
     table.print();
-    */
+
 
     /*
     ChainHashTable<std::string, double> table;
@@ -37,14 +39,26 @@ int main()
     */
 
 
-    StringMethodHashVol1 s(100);
+    /*
+    ChainHashTable<const char*, int> t;
 
-    auto h1 = s.convertStringKeyToNumber("spartak");
-    std::cout << "h = " << h1 << std::endl << std::endl;
-    auto h2 = s.convertStringKeyToNumber("dynamo");
-    std::cout << "h = " << h2 << std::endl << std::endl;
-    auto h3 = s.convertStringKeyToNumber("cska");
-    std::cout << "h = " << h3 << std::endl << std::endl;
+    t.add("spartak", 10);
+    t.add("dynamo", 22);
+    t.add("cska", 39);
+
+    t.print();
+    */
+
+    /*
+    StringMethodHashVol2 obj(128);
+
+    std::cout << "key = " << obj.calc("abc") << std::endl;
+    */
+
+    //std::cout << std::boolalpha;
+    //std::cout << isPrimeNumber(146) << std::endl;
+
+
 
     return 0;
 }

@@ -3,6 +3,7 @@
 
 #include <iostream>
 
+#include "division.h"
 #include "multiplication.h"
 #include "string_method.h"
 
@@ -29,9 +30,9 @@ struct Hash<int> : public MultiplicationHashVol1
 };
 
 template <>
-struct Hash<unsigned int> : public MultiplicationHashVol1
+struct Hash<unsigned int> : public DivisionHash
 {
-    explicit Hash(std::size_t tableSize): MultiplicationHashVol1(tableSize) {}
+    explicit Hash(std::size_t tableSize): DivisionHash(tableSize) {}
 
     std::size_t operator()(const unsigned int& key){
         return calc(key);
@@ -39,12 +40,12 @@ struct Hash<unsigned int> : public MultiplicationHashVol1
 };
 
 template <>
-struct Hash<const char*> : public StringMethodHashVol1
+struct Hash<const char*> : public StringMethodHashVol2
 {
-    explicit Hash(std::size_t tableSize): StringMethodHashVol1(tableSize) {}
+    explicit Hash(std::size_t tableSize): StringMethodHashVol2(tableSize) {}
 
     std::size_t operator()(const char* key){
-        return 0;
+        return calc(key);
     }
 };
 
