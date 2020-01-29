@@ -1,7 +1,7 @@
 #include "chainhashtable.h"
 
 #include <iostream>
-#include <unordered_map>
+#include <ctime>
 
 #include "division.h"
 
@@ -16,19 +16,29 @@ struct Team
     }
 };
 
+unsigned int getRandom(unsigned int from, unsigned int to)
+{
+    unsigned int r = static_cast<unsigned int>(std::rand());
+    unsigned int random = from + r % to;
+    return random;
+}
+
 int main()
 {
+    std::srand(std::time(nullptr));
+
+
     //Team d1 = {30, "Dynamo"};
     //Team d2 = {32, "Spartak"};
     //Team d3 = {35, "CSKA"};
 
-
+/*
     ChainHashTable<unsigned int, std::string> table;
     table.add(10, "spartak");
     table.add(20, "dynamo");
     table.add(30, "cska");
     table.print();
-
+*/
 
     /*
     ChainHashTable<std::string, double> table;
@@ -49,15 +59,17 @@ int main()
     t.print();
     */
 
-    /*
-    StringMethodHashVol2 obj(128);
 
-    std::cout << "key = " << obj.calc("abc") << std::endl;
-    */
 
-    //std::cout << std::boolalpha;
-    //std::cout << isPrimeNumber(146) << std::endl;
+    ChainHashTable<unsigned int, std::string> table;
+    for(int key =1; key<=4; ++key)
+    {
+        std::string name = "team_" + std::to_string(key+1000);
 
+        table.add(key, name);
+    }
+
+    //table.print();
 
 
     return 0;

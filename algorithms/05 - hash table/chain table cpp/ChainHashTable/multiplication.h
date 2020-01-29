@@ -105,7 +105,7 @@ struct MultiplicationHashVol2
     explicit MultiplicationHashVol2(std::size_t tableSize)
         : tableSize_(tableSize)
     {
-        std::cout << "MultiplicationHashVol2 ctor" << std::endl;
+        //std::cout << "MultiplicationHashVol2 ctor" << std::endl;
         A_ = (std::sqrt(5) - 1) / 2;
     }
 
@@ -115,14 +115,18 @@ struct MultiplicationHashVol2
         if(std::is_integral<T>::value == false)
             throw incorrect_key_type_exception();
 
-        std::cout << "call MultiplicationHashVol2 with " << key << std::endl;
-
         std::size_t hash = static_cast<std::size_t>(
                     std::floor(tableSize_ * std::fmod(key * A_, 1)));
 
-        std::cout << "hash is " << hash << std::endl;
+        std::cout << "call MultiplicationHashVol2() with key " << key
+                  << " hash is " << hash << std::endl;
         assert(hash < tableSize_);
         return hash;
+    }
+
+    void updateTableSize1(std::size_t newSize)  // TEMPORARY NAME :)
+    {
+        tableSize_ = newSize;
     }
 
 private:

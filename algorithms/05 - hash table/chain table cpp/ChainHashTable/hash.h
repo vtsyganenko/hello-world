@@ -30,12 +30,17 @@ struct Hash<int> : public MultiplicationHashVol1
 };
 
 template <>
-struct Hash<unsigned int> : public DivisionHash
+struct Hash<unsigned int> : public MultiplicationHashVol2
 {
-    explicit Hash(std::size_t tableSize): DivisionHash(tableSize) {}
+    explicit Hash(std::size_t tableSize): MultiplicationHashVol2(tableSize) {}
 
     std::size_t operator()(const unsigned int& key){
         return calc(key);
+    }
+
+    void updateTableSize(std::size_t newSize)
+    {
+        updateTableSize1(newSize);
     }
 };
 
