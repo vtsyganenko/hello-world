@@ -18,7 +18,7 @@ struct Hash
 };
 
 //---------------------------------------------------------------------
-
+/*
 template <>
 struct Hash<int> : public MultiplicationHashVol1
 {
@@ -28,7 +28,7 @@ struct Hash<int> : public MultiplicationHashVol1
         return calc(key);
     }
 };
-
+*/
 template <>
 struct Hash<unsigned int> : public MultiplicationHashVol2
 {
@@ -43,7 +43,7 @@ struct Hash<unsigned int> : public MultiplicationHashVol2
         updateTableSize1(newSize);
     }
 };
-
+/*
 template <>
 struct Hash<const char*> : public StringMethodHashVol2
 {
@@ -63,5 +63,5 @@ struct Hash<std::string> : public StringMethodHashVol1
         return calc(key.c_str());
     }
 };
-
+*/
 #endif // HASH_H

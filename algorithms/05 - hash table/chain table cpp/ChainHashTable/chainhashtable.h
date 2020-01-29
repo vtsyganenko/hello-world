@@ -32,8 +32,6 @@ private:
     {
         KeyType     key;
         ValueType   value;
-
-        //Element(KeyType k, ValueType v) : key(k), value(v) {}
     };
 
     template <class KeyType, class ValueType>
@@ -55,9 +53,9 @@ private:
 
 template <class Key, class Type, class HashFunc>
 ChainHashTable<Key, Type, HashFunc>::ChainHashTable()
-    : tableSize_(4), elementsCount_(0), hash_(HashFunc(tableSize_))
+    : tableSize_(16), elementsCount_(0), hash_(HashFunc(tableSize_))
 {
-    // lets start hash table with size 128
+    // lets start hash table with size 16
     std::cout << "ChainHashTable ctor" << std::endl;
     array_.resize(tableSize_, nullptr);
 }
@@ -128,19 +126,15 @@ void ChainHashTable<Key, Type, HashFunc>::checkFillFactorAndUpdateTable(double f
     std::cout << "checkFillFactorAndUpdateTable with " << factor << std::endl;
     static double max_factor = 0.7;
 
-
-
     if(factor > max_factor)
     {
         std::cout << "before: " << std::endl;
         print();
-
         std::cout << "elements count " << elementsCount_ << std::endl;
 
         // create list of all elements
         std::vector< Element<Key, Type> > elements;
         elements.reserve(elementsCount_);
-        std::cout << "elements size " << elements.size() << std::endl;
 
         for(std::size_t i=0; i<array_.size(); ++i)
         {
@@ -159,13 +153,14 @@ void ChainHashTable<Key, Type, HashFunc>::checkFillFactorAndUpdateTable(double f
 
         // clean data array
         array_.clear();
-        tableSize_ *= 2;
         elementsCount_ = 0;
+        tableSize_ *= 2;
         array_.resize(tableSize_, nullptr);
 
         // NEED update a table size in hash object (for generation new hashes)
         hash_.updateTableSize(tableSize_);
 
+        // add old elements to new array
         for(const auto& elem : elements)
         {
             this->add(elem.key, elem.value);

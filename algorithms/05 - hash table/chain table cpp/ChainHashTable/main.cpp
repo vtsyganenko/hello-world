@@ -25,7 +25,7 @@ unsigned int getRandom(unsigned int from, unsigned int to)
 
 int main()
 {
-    std::srand(std::time(nullptr));
+    //std::srand(std::time(nullptr));
 
 
     //Team d1 = {30, "Dynamo"};
@@ -61,16 +61,22 @@ int main()
 
 
 
-    ChainHashTable<unsigned int, std::string> table;
-    for(int key =1; key<=4; ++key)
+    ChainHashTable<unsigned int, std::string, DivisionHash<unsigned int>> table;
+    for(unsigned int i =1; i<=16; ++i)
     {
-        std::string name = "team_" + std::to_string(key+1000);
-
+        unsigned int key = getRandom(1000, 2000);
+        std::string name = "team_" + std::to_string(key);
         table.add(key, name);
     }
 
-    //table.print();
 
-
+    table.print();
+/*
+    ChainHashTable<unsigned int, std::string, DivisionHash<unsigned int>> table;
+    table.add(10, "spartak");
+    table.add(20, "dynamo");
+    table.add(30, "cska");
+    table.print();
+*/
     return 0;
 }

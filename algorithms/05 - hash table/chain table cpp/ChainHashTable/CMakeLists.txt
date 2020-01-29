@@ -3,6 +3,7 @@ project(ChainHashTable)
 
 set(HEADERS
     chainhashtable.h
+    hash_interface.h
     hash.h
     exceptions.h
     division.h

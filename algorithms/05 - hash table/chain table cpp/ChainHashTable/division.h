@@ -4,25 +4,53 @@
 #include <cassert>      // assert
 #include <vector>
 
+#include "hash_interface.h"
 #include "common.h"
 #include "exceptions.h"
 
-struct DivisionHash
+template <class T>
+struct DivisionHash : public HashInterface<T>
 {
     explicit DivisionHash(std::size_t tableSize)
-        : tableSize_(tableSize), M_(tableSize)
+        : HashInterface<T>(tableSize), M_(tableSize)
     {
-        std::size_t max = 5;                // ofset from table size
+        std::cout << "DivisionHash ctor" << std::endl;
+
+        updateTableSize(tableSize);
+
+        std::cout << "M = " << M_ << std::endl;
+    }
+
+    std::size_t operator()(const T& key) /*noexcept(false)*/ override // throw incorrect_key_type_exception
+    {
+        //if(std::is_integral<T>::value == false)
+        //    throw incorrect_key_type_exception();
+
+        std::cout << "call DivisionHash with " << key << std::endl;
+
+        std::size_t hash = key % M_;
+
+        std::cout << "hash is " << hash << std::endl;
+        assert(hash < this->tableSize_);
+        return hash;
+    }
+
+    void updateTableSize(std::size_t newSize)
+    {
+        std::cout << "Division hash: updateTableSize " << newSize << std::endl;
+
+        std::size_t max = 1;                // ofset from table size
         std::vector<std::size_t> primes;
+        this->tableSize_ = newSize;
 
         // find a 'max' of prime numbers
-        while(tableSize--)
+        while(newSize--)
         {
-            std::cout << "size is " << tableSize << std::endl;
+            //std::cout << "size is " << tableSize << std::endl;
 
-            if(isPrimeNumber(tableSize))
+            if(isPrimeNumber(newSize))
             {
-                primes.push_back(tableSize);
+                primes.push_back(newSize);
                 if(primes.size() >= max)
                     break;
             }
@@ -35,29 +63,11 @@ struct DivisionHash
         if(!primes.empty())
             M_ = primes.back();
 
-
-        std::cout << "DivisionHash ctor" << std::endl;
-
-        std::cout << "M = " << M_ << std::endl;
-    }
-
-    template<typename T>
-    std::size_t calc(T key) noexcept(false) // throw incorrect_key_type_exception
-    {
-        if(std::is_integral<T>::value == false)
-            throw incorrect_key_type_exception();
-
-        std::cout << "call DivisionHash with " << key << std::endl;
-
-        std::size_t hash = key % M_;
-
-        std::cout << "hash is " << hash << std::endl;
-        assert(hash < tableSize_);
-        return hash;
+        std::cout << "chosen M is " << M_ << std::endl;
     }
 
 private:
-    std::size_t tableSize_;
+    //std::size_t tableSize_;
     unsigned int M_;    // constant for division
 };
 
