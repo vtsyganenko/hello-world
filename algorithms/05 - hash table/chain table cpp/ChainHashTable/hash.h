@@ -33,10 +33,10 @@ struct Hash<int> : public MultiplicationHashVol1
 */
 
 template <>
-struct DefaultHash<unsigned int> : public MultiplicationHashVol2<unsigned int>
+struct DefaultHash<unsigned int> : public MultiplicationHashVol1<unsigned int>
 {
     explicit DefaultHash(std::size_t tableSize)
-        : MultiplicationHashVol2<unsigned int>(tableSize) {}
+        : MultiplicationHashVol1<unsigned int>(tableSize) {}
 };
 
 /*
@@ -56,25 +56,11 @@ struct DefaultHash<unsigned int> : public MultiplicationHashVol2
 };
 */
 
-/*
 template <>
-struct Hash<const char*> : public StringMethodHashVol2
+struct DefaultHash<const char*> : public StringMethodHashVol1<const char*>
 {
-    explicit Hash(std::size_t tableSize): StringMethodHashVol2(tableSize) {}
-
-    std::size_t operator()(const char* key){
-        return calc(key);
-    }
+    explicit DefaultHash(std::size_t tableSize)
+        : StringMethodHashVol1<const char*>(tableSize) {}
 };
 
-template <>
-struct Hash<std::string> : public StringMethodHashVol1
-{
-    explicit Hash(std::size_t tableSize): StringMethodHashVol1(tableSize) {}
-
-    std::size_t operator()(const std::string& key){
-        return calc(key.c_str());
-    }
-};
-*/
 #endif // HASH_H

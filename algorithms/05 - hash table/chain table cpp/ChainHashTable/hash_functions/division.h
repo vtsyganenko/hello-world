@@ -20,7 +20,7 @@ struct DivisionHash : public HashInterface<T>
         std::cout << "DivisionHash: M = " << M_ << std::endl;
     }
 
-    std::size_t operator()(const T& key) /*noexcept(false)*/ override // throw incorrect_key_type_exception
+    std::size_t operator()(const T& key) override
     {
         std::cout << "call DivisionHash with " << key << std::endl;
 

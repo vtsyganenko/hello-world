@@ -10,19 +10,21 @@
 #include <cmath>        // log2, pow
 #include <type_traits>  // is_integral
 
-
-struct MultiplicationHashVol1
+template <class T>
+struct MultiplicationHashVol1 : public HashInterface<T>
 {
     explicit MultiplicationHashVol1(std::size_t tableSize)
-        : indexType_(IndexType::TYPE_8), tableSize_(tableSize)
+        : HashInterface<T>(tableSize), indexType_(IndexType::TYPE_8)
     {
-        std::cout << "MultiplicationHashVol1 ctor" << std::endl;
+        static_assert(std::is_integral<T>::value,
+                      "MultiplicationHashVol1: key type shall be integral!");
         updateTableSize(tableSize);
     }
 
     void updateTableSize(std::size_t tableSize)
     {
-        std::cout << "updateTableSize: size = " << tableSize << std::endl;
+        std::cout << "MultiplicationHashVol1: updateTableSize: size = "
+                  << tableSize << std::endl;
 
         auto bitwidth = determineBitWidth(tableSize);
         std::cout << "bitwidth = " << bitwidth << std::endl;
@@ -38,26 +40,42 @@ struct MultiplicationHashVol1
         std::cout << "shift = " << shift_ << std::endl;
     }
 
-    template<typename T>
-    std::size_t calc(T key) noexcept(false) // throw incorrect_key_type_exception
+    std::size_t operator()(const T& key) override
     {
         std::cout << "call Hash MultiplicationHashVol1 with " << key << std::endl;
+
+        std::cout << "key = " << key << std::endl;
+        std::cout << "coef is " << coefficient_ << std::endl;
+        std::cout << "shift is " << shift_ << std::endl;
 
         std::size_t hash = 0;
         switch (indexType_) {
             case IndexType::TYPE_8:
+
+            // PROBLEM: last 8 of key are zeros => hash after cast is 0
+
+                std::cout << "type8" << std::endl;
+                std::cout << coefficient_ * key << std::endl
+                          << +static_cast<unsigned char>(coefficient_ * key) << std::endl;
+
                 hash = static_cast<unsigned char>(coefficient_ * key) >> shift_;
                 break;
             case IndexType::TYPE_16:
+                std::cout << "type16" << std::endl;
+
+                std::cout << coefficient_ * key << std::endl
+                          << +static_cast<unsigned char>(coefficient_ * key) << std::endl;
+
                 hash = static_cast<unsigned short>(coefficient_ * key) >> shift_;
                 break;
             case IndexType::TYPE_32:
+                std::cout << "type32" << std::endl;
                 hash = static_cast<unsigned int>(coefficient_ * key) >> shift_;
                 break;
         };
 
         std::cout << "hash is " << hash << std::endl;
-        assert(hash < tableSize_);
+        assert(hash < this->tableSize_);
         return hash;
     }
 
@@ -65,7 +83,6 @@ private:
     enum class IndexType { TYPE_8, TYPE_16, TYPE_32 };
     IndexType indexType_;
 
-    std::size_t tableSize_;
     double coefficient_;
     std::size_t shift_;
 
@@ -108,7 +125,7 @@ struct MultiplicationHashVol2 : public HashInterface<T>
         A_ = (std::sqrt(5) - 1) / 2;
     }
 
-    std::size_t operator()(const T& key) /*noexcept(false)*/ override // throw incorrect_key_type_exception
+    std::size_t operator()(const T& key) override
     {
         std::size_t hash = static_cast<std::size_t>(
                     std::floor(this->tableSize_ * std::fmod(key * A_, 1)));
