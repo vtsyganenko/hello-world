@@ -4,7 +4,6 @@
 #include <iostream>
 
 #include "hash_interface.h"
-#include "exceptions.h"
 
 #include <cassert>      // assert
 #include <limits>       // numeric_limits & CHAR_BIT
