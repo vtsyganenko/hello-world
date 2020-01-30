@@ -11,11 +11,14 @@
 
 // table scheme:
 // array:
-// Node* { list(Element) }
-// nullptr
-// Node* { list(Element) }
+// [hash 0] - Node* { list(Element) }
+// [hash 1] - nullptr
+// [hash 2] - Node* { list(Element, Element) }
+// [hash 3] - Node* { list(Element) }
+// [hash 4] - nulptr
+// ...
 
-template <class Key, class Type, class HashFunc = Hash<Key>>
+template <class Key, class Type, class HashFunc = DefaultHash<Key>>
 class ChainHashTable
 {
 public:

@@ -27,56 +27,24 @@ int main()
 {
     //std::srand(std::time(nullptr));
 
-
     //Team d1 = {30, "Dynamo"};
     //Team d2 = {32, "Spartak"};
     //Team d3 = {35, "CSKA"};
 
-/*
+
+
+    // default hash for uint - Mult 2
     ChainHashTable<unsigned int, std::string> table;
     table.add(10, "spartak");
     table.add(20, "dynamo");
     table.add(30, "cska");
     table.print();
-*/
 
-    /*
-    ChainHashTable<std::string, double> table;
-    table.add("spartak", 12.8);
-    table.add("dynamo", 18.1);
-    table.add("cska", 21.12);
-    table.print();
-    */
+    ChainHashTable<unsigned int, std::string, DivisionHash<unsigned int>> table2;
+    table2.add(10, "spartak");
+    table2.add(20, "dynamo");
+    table2.add(30, "cska");
+    table2.print();
 
-
-    /*
-    ChainHashTable<const char*, int> t;
-
-    t.add("spartak", 10);
-    t.add("dynamo", 22);
-    t.add("cska", 39);
-
-    t.print();
-    */
-
-
-
-    ChainHashTable<unsigned int, std::string, DivisionHash<unsigned int>> table;
-    for(unsigned int i =1; i<=16; ++i)
-    {
-        unsigned int key = getRandom(1000, 2000);
-        std::string name = "team_" + std::to_string(key);
-        table.add(key, name);
-    }
-
-
-    table.print();
-/*
-    ChainHashTable<unsigned int, std::string, DivisionHash<unsigned int>> table;
-    table.add(10, "spartak");
-    table.add(20, "dynamo");
-    table.add(30, "cska");
-    table.print();
-*/
     return 0;
 }

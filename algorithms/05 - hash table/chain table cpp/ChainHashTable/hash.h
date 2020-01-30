@@ -3,12 +3,14 @@
 
 #include <iostream>
 
+#include "hash_interface.h"
+
 #include "division.h"
 #include "multiplication.h"
 #include "string_method.h"
 
 template <class T>
-struct Hash
+struct DefaultHash : public HashInterface<T>
 {
     std::size_t operator()(const T& value)
     {
@@ -29,10 +31,19 @@ struct Hash<int> : public MultiplicationHashVol1
     }
 };
 */
+
 template <>
-struct Hash<unsigned int> : public MultiplicationHashVol2
+struct DefaultHash<unsigned int> : public MultiplicationHashVol2<unsigned int>
 {
-    explicit Hash(std::size_t tableSize): MultiplicationHashVol2(tableSize) {}
+    explicit DefaultHash(std::size_t tableSize)
+        : MultiplicationHashVol2<unsigned int>(tableSize) {}
+};
+
+/*
+template <>
+struct DefaultHash<unsigned int> : public MultiplicationHashVol2
+{
+    explicit DefaultHash(std::size_t tableSize): MultiplicationHashVol2(tableSize) {}
 
     std::size_t operator()(const unsigned int& key){
         return calc(key);
@@ -43,6 +54,8 @@ struct Hash<unsigned int> : public MultiplicationHashVol2
         updateTableSize1(newSize);
     }
 };
+*/
+
 /*
 template <>
 struct Hash<const char*> : public StringMethodHashVol2

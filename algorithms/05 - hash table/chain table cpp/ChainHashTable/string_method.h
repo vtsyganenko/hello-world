@@ -9,6 +9,16 @@
 #include <cstring>      // strlen
 #include <cmath>        // pow
 
+/*
+ *
+ *
+ *
+ *    std::string s("hello");
+    const char* str = "ddfdsf";
+    std::cout << std::boolalpha
+              << std::is_same<decltype (str), std::string>::value << std::endl;
+ *
+*/
 struct StringMethodHashVol1
 {
     explicit StringMethodHashVol1(std::size_t tableSize)

@@ -3,6 +3,7 @@
 
 #include <iostream>
 
+#include "hash_interface.h"
 #include "exceptions.h"
 
 #include <cassert>      // assert
@@ -41,9 +42,6 @@ struct MultiplicationHashVol1
     template<typename T>
     std::size_t calc(T key) noexcept(false) // throw incorrect_key_type_exception
     {
-        if(std::is_integral<T>::value == false)
-            throw incorrect_key_type_exception();
-
         std::cout << "call Hash MultiplicationHashVol1 with " << key << std::endl;
 
         std::size_t hash = 0;
@@ -100,37 +98,30 @@ private:
 
 //-----------------------------------------------------------------------------------------
 
-struct MultiplicationHashVol2
+template <class T>
+struct MultiplicationHashVol2 : public HashInterface<T>
 {
     explicit MultiplicationHashVol2(std::size_t tableSize)
-        : tableSize_(tableSize)
+        : HashInterface<T>(tableSize)
     {
-        //std::cout << "MultiplicationHashVol2 ctor" << std::endl;
+        static_assert(std::is_integral<T>::value,
+                      "MultiplicationHashVol2: key type shall be integral!");
         A_ = (std::sqrt(5) - 1) / 2;
     }
 
-    template<typename T>
-    std::size_t calc(T key) noexcept(false) // throw incorrect_key_type_exception
+    std::size_t operator()(const T& key) /*noexcept(false)*/ override // throw incorrect_key_type_exception
     {
-        if(std::is_integral<T>::value == false)
-            throw incorrect_key_type_exception();
-
         std::size_t hash = static_cast<std::size_t>(
-                    std::floor(tableSize_ * std::fmod(key * A_, 1)));
+                    std::floor(this->tableSize_ * std::fmod(key * A_, 1)));
 
         std::cout << "call MultiplicationHashVol2() with key " << key
                   << " hash is " << hash << std::endl;
-        assert(hash < tableSize_);
+
+        assert(hash < this->tableSize_);
         return hash;
     }
 
-    void updateTableSize1(std::size_t newSize)  // TEMPORARY NAME :)
-    {
-        tableSize_ = newSize;
-    }
-
 private:
-    std::size_t tableSize_;
     double A_;                  // constant based on gold ratio
 };
 

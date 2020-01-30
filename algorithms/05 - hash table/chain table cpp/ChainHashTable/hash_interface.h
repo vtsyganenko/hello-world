@@ -11,6 +11,7 @@ struct HashInterface
     {
     }
 
+    // shall return calculated hash(key)
     virtual std::size_t operator()(const T& key) = 0;
 
     void updateTableSize(std::size_t newSize)

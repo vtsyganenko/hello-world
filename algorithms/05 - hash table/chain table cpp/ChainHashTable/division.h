@@ -1,12 +1,11 @@
 #ifndef DIVISION_H
 #define DIVISION_H
 
-#include <cassert>      // assert
-#include <vector>
-
 #include "hash_interface.h"
 #include "common.h"
-#include "exceptions.h"
+
+#include <cassert>
+#include <vector>
 
 template <class T>
 struct DivisionHash : public HashInterface<T>
@@ -14,18 +13,15 @@ struct DivisionHash : public HashInterface<T>
     explicit DivisionHash(std::size_t tableSize)
         : HashInterface<T>(tableSize), M_(tableSize)
     {
-        std::cout << "DivisionHash ctor" << std::endl;
+        static_assert(std::is_integral<T>::value, "DivisionHash: key type shall be integral!");
 
         updateTableSize(tableSize);
 
-        std::cout << "M = " << M_ << std::endl;
+        std::cout << "DivisionHash: M = " << M_ << std::endl;
     }
 
     std::size_t operator()(const T& key) /*noexcept(false)*/ override // throw incorrect_key_type_exception
     {
-        //if(std::is_integral<T>::value == false)
-        //    throw incorrect_key_type_exception();
-
         std::cout << "call DivisionHash with " << key << std::endl;
 
         std::size_t hash = key % M_;
@@ -46,10 +42,7 @@ struct DivisionHash : public HashInterface<T>
         // find a 'max' of prime numbers
         while(newSize--)
         {
-            //std::cout << "size is " << tableSize << std::endl;
-
-            if(isPrimeNumber(newSize))
-            {
+            if(isPrimeNumber(newSize)) {
                 primes.push_back(newSize);
                 if(primes.size() >= max)
                     break;
@@ -67,7 +60,6 @@ struct DivisionHash : public HashInterface<T>
     }
 
 private:
-    //std::size_t tableSize_;
     unsigned int M_;    // constant for division
 };
 
