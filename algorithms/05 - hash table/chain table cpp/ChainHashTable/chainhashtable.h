@@ -8,6 +8,7 @@
 #include <list>
 #include <vector>
 #include <deque>
+#include <algorithm>
 
 // table scheme:
 // array:
@@ -26,6 +27,8 @@ public:
     ~ChainHashTable();
 
     void add(const Key& key, const Type& value);
+
+    std::pair<Key, Type> find(const Key& key);
 
     void print();
 
@@ -86,6 +89,47 @@ void ChainHashTable<Key, Type, HashFunc>::add(const Key& key, const Type& value)
     array_[hash]->nodeChain.push_back( {key, value} );
 
     increaseElementsCount();
+}
+
+template <class Key, class Type, class HashFunc>
+std::pair<Key, Type> ChainHashTable<Key, Type, HashFunc>::find(const Key& key)
+{
+    std::cout << "find: key = " << key << std::endl;
+    std::pair<Key, Type> result;
+
+    std::size_t hash = hash_(key);
+
+    std::cout << " h = " << hash << std::endl;
+
+    if(hash < array_.size())
+    {
+        if(array_[hash] == nullptr)
+        {
+            // no element
+
+        }
+        else
+        {
+            const auto& list = array_[hash]->nodeChain;
+            auto it = std::find_if(list.begin(), list.end(),
+                      [key](const Element<Key, Type>& elem)
+            {
+                return elem.key == key;
+            });
+            if(it != list.end())
+            {
+                result.first = (*it).key;
+                result.second = (*it).value;
+            }
+            else
+            {
+                // not found
+
+            }
+        }
+    }
+
+    return result;
 }
 
 template <class Key, class Type, class HashFunc>

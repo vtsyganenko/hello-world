@@ -191,26 +191,26 @@ void example_hash_string_comparsion()
 {
     std::cout << __FUNCTION__ << std::endl;
 
-    std::vector< std::pair<std::string, float> > data;
+    std::vector< std::pair<std::string, float> > test_data;
     for(uint8_t k=0; k<=6; ++k)
     {
         std::string key = getRandomString();
         float value = getRandomFloat();
-        data.push_back( std::make_pair(key, value) );
+        test_data.push_back( std::make_pair(key, value) );
     }
 
     std::cout << "test data:" << std::endl;
-    for(const auto& pair : data)
+    for(const auto& pair : test_data)
         std::cout << pair.first << " " << pair.second << std::endl;
 
     ChainHashTable<std::string, float,
             StringMethodHashVol1<std::string>> str_table_1;
-    for(const auto& pair : data)
+    for(const auto& pair : test_data)
         str_table_1.add(pair.first, pair.second);
 
     ChainHashTable<std::string, float,
             StringMethodHashVol2<std::string>> str_table_2;
-    for(const auto& pair : data)
+    for(const auto& pair : test_data)
         str_table_2.add(pair.first, pair.second);
 
     std::cout << std::endl;
@@ -224,12 +224,45 @@ void example_hash_string_comparsion()
 
 //----------------------------------------------------------------------------
 
+void example_hash_int_find()
+{
+    std::cout << __FUNCTION__ << std::endl;
+
+    std::vector< std::pair<unsigned int, std::string> > test_data;
+    ChainHashTable<unsigned int, std::string> table;
+    for(uint8_t k=0; k<=7; ++k)
+    {
+        unsigned int key = getRandomUInt(1, 100);
+        std::string value = getRandomString();
+        test_data.push_back( std::make_pair(key, value) );
+        table.add(key, value);
+    }
+    std::cout << std::endl << "test hash table:" << std::endl;
+    table.print();
+
+    unsigned int valid_key = test_data[4].first;
+    auto pair1 = table.find(valid_key);
+    std::cout << "result for valid: " << valid_key << " "
+              << "is [" << pair1.first << ", "
+              << pair1.second << "]" << std::endl;
+
+    unsigned int invalid_key = getRandomUInt(200, 300);
+    auto pair2 = table.find(invalid_key);
+    std::cout << "result for invalid: " << invalid_key << " "
+              << "is [" << pair2.first << ", "
+              << pair2.second << "]" << std::endl;
+
+    std::cout << std::endl;
+}
+
+//----------------------------------------------------------------------------
+
 int main()
 {
     std::srand(static_cast<unsigned int>(std::time(nullptr)));
     std::cout.setf(std::ios::fixed);
 
-
+    example_hash_int_find();
 
     return 0;
 }
