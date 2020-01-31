@@ -49,7 +49,7 @@ private:
     HashFunc hash_;
 
     void increaseElementsCount();
-
+    void decreaseElementsCount();
 
     void checkFillFactorAndUpdateTable(double factor);
 };
@@ -59,7 +59,6 @@ ChainHashTable<Key, Type, HashFunc>::ChainHashTable()
     : tableSize_(16), elementsCount_(0), hash_(HashFunc(tableSize_))
 {
     // lets start hash table with size 16
-    std::cout << "ChainHashTable ctor" << std::endl;
     array_.resize(tableSize_, nullptr);
 }
 
@@ -78,17 +77,12 @@ void ChainHashTable<Key, Type, HashFunc>::add(const Key& key, const Type& value)
     std::cout << "add: key = " << key << " value = " << value << std::endl;
 
     std::size_t hash = hash_(key);
-    std::cout << "add: hash = " << hash << std::endl;
-
-    //if(hash < array_.size())
-    //{
-    //}
+    assert(hash < array_.size());
 
     if(array_[hash] == nullptr)
     {
         array_[hash] = new Node<Key, Type>;
     }
-    //array_[hash]->nodeChain.push_back( Element<Key, Type>(key, value) );
     array_[hash]->nodeChain.push_back( {key, value} );
 
     increaseElementsCount();
@@ -115,25 +109,28 @@ void ChainHashTable<Key, Type, HashFunc>::increaseElementsCount()
 {
     elementsCount_++;
     double factor = double(elementsCount_) / double(tableSize_);
-    std::cout << "elem count " << elementsCount_ << ", size " << tableSize_
-              << " K = " << factor << std::endl;
+    std::cout << "increaseElementsCount table(" << tableSize_ << ") "
+              << "elements(" << elementsCount_ << ") "
+              << "factor(" << factor << ")" << std::endl;
 
     checkFillFactorAndUpdateTable(factor);
 }
 
+template <class Key, class Type, class HashFunc>
+void ChainHashTable<Key, Type, HashFunc>::decreaseElementsCount()
+{
 
+}
 
 template <class Key, class Type, class HashFunc>
 void ChainHashTable<Key, Type, HashFunc>::checkFillFactorAndUpdateTable(double factor)
 {
-    std::cout << "checkFillFactorAndUpdateTable with " << factor << std::endl;
     static double max_factor = 0.7;
 
     if(factor > max_factor)
     {
         std::cout << "before: " << std::endl;
         print();
-        std::cout << "elements count " << elementsCount_ << std::endl;
 
         // create list of all elements
         std::vector< Element<Key, Type> > elements;
@@ -149,10 +146,10 @@ void ChainHashTable<Key, Type, HashFunc>::checkFillFactorAndUpdateTable(double f
             }
         }
 
-        std::cout << "ELEMENTS:" << std::endl;
-        for(const auto a : elements)
-            std::cout << "[" << a.key << ", " << a.value << "] ";
-        std::cout << std::endl;
+        //std::cout << "ELEMENTS:" << std::endl;
+        //for(const auto a : elements)
+        //    std::cout << "[" << a.key << ", " << a.value << "] ";
+        //std::cout << std::endl;
 
         // clean data array
         array_.clear();
@@ -169,11 +166,9 @@ void ChainHashTable<Key, Type, HashFunc>::checkFillFactorAndUpdateTable(double f
             this->add(elem.key, elem.value);
         }
 
-
         std::cout << std::endl << "after: " << std::endl;
         print();
     }
-
 }
 
 #endif // CHAINHASHTABLE_H

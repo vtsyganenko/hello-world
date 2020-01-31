@@ -2,6 +2,7 @@
 #define MULTIPLICATION_H
 
 #include <iostream>
+#include <bitset>
 
 #include "hash_interface.h"
 
@@ -23,53 +24,51 @@ struct MultiplicationHashVol1 : public HashInterface<T>
 
     void updateTableSize(std::size_t tableSize)
     {
-        std::cout << "MultiplicationHashVol1: updateTableSize: size = "
-                  << tableSize << std::endl;
-
         auto bitwidth = determineBitWidth(tableSize);
-        std::cout << "bitwidth = " << bitwidth << std::endl;
 
         auto extent = static_cast<std::size_t>(std::log2(tableSize));
-        std::cout << "n = " << extent << std::endl;
 
         double gold = (std::sqrt(5) - 1) / 2;
         coefficient_ = std::pow(2, bitwidth) * gold;
-        std::cout << "K = " << coefficient_ << std::endl;
 
         shift_ = bitwidth - extent;
-        std::cout << "shift = " << shift_ << std::endl;
+
+        this->tableSize_ = tableSize;
+        std::cout << "MultiplicationHashVol1::updateTableSize with " << tableSize
+                  << std::endl
+                  << "bitwidht(" << bitwidth << ") n(" << extent
+                  << ") coef(" << coefficient_ << ") shift(" << shift_
+                  << ")" << std::endl;
     }
 
     std::size_t operator()(const T& key) override
     {
-        std::cout << "call Hash MultiplicationHashVol1 with " << key << std::endl;
-
-        std::cout << "key = " << key << std::endl;
-        std::cout << "coef is " << coefficient_ << std::endl;
-        std::cout << "shift is " << shift_ << std::endl;
+        std::cout << "MultiplicationHashVol1 " << key << std::endl;
 
         std::size_t hash = 0;
         switch (indexType_) {
             case IndexType::TYPE_8:
-
-            // PROBLEM: last 8 of key are zeros => hash after cast is 0
-
-                std::cout << "type8" << std::endl;
-                std::cout << coefficient_ * key << std::endl
-                          << +static_cast<unsigned char>(coefficient_ * key) << std::endl;
-
+                {
+                /*
+                auto v = coefficient_ * key;
+                std::bitset<32> bs1(v);
+                unsigned char x = static_cast<unsigned char>(v);
+                std::bitset<8> bs2(x);
+                auto res = x >> shift_;
+                std::bitset<8> bs3(res);
+                std::cout << "calc hash with type8: coef is (" << coefficient_ << ") "
+                          << "key*coef = " << v << " " << bs1 << " "
+                          << "casted = " << +x << " " << bs2 << " "
+                          << "after shift to " << shift_ << " = " << +res << " "
+                          << bs3 << std::endl;
+                */
                 hash = static_cast<unsigned char>(coefficient_ * key) >> shift_;
+                }
                 break;
             case IndexType::TYPE_16:
-                std::cout << "type16" << std::endl;
-
-                std::cout << coefficient_ * key << std::endl
-                          << +static_cast<unsigned char>(coefficient_ * key) << std::endl;
-
                 hash = static_cast<unsigned short>(coefficient_ * key) >> shift_;
                 break;
             case IndexType::TYPE_32:
-                std::cout << "type32" << std::endl;
                 hash = static_cast<unsigned int>(coefficient_ * key) >> shift_;
                 break;
         };
@@ -88,8 +87,6 @@ private:
 
     std::size_t determineBitWidth(std::size_t tableSize)
     {
-        std::cout << "determine index bitwidth by table size " << tableSize << std::endl;
-
         // table size 256 means that index change from 0 to 255 i.e. 255 values
         unsigned int count_of_8_bit_indexes = std::numeric_limits<unsigned char>::max() + 1;
         unsigned int count_of_16_bit_indexes = std::numeric_limits<unsigned short>::max() + 1;
@@ -127,18 +124,30 @@ struct MultiplicationHashVol2 : public HashInterface<T>
 
     std::size_t operator()(const T& key) override
     {
+        std::cout << "MultiplicationHashVol2 with" << key << std::endl;
+
+        // very big key can provide that fractional part does not fit
+        // => std::fmod(key_d * A_, 1) may be 0 or 0.5
+        // => hash will be 0 or tableSize/2
+        // so we cut key
+        long double key_d = static_cast<uint32_t>(key);
+        std::cout << "mult res = " << this->tableSize_ * std::fmod(key_d * A_, 1) << std::endl;
+
         std::size_t hash = static_cast<std::size_t>(
-                    std::floor(this->tableSize_ * std::fmod(key * A_, 1)));
+                    std::floor(this->tableSize_ * std::fmod(key_d * A_, 1)));
 
-        std::cout << "call MultiplicationHashVol2() with key " << key
-                  << " hash is " << hash << std::endl;
-
+        std::cout << "hash is " << hash << std::endl;
         assert(hash < this->tableSize_);
         return hash;
     }
 
+    void updateTableSize(std::size_t tableSize)
+    {
+        this->tableSize_ = tableSize;
+    }
+
 private:
-    double A_;                  // constant based on gold ratio
+    long double A_;                  // constant based on gold ratio
 };
 
 #endif // MULTIPLICATION_H

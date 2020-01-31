@@ -3,9 +3,6 @@
 #include <iostream>
 #include <ctime>
 
-#include "division.h"
-#include <bitset>
-
 struct Team
 {
     int points;
@@ -17,53 +14,221 @@ struct Team
     }
 };
 
-unsigned int getRandom(unsigned int from, unsigned int to)
+unsigned int getRandomUInt(unsigned int from, unsigned int to)
 {
     unsigned int r = static_cast<unsigned int>(std::rand());
     unsigned int random = from + r % to;
     return random;
 }
 
-int main()
+float getRandomFloat(float to = 1.0)
 {
-/*
-    double a = 15046439;
-    double b = 158.217;
+    return (static_cast <float> (std::rand())) / (static_cast <float> (RAND_MAX/to));
+}
 
-    double c = a * b;
-    std::cout << c << std::endl;
+std::string getRandomString()
+{
+    std::vector<std::string> colors = {"white", "red", "orange", "yellow", "green",
+                                       "blue", "violet", "brown", "grey", "black"};
+    std::string str = colors[getRandomUInt(0, 9)] + " " + colors[getRandomUInt(0,9)];
+    return str;
+}
 
-    unsigned char aa = static_cast<unsigned char>(c);
-    std::cout << +aa << std::endl;
+//----------------------------------------------------------------------------
 
-    std::bitset<64> bs(c);
-    std::cout << bs << std::endl;
+// HASH WITH INT
 
-    return 0;
-*/
+void example_hash_int_simple()
+{
+    std::cout << __FUNCTION__ << std::endl;
 
-    //std::srand(std::time(nullptr));
-
-
-    // default hash for uint
-    ChainHashTable<const char*, std::string> table;
-    table.add("redwhite", "spartak");
-    table.add("whiteblue", "dynamo");
-    table.add("bluered", "cska");
-
-    //table.add("redwhite", "spartak");
-    //table.add("bluewhite", "dynamo");
-    //table.add("redblue", "cska");
+    ChainHashTable<unsigned int, std::string> table;
+    for(uint8_t k=0; k<=7; ++k)
+    {
+        unsigned int key = getRandomUInt(1, 100);
+        std::string value = getRandomString();
+        table.add(key, value);
+        std::cout << "-----------------------------------" << std::endl;
+    }
 
     table.print();
-/*
-    // hash is chosen by user
-    ChainHashTable<unsigned int, std::string, DivisionHash<unsigned int>> table2;
-    table2.add(10, "spartak");
-    table2.add(20, "dynamo");
-    table2.add(30, "cska");
-    table2.print();
-*/
+    std::cout << std::endl;
+}
+
+void example_hash_int_expansion()
+{
+    std::cout << __FUNCTION__ << std::endl;
+
+    ChainHashTable<unsigned int, std::string> table;
+    for(uint8_t k=0; k<=20; ++k)
+    {
+        unsigned int key = getRandomUInt(1, 100);
+        std::string value = getRandomString();
+        table.add(key, value);
+        std::cout << "-----------------------------------" << std::endl;
+    }
+
+    table.print();
+    std::cout << std::endl;
+}
+
+void example_hash_int_with_userhash()
+{
+    std::cout << __FUNCTION__ << std::endl;
+
+    ChainHashTable<unsigned int, std::string, DivisionHash<unsigned int>> table;
+    for(uint8_t k=0; k<=7; ++k)
+    {
+        unsigned int key = getRandomUInt(1, 100);
+        std::string value = getRandomString();
+        table.add(key, value);
+        std::cout << "-----------------------------------" << std::endl;
+    }
+
+    table.print();
+    std::cout << std::endl;
+}
+
+void example_hash_int_comparsion()
+{
+    std::cout << __FUNCTION__ << std::endl;
+
+    std::vector< std::pair<unsigned int, std::string> > data;
+    for(uint8_t k=0; k<=6; ++k)
+    {
+        unsigned int key = getRandomUInt(1, 100);
+        std::string value = getRandomString();
+        data.push_back( std::make_pair(key, value) );
+    }
+
+    std::cout << "test data:" << std::endl;
+    for(const auto& pair : data)
+        std::cout << pair.first << " " << pair.second << std::endl;
+
+    ChainHashTable<unsigned int, std::string,
+            DivisionHash<unsigned int>> div_table;
+    for(const auto& pair : data)
+        div_table.add(pair.first, pair.second);
+
+    ChainHashTable<unsigned int, std::string,
+            MultiplicationHashVol1<unsigned int>> mult_1_table;
+    for(const auto& pair : data)
+        mult_1_table.add(pair.first, pair.second);
+
+    ChainHashTable<unsigned int, std::string,
+            MultiplicationHashVol2<unsigned int>> mult_2_table;
+    for(const auto& pair : data)
+        mult_2_table.add(pair.first, pair.second);
+
+    std::cout << std::endl;
+    std::cout << "RESULTS:" << std::endl;
+    std::cout << "DivisionHash:" << std::endl;
+    div_table.print();
+    std::cout << "MultiplicationHashVol1:" << std::endl;
+    mult_1_table.print();
+    std::cout << "MultiplicationHashVol2:" << std::endl;
+    mult_2_table.print();
+
+    std::cout << std::endl;
+}
+
+//----------------------------------------------------------------------------
+
+// HASH WITH STRING
+
+void example_hash_string_simple()
+{
+    std::cout << __FUNCTION__ << std::endl;
+
+    ChainHashTable<std::string, float> table;
+    for(uint8_t k=0; k<=5; ++k)
+    {
+        std::string key = getRandomString();
+        float value = getRandomFloat();
+        table.add(key, value);
+        std::cout << "-----------------------------------" << std::endl;
+    }
+
+    table.print();
+    std::cout << std::endl;
+}
+
+void example_hash_string_expansion()
+{
+    std::cout << __FUNCTION__ << std::endl;
+
+    ChainHashTable<std::string, float> table;
+    for(uint8_t k=0; k<=20; ++k)
+    {
+        std::string key = getRandomString();
+        float value = getRandomFloat();
+        table.add(key, value);
+        std::cout << "-----------------------------------" << std::endl;
+    }
+
+    table.print();
+    std::cout << std::endl;
+}
+
+void example_hash_string_with_userhash()
+{
+    std::cout << __FUNCTION__ << std::endl;
+
+    ChainHashTable<std::string, float, StringMethodHashVol2<std::string>> table;
+    for(uint8_t k=0; k<=5; ++k)
+    {
+        std::string key = getRandomString();
+        float value = getRandomFloat();
+        table.add(key, value);
+        std::cout << "-----------------------------------" << std::endl;
+    }
+
+    table.print();
+    std::cout << std::endl;
+}
+
+void example_hash_string_comparsion()
+{
+    std::cout << __FUNCTION__ << std::endl;
+
+    std::vector< std::pair<std::string, float> > data;
+    for(uint8_t k=0; k<=6; ++k)
+    {
+        std::string key = getRandomString();
+        float value = getRandomFloat();
+        data.push_back( std::make_pair(key, value) );
+    }
+
+    std::cout << "test data:" << std::endl;
+    for(const auto& pair : data)
+        std::cout << pair.first << " " << pair.second << std::endl;
+
+    ChainHashTable<std::string, float,
+            StringMethodHashVol1<std::string>> str_table_1;
+    for(const auto& pair : data)
+        str_table_1.add(pair.first, pair.second);
+
+    ChainHashTable<std::string, float,
+            StringMethodHashVol2<std::string>> str_table_2;
+    for(const auto& pair : data)
+        str_table_2.add(pair.first, pair.second);
+
+    std::cout << std::endl;
+    std::cout << "RESULTS:" << std::endl;
+    std::cout << "StringMethodHashVol1:" << std::endl;
+    str_table_1.print();
+    std::cout << "StringMethodHashVol2:" << std::endl;
+    str_table_2.print();
+    std::cout << std::endl;
+}
+
+//----------------------------------------------------------------------------
+
+int main()
+{
+    std::srand(static_cast<unsigned int>(std::time(nullptr)));
+    std::cout.setf(std::ios::fixed);
+
 
 
     return 0;

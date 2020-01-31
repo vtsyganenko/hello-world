@@ -14,16 +14,13 @@ struct DivisionHash : public HashInterface<T>
         : HashInterface<T>(tableSize), M_(tableSize)
     {
         static_assert(std::is_integral<T>::value, "DivisionHash: key type shall be integral!");
-
         updateTableSize(tableSize);
-
         std::cout << "DivisionHash: M = " << M_ << std::endl;
     }
 
     std::size_t operator()(const T& key) override
     {
-        std::cout << "call DivisionHash with " << key << std::endl;
-
+        std::cout << "DivisionHash() with " << key << std::endl;
         std::size_t hash = key % M_;
 
         std::cout << "hash is " << hash << std::endl;
@@ -33,8 +30,6 @@ struct DivisionHash : public HashInterface<T>
 
     void updateTableSize(std::size_t newSize)
     {
-        std::cout << "Division hash: updateTableSize " << newSize << std::endl;
-
         std::size_t max = 1;                // ofset from table size
         std::vector<std::size_t> primes;
         this->tableSize_ = newSize;
@@ -49,14 +44,12 @@ struct DivisionHash : public HashInterface<T>
             }
         }
 
-        for(auto k : primes)
-            std::cout << k << " ";
-        std::cout << std::endl;
+        //for(auto k : primes)
+        //    std::cout << k << " ";
+        //std::cout << std::endl;
 
         if(!primes.empty())
             M_ = primes.back();
-
-        std::cout << "chosen M is " << M_ << std::endl;
     }
 
 private:

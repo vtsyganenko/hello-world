@@ -5,6 +5,7 @@
 
 #include <iostream>
 
+// checking for prime number
 bool isPrimeNumber(unsigned int num)
 {
     if(num < 2)

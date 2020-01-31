@@ -11,6 +11,8 @@ struct HashInterface
     {
     }
 
+    virtual ~HashInterface(){}
+
     // shall return calculated hash(key)
     virtual std::size_t operator()(const T& key) = 0;
 
