@@ -239,12 +239,14 @@ void example_hash_int_find()
     }
     std::cout << std::endl << "test hash table:" << std::endl;
     table.print();
+    std::cout << std::endl;
 
     unsigned int valid_key = test_data[4].first;
     auto pair1 = table.find(valid_key);
     std::cout << "result for valid: " << valid_key << " "
               << "is [" << pair1.first << ", "
               << pair1.second << "]" << std::endl;
+    std::cout << std::endl;
 
     unsigned int invalid_key = getRandomUInt(200, 300);
     std::pair<unsigned int, std::string> pair2;
@@ -277,12 +279,14 @@ void example_hash_string_find()
     }
     std::cout << std::endl << "test hash table:" << std::endl;
     table.print();
+    std::cout << std::endl;
 
     std::string valid_key = test_data[4].first;
     auto pair1 = table.find(valid_key);
     std::cout << "result for valid: " << valid_key << " "
               << "is [" << pair1.first << ", "
               << pair1.second << "]" << std::endl;
+    std::cout << std::endl;
 
     std::string invalid_key("invalid key");
     std::pair<std::string, float> pair2;
@@ -302,12 +306,90 @@ void example_hash_string_find()
 
 //----------------------------------------------------------------------------
 
+void example_hash_int_del()
+{
+    std::cout << __FUNCTION__ << std::endl;
+
+    std::vector< std::pair<unsigned int, std::string> > test_data;
+    ChainHashTable<unsigned int, std::string> table;
+    for(uint8_t k=0; k<=5; ++k)
+    {
+        unsigned int key = getRandomUInt(1, 100);
+        std::string value = getRandomString();
+        test_data.push_back( std::make_pair(key, value) );
+        table.add(key, value);
+    }
+    std::cout << std::endl << "test hash table:" << std::endl;
+    table.print();
+    std::cout << std::endl;
+
+    unsigned int valid_key = test_data[3].first;
+    bool del_res_1 = table.del(valid_key);
+    std::cout << "result for valid: " << valid_key << " "
+              << std::boolalpha
+              << "delete [" << del_res_1 << "]" << std::endl;
+
+    std::cout << std::endl << "table after delete:" << std::endl;
+    table.print();
+    std::cout << std::endl;
+
+    unsigned int invalid_key = getRandomUInt(200, 300);
+    bool del_res_2 = table.del(invalid_key);
+    std::cout << "result for invalid: " << invalid_key << " "
+              << std::boolalpha
+              << "delete [" << del_res_2 << "]" << std::endl;
+
+    std::cout << std::endl << "table after delete:" << std::endl;
+    table.print();
+    std::cout << std::endl;
+}
+
+void example_hash_string_del()
+{
+    std::cout << __FUNCTION__ << std::endl;
+
+    std::vector< std::pair<std::string, float> > test_data;
+    ChainHashTable<std::string, float> table;
+    for(uint8_t k=0; k<=5; ++k)
+    {
+        std::string key = getRandomString();
+        float value = getRandomFloat();
+        test_data.push_back( std::make_pair(key, value) );
+        table.add(key, value);
+    }
+    std::cout << std::endl << "test hash table:" << std::endl;
+    table.print();
+    std::cout << std::endl;
+
+    std::string valid_key = test_data[3].first;
+    bool del_res_1 = table.del(valid_key);
+    std::cout << "result for valid: " << valid_key << " "
+              << std::boolalpha
+              << "delete [" << del_res_1 << "]" << std::endl;
+
+    std::cout << std::endl << "table after delete:" << std::endl;
+    table.print();
+    std::cout << std::endl;
+
+    std::string invalid_key("invald key");
+    bool del_res_2 = table.del(invalid_key);
+    std::cout << "result for invalid: " << invalid_key << " "
+              << std::boolalpha
+              << "delete [" << del_res_2 << "]" << std::endl;
+
+    std::cout << std::endl << "table after delete:" << std::endl;
+    table.print();
+    std::cout << std::endl;
+}
+
+//----------------------------------------------------------------------------
+
 int main()
 {
     std::srand(static_cast<unsigned int>(std::time(nullptr)));
     std::cout.setf(std::ios::fixed);
 
-    // ...
+    example_hash_string_del();
 
     return 0;
 }

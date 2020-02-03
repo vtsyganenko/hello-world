@@ -51,6 +51,8 @@ public:
 
     void add(const Key& key, const Type& value);
 
+    bool del(const Key& key);
+
     std::pair<Key, Type> find(const Key& key);
 
     void print();
@@ -68,7 +70,8 @@ private:
     {
         std::list< Element<KeyType, ValueType> > nodeChain;
     };
-    std::vector< Node<Key, Type>* > array_;
+    typedef Node<Key, Type> NodeType;
+    std::vector< NodeType* > array_;
 
     std::size_t tableSize_;
     std::size_t elementsCount_;
@@ -78,6 +81,8 @@ private:
     void decreaseElementsCount();
 
     void checkFillFactorAndUpdateTable(double factor);
+
+    NodeType* findNodeWithKey(Key key);
 };
 
 template <class Key, class Type, class HashFunc>
@@ -115,38 +120,64 @@ void ChainHashTable<Key, Type, HashFunc>::add(const Key& key, const Type& value)
 }
 
 template <class Key, class Type, class HashFunc>
+bool ChainHashTable<Key, Type, HashFunc>::del(const Key& key)
+{
+    NodeType* node = findNodeWithKey(key);
+    if(!node)
+    {
+        return false;
+    }
+
+    auto& list = node->nodeChain;
+    std::size_t original_size = list.size();
+    auto new_end = std::remove_if(list.begin(), list.end(),
+                        [key](const Element<Key, Type>& elem)
+    {
+        return elem.key == key;
+    });
+    list.erase(new_end, list.end());
+
+    std::size_t deleted = original_size - list.size();
+    std::cout << "deleted " << deleted << " elements" << std::endl;
+    for(std::size_t i = 0; i<deleted; ++i)
+        decreaseElementsCount();
+
+    if(list.empty())
+    {
+        std::cout << "we need to delete node!" << std::endl;
+        auto it = std::find(array_.begin(), array_.end(), node);
+        if(it != array_.end())
+        {
+            std::cout << "node is found" << std::endl;
+            delete (*it);
+            (*it) = nullptr;
+        }
+    }
+    return true;
+}
+
+template <class Key, class Type, class HashFunc>
 std::pair<Key, Type> ChainHashTable<Key, Type, HashFunc>::find(const Key& key)
 {
     std::cout << "find: key = " << key << std::endl;
     std::pair<Key, Type> result;
 
-    std::size_t hash = hash_(key);
-    std::cout << " h = " << hash << std::endl;
-
-    if(hash < array_.size())
+    if(NodeType* node = findNodeWithKey(key))
     {
-        if(array_[hash] == nullptr) {
+        const auto& list = node->nodeChain;
+        auto it = std::find_if(list.begin(), list.end(),
+                  [key](const Element<Key, Type>& elem)
+        {
+            return elem.key == key;
+        });
+        if(it != list.end()) {
+            result.first = (*it).key;
+            result.second = (*it).value;
+        }
+        else {
             // no element
             NoValueFound<Key> e(key);
             throw e;
-        }
-        else
-        {
-            const auto& list = array_[hash]->nodeChain;
-            auto it = std::find_if(list.begin(), list.end(),
-                      [key](const Element<Key, Type>& elem)
-            {
-                return elem.key == key;
-            });
-            if(it != list.end()) {
-                result.first = (*it).key;
-                result.second = (*it).value;
-            }
-            else {
-                // no element
-                NoValueFound<Key> e(key);
-                throw e;
-            }
         }
     }
     else {
@@ -189,7 +220,10 @@ void ChainHashTable<Key, Type, HashFunc>::increaseElementsCount()
 template <class Key, class Type, class HashFunc>
 void ChainHashTable<Key, Type, HashFunc>::decreaseElementsCount()
 {
+    if(elementsCount_)
+        elementsCount_--;
 
+    std::cout << "decreaseElementsCount() new size is " << elementsCount_ << std::endl;
 }
 
 template <class Key, class Type, class HashFunc>
@@ -239,6 +273,20 @@ void ChainHashTable<Key, Type, HashFunc>::checkFillFactorAndUpdateTable(double f
         std::cout << std::endl << "after: " << std::endl;
         print();
     }
+}
+
+template <class Key, class Type, class HashFunc>
+typename ChainHashTable<Key, Type, HashFunc>::NodeType *ChainHashTable<Key, Type, HashFunc>::findNodeWithKey(Key key)
+{
+    std::cout << "findNodeWithKey: key = " << key << std::endl;
+    std::size_t hash = hash_(key);
+
+    if(hash < array_.size())
+    {
+        return array_[hash];
+    }
+
+    return nullptr;
 }
 
 #endif // CHAINHASHTABLE_H
