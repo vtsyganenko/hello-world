@@ -9,6 +9,29 @@
 #include <vector>
 #include <deque>
 #include <algorithm>
+#include <exception>
+#include <sstream>
+
+template <class T>
+struct NoValueFound : public std::exception
+{
+    NoValueFound(T key) : key_(key)
+    {
+        std::stringstream stream;
+        stream << key_;
+        key_str_ = stream.str();
+    }
+
+    virtual const char* what() const noexcept
+    {
+        std::string s = std::string("No value found for key: ") + key_str_;
+        return s.c_str();
+    }
+
+private:
+    T key_;
+    std::string key_str_;
+};
 
 // table scheme:
 // array:
@@ -98,15 +121,14 @@ std::pair<Key, Type> ChainHashTable<Key, Type, HashFunc>::find(const Key& key)
     std::pair<Key, Type> result;
 
     std::size_t hash = hash_(key);
-
     std::cout << " h = " << hash << std::endl;
 
     if(hash < array_.size())
     {
-        if(array_[hash] == nullptr)
-        {
+        if(array_[hash] == nullptr) {
             // no element
-
+            NoValueFound<Key> e(key);
+            throw e;
         }
         else
         {
@@ -116,17 +138,21 @@ std::pair<Key, Type> ChainHashTable<Key, Type, HashFunc>::find(const Key& key)
             {
                 return elem.key == key;
             });
-            if(it != list.end())
-            {
+            if(it != list.end()) {
                 result.first = (*it).key;
                 result.second = (*it).value;
             }
-            else
-            {
-                // not found
-
+            else {
+                // no element
+                NoValueFound<Key> e(key);
+                throw e;
             }
         }
+    }
+    else {
+        // no element
+        NoValueFound<Key> e(key);
+        throw e;
     }
 
     return result;

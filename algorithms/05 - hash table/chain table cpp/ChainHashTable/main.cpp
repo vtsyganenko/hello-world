@@ -247,7 +247,52 @@ void example_hash_int_find()
               << pair1.second << "]" << std::endl;
 
     unsigned int invalid_key = getRandomUInt(200, 300);
-    auto pair2 = table.find(invalid_key);
+    std::pair<unsigned int, std::string> pair2;
+    try {
+        pair2 = table.find(invalid_key);
+    }
+    catch(std::exception& e)
+    {
+        std::cout << "Exception! " << e.what() << std::endl;
+    }
+    std::cout << "result for invalid: " << invalid_key << " "
+              << "is [" << pair2.first << ", "
+              << pair2.second << "]" << std::endl;
+
+    std::cout << std::endl;
+}
+
+void example_hash_string_find()
+{
+    std::cout << __FUNCTION__ << std::endl;
+
+    std::vector< std::pair<std::string, float> > test_data;
+    ChainHashTable<std::string, float> table;
+    for(uint8_t k=0; k<=7; ++k)
+    {
+        std::string key = getRandomString();
+        float value = getRandomFloat();
+        test_data.push_back( std::make_pair(key, value) );
+        table.add(key, value);
+    }
+    std::cout << std::endl << "test hash table:" << std::endl;
+    table.print();
+
+    std::string valid_key = test_data[4].first;
+    auto pair1 = table.find(valid_key);
+    std::cout << "result for valid: " << valid_key << " "
+              << "is [" << pair1.first << ", "
+              << pair1.second << "]" << std::endl;
+
+    std::string invalid_key("invalid key");
+    std::pair<std::string, float> pair2;
+    try {
+        pair2 = table.find(invalid_key);
+    }
+    catch(std::exception& e)
+    {
+        std::cout << "Exception! " << e.what() << std::endl;
+    }
     std::cout << "result for invalid: " << invalid_key << " "
               << "is [" << pair2.first << ", "
               << pair2.second << "]" << std::endl;
@@ -262,7 +307,7 @@ int main()
     std::srand(static_cast<unsigned int>(std::time(nullptr)));
     std::cout.setf(std::ios::fixed);
 
-    example_hash_int_find();
+    // ...
 
     return 0;
 }

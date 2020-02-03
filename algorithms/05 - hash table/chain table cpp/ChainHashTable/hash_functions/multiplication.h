@@ -124,7 +124,7 @@ struct MultiplicationHashVol2 : public HashInterface<T>
 
     std::size_t operator()(const T& key) override
     {
-        std::cout << "MultiplicationHashVol2 with" << key << std::endl;
+        std::cout << "MultiplicationHashVol2 with " << key << std::endl;
 
         // very big key can provide that fractional part does not fit
         // => std::fmod(key_d * A_, 1) may be 0 or 0.5
