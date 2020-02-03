@@ -77,6 +77,7 @@ private:
     std::size_t elementsCount_;
     HashFunc hash_;
 
+
     void increaseElementsCount();
     void decreaseElementsCount();
 
@@ -192,6 +193,7 @@ std::pair<Key, Type> ChainHashTable<Key, Type, HashFunc>::find(const Key& key)
 template <class Key, class Type, class HashFunc>
 void ChainHashTable<Key, Type, HashFunc>::print()
 {
+    std::cout << "Elements count is " << elementsCount_ << std::endl;
     for(std::size_t i=0; i<array_.size(); ++i)
     {
         if(array_[i]){

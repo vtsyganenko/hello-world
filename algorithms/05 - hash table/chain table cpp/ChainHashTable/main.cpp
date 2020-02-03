@@ -1,18 +1,10 @@
 #include "chainhashtable.h"
+#include "userdata.h"
 
 #include <iostream>
 #include <ctime>
 
-struct Team
-{
-    int points;
-    std::string name;
-
-    bool operator==(const Team& other) const
-    {
-        return name == other.name;
-    }
-};
+//----------------------------------------------------------------------------
 
 unsigned int getRandomUInt(unsigned int from, unsigned int to)
 {
@@ -384,12 +376,118 @@ void example_hash_string_del()
 
 //----------------------------------------------------------------------------
 
+void example_hash_int_del_add()
+{
+    std::cout << __FUNCTION__ << std::endl;
+
+    std::vector< std::pair<unsigned int, std::string> > test_data;
+    ChainHashTable<unsigned int, std::string> table;
+    for(uint8_t k=0; k<=14; ++k)
+    {
+        unsigned int key = getRandomUInt(1, 100);
+        std::string value = getRandomString();
+        test_data.push_back( std::make_pair(key, value) );
+        table.add(key, value);
+    }
+    std::cout << std::endl << "test hash table:" << std::endl;
+    table.print();
+    std::cout << std::endl;
+
+    // del all
+    for(const auto& p : test_data)
+    {
+        table.del(p.first);
+    }
+    std::cout << std::endl << "table after delete:" << std::endl;
+    table.print();
+    std::cout << std::endl;
+
+    // add back
+    for(const auto& p : test_data)
+    {
+        table.add(p.first, p.second);
+    }
+    std::cout << std::endl << "table after 2nd adding:" << std::endl;
+    table.print();
+    std::cout << std::endl;
+}
+
+//----------------------------------------------------------------------------
+
+void example_hash_add_duplicate_del_duplicate_int()
+{
+    std::cout << __FUNCTION__ << std::endl;
+
+    ChainHashTable<unsigned int, std::string> table;
+    table.add(120, "hello");
+    table.add(120, "world");
+    table.add(120, "name");
+
+    std::cout << std::endl << "test hash table:" << std::endl;
+    table.print();
+    std::cout << std::endl;
+
+    bool res = false;
+    res = table.del(120);
+    std::cout << std::boolalpha << "delete res is " << res << std::endl;
+
+    std::cout << std::endl << "table after delete:" << std::endl;
+    table.print();
+    std::cout << std::endl;
+}
+
+//----------------------------------------------------------------------------
+
+void example_hash_user_value()
+{
+    ChainHashTable<unsigned int, Team> table;
+
+    table.add(100, Team("spartak", 34));
+    table.add(200, Team("dynamo", 24));
+    table.add(300, Team("cska", 39));
+
+    std::cout << std::endl << "test hash table:" << std::endl;
+    table.print();
+    std::cout << std::endl;
+
+    bool res = false;
+    res = table.del(200);
+    std::cout << std::boolalpha << "delete res is " << res << std::endl;
+
+    std::cout << std::endl << "table after delete:" << std::endl;
+    table.print();
+    std::cout << std::endl;
+}
+
+void example_user_key()
+{
+    ChainHashTable<Team, double, TeamHash<Team>> table;
+
+    table.add(Team("spartak", 34), 30.6);
+    table.add(Team("dynamo", 24), 20.2);
+    table.add(Team("cska", 39), 28.1);
+
+    std::cout << std::endl << "test hash table:" << std::endl;
+    table.print();
+    std::cout << std::endl;
+
+    bool res = false;
+    res = table.del(Team("dynamo", 24));
+    std::cout << std::boolalpha << "delete res is " << res << std::endl;
+
+    std::cout << std::endl << "table after delete:" << std::endl;
+    table.print();
+    std::cout << std::endl;
+}
+
+//----------------------------------------------------------------------------
+
 int main()
 {
     std::srand(static_cast<unsigned int>(std::time(nullptr)));
     std::cout.setf(std::ios::fixed);
 
-    example_hash_string_del();
+    //...
 
     return 0;
 }

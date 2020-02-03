@@ -8,7 +8,8 @@ set(HEADERS
     ./hash_functions/division.h
     ./hash_functions/multiplication.h
     ./hash_functions/string_method.h
-    ./hash_functions/common.h)
+    ./hash_functions/common.h
+    userdata.h)
 set(SOURCES main.cpp)
 include_directories(. hash_functions)
 add_executable(${PROJECT_NAME} ${HEADERS} ${SOURCES})
