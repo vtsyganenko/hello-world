@@ -3,18 +3,17 @@ GNUSTEP_LIBS = $(shell gnustep-config --base-libs)
 GNUSTEP_FLAGS = $(shell gnustep-config --objc-flags)
 
 .PHONY = clean all
-PROGS = hello
+PROGS = calc
 
-HEADERS = myclass.h
-SOURCES = myclass.m main.m
+SOURCES = main.m
 
 all: $(PROGS)
 
 %.o: %.m
 	$(CC) $(GNUSTEP_FLAGS) -c $^
 
-hello: main.o
+calc: main.o
 	$(CC) -o $@ $^ $(GNUSTEP_LIBS)
 
 clean: 
-	rm $(PROGS) *.o
+	rm $(PROGS) *.o *.d
