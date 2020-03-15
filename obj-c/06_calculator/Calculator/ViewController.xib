@@ -9,9 +9,24 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewController">
             <connections>
+                <outlet property="Number0" destination="Ipn-Tb-b7K" id="rnK-7X-u3K"/>
+                <outlet property="Number1" destination="Xuy-2M-WjX" id="LyO-97-Vjz"/>
+                <outlet property="Number2" destination="tkV-44-N3a" id="aEa-cL-eXX"/>
+                <outlet property="Number3" destination="ZLH-T7-bVA" id="fxD-uj-Muz"/>
+                <outlet property="Number4" destination="vS0-bt-HU5" id="zRU-gd-80c"/>
+                <outlet property="Number5" destination="AWu-z9-KAM" id="95R-wy-K2C"/>
+                <outlet property="Number6" destination="2rV-so-PDP" id="qPl-3y-17w"/>
+                <outlet property="SignPoint" destination="LJv-WP-iTh" id="1P6-6w-zpM"/>
                 <outlet property="actionLabel" destination="qwg-mQ-Ehw" id="fZm-e7-XvK"/>
+                <outlet property="buttonC" destination="FgE-sT-bHl" id="ajs-dz-HrQ"/>
+                <outlet property="buttonEqual" destination="Y6u-9U-8hp" id="rys-LM-z2T"/>
+                <outlet property="buttonMinus" destination="hm3-db-U14" id="9Cl-lR-reW"/>
+                <outlet property="buttonPlus" destination="MGD-72-uDJ" id="cCM-Y5-xgT"/>
                 <outlet property="firstOperandLabel" destination="x4P-5a-AUa" id="Ga6-bA-5ki"/>
                 <outlet property="mainLabel" destination="BLM-Lt-GiY" id="zBC-64-KBw"/>
+                <outlet property="number7" destination="Yqj-QV-fLt" id="Zfl-MY-OaG"/>
+                <outlet property="number8" destination="wfU-js-gpi" id="NT5-Ft-AGa"/>
+                <outlet property="number9" destination="6Rd-6a-7dX" id="phV-9W-Qf5"/>
                 <outlet property="secondOperandLabel" destination="iQa-oe-O4E" id="8W9-PE-kow"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -22,14 +37,14 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BLM-Lt-GiY">
-                    <rect key="frame" x="20" y="70" width="374" height="62"/>
+                    <rect key="frame" x="10" y="157" width="394" height="62"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="50"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yqj-QV-fLt">
-                    <rect key="frame" x="20" y="259" width="75" height="75"/>
+                    <rect key="frame" x="10" y="310" width="72" height="72"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
                     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -39,7 +54,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wfU-js-gpi">
-                    <rect key="frame" x="93" y="259" width="75" height="75"/>
+                    <rect key="frame" x="87" y="310" width="72" height="72"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
                     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -49,7 +64,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Rd-6a-7dX">
-                    <rect key="frame" x="170" y="259" width="75" height="75"/>
+                    <rect key="frame" x="164" y="310" width="72" height="72"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
                     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -59,7 +74,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MGD-72-uDJ">
-                    <rect key="frame" x="319" y="335" width="75" height="75"/>
+                    <rect key="frame" x="259" y="310" width="70" height="70"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
                     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -69,7 +84,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vS0-bt-HU5">
-                    <rect key="frame" x="20" y="335" width="75" height="75"/>
+                    <rect key="frame" x="10" y="387" width="72" height="72"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
                     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -79,7 +94,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AWu-z9-KAM">
-                    <rect key="frame" x="93" y="335" width="75" height="75"/>
+                    <rect key="frame" x="87" y="387" width="72" height="72"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
                     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -89,7 +104,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2rV-so-PDP">
-                    <rect key="frame" x="170" y="335" width="75" height="75"/>
+                    <rect key="frame" x="164" y="387" width="72" height="72"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
                     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -99,7 +114,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xuy-2M-WjX">
-                    <rect key="frame" x="20" y="418" width="75" height="75"/>
+                    <rect key="frame" x="10" y="464" width="72" height="72"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
                     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -109,7 +124,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tkV-44-N3a">
-                    <rect key="frame" x="93" y="418" width="75" height="75"/>
+                    <rect key="frame" x="87" y="464" width="72" height="72"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
                     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -119,7 +134,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZLH-T7-bVA">
-                    <rect key="frame" x="170" y="418" width="75" height="75"/>
+                    <rect key="frame" x="164" y="464" width="72" height="72"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
                     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -129,7 +144,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FgE-sT-bHl">
-                    <rect key="frame" x="319" y="259" width="75" height="75"/>
+                    <rect key="frame" x="334" y="235" width="70" height="70"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
                     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -138,39 +153,29 @@
                         <action selector="cButtonHandler" destination="-1" eventType="touchUpInside" id="Pbh-ds-AR8"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y6u-9U-8hp">
-                    <rect key="frame" x="319" y="501" width="75" height="75"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
-                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <state key="normal" title="="/>
-                    <connections>
-                        <action selector="equalButtonHandler:" destination="-1" eventType="touchUpInside" id="oZ4-nz-ft6"/>
-                    </connections>
-                </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x4P-5a-AUa">
-                    <rect key="frame" x="20" y="140" width="374" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="first operand" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x4P-5a-AUa">
+                    <rect key="frame" x="20" y="70" width="374" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qwg-mQ-Ehw">
-                    <rect key="frame" x="20" y="169" width="374" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="action" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qwg-mQ-Ehw">
+                    <rect key="frame" x="20" y="99" width="374" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iQa-oe-O4E">
-                    <rect key="frame" x="20" y="198" width="374" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="second operand" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iQa-oe-O4E">
+                    <rect key="frame" x="20" y="128" width="374" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ipn-Tb-b7K">
-                    <rect key="frame" x="20" y="501" width="75" height="75"/>
+                    <rect key="frame" x="10" y="541" width="72" height="72"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
                     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -180,7 +185,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LJv-WP-iTh">
-                    <rect key="frame" x="93" y="501" width="75" height="75"/>
+                    <rect key="frame" x="87" y="541" width="72" height="72"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
                     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -190,13 +195,23 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hm3-db-U14">
-                    <rect key="frame" x="319" y="411" width="75" height="75"/>
+                    <rect key="frame" x="334" y="310" width="70" height="70"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
                     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                     <state key="normal" title="-"/>
                     <connections>
                         <action selector="actionButtonHandler:" destination="-1" eventType="touchUpInside" id="ABZ-Rw-oa6"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y6u-9U-8hp">
+                    <rect key="frame" x="334" y="541" width="70" height="70"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
+                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <state key="normal" title="="/>
+                    <connections>
+                        <action selector="equalButtonHandler:" destination="-1" eventType="touchUpInside" id="oZ4-nz-ft6"/>
                     </connections>
                 </button>
             </subviews>

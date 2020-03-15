@@ -12,8 +12,6 @@
 {
     enum Action currentAction;
     
-
-    
     double firstOperand;
     double secondOperand;
     double result;
@@ -29,17 +27,21 @@
     return self;
 }
 
+- (void) drop
+{
+    firstOperand = 0.0;
+    secondOperand = 0.0;
+    result = 0.0;
+}
+
 - (void) setFirstOperand: (double) value
 {
     firstOperand = value;
 }
 
-- (double) firstOperand {
-    return firstOperand;
-}
-
 - (void) setAction: (enum Action) action
 {
+    NSLog(@"setAction %i", action);
     self->currentAction = action;
 }
 
@@ -51,7 +53,6 @@
 - (double) calc
 {
     NSLog(@"Calc: %f %f", firstOperand, secondOperand);
-    //result = 0.0;
     switch (currentAction) {
         case ADD:
             result = firstOperand + secondOperand;
@@ -59,7 +60,6 @@
         case SUB:
             result = firstOperand - secondOperand;
             break;
-            
         default:
             break;
     }

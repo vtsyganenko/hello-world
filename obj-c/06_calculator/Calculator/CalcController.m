@@ -61,6 +61,8 @@
 }
 
 - (void) addAction: (enum Action) action {
+    NSLog(@"addAction %i", action);
+    
     if(order == FIRST) {
         [calc setAction: action];
         [view showAction: [self actionToString:action]];
@@ -69,7 +71,7 @@
     else if(order == SECOND) {
         double firstOperand = [calc lastResult];
         [calc setFirstOperand: firstOperand];
-        [view showFirstOperand: [NSString stringWithFormat:@"%f", firstOperand]];
+        [view showFirstOperand: [NSString stringWithFormat:@"%g", firstOperand]];
         
         [calc setAction: action];
         [view showAction: [self actionToString:action]];

@@ -15,8 +15,9 @@
 
 @interface Calc : NSObject
 
+- (void) drop;
+
 - (void) setFirstOperand: (double) value;
-- (double) firstOperand;
 - (void) setAction: (enum Action) action;
 - (void) setSecondOperand: (double) value;
 
