@@ -4,7 +4,7 @@
 
 - (void) method1
 {
-    
+    NSLog(@"method1");
 }
 
 @end
@@ -28,6 +28,11 @@
 - (void) method3: (int) val1 andOther: (int) val2
 {
     NSLog(@"%d %d", val1, val2);
+}
+
+- (void) method4
+{
+	NSLog(@"method4");
 }
 
 @end

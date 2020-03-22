@@ -19,6 +19,7 @@
 @interface ClassC : NSObject
 
 - (void) method3: (int) val1 andOther: (int) val2;
+- (void) method4;
 
 @end
 
