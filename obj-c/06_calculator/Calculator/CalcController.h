@@ -17,8 +17,9 @@
 // init with mandatory view controller
 - (id) initWithViewController: (ViewController*) vc;
 
-// calc operation
-- (void) addNextOperandString: (double) value;
+// calc operations (used by ViewController)
+- (void) addNextOperand: (double) value;
+- (void) inputNumbersNotify;
 - (void) addAction: (enum Action) action;
 - (void) makeCalculation;
 - (void) dropCalculation;

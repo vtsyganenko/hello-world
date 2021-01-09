@@ -34,7 +34,6 @@
 
 - (void) setAction: (enum Action) action
 {
-    NSLog(@"setAction %i", action);
     self->currentAction = action;
 }
 
@@ -45,7 +44,6 @@
 
 - (double) calc
 {
-    NSLog(@"Calc: %f %f", firstOperand, secondOperand);
     switch (currentAction) {
         case ADD:
             result = firstOperand + secondOperand;
@@ -56,6 +54,7 @@
         default:
             break;
     }
+    NSLog(@"Calc: %f %@ %f = %f", firstOperand, [ActionHelper actionToString:currentAction], secondOperand, result);
     return result;
 }
 

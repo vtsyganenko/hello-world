@@ -17,8 +17,8 @@
     ViewController* view;
     Calc* calc;
     
-    enum OperandOrder {FIRST, SECOND};
-    enum OperandOrder order;
+    enum CalculationStep {FIRST_OPERAND, SET_ACTION, SECOND_OPERAND, CALCULATED};
+    enum CalculationStep step;
 }
 
 - (id) initWithViewController: (ViewController *) vc
@@ -28,37 +28,81 @@
         view = vc;
         calc = [[Calc alloc] init];
         
-        order = FIRST;
+        [self setCalculationStep:FIRST_OPERAND];
     }
     return self;
 }
 
-#pragma mark - Calc operation (used by ViewController)
-
-- (void) addNextOperandString:(double)value
+-(void) setCalculationStep: (enum CalculationStep) newStep
 {
-    NSLog(@"add next operand %f", value);
+    NSString* stepString = @"";
+    if(newStep == FIRST_OPERAND)
+        stepString = @"FIRST_OPERAND";
+    else if(newStep == SET_ACTION)
+        stepString = @"ACTION";
+    else if(newStep == SECOND_OPERAND)
+        stepString = @"SECOND_OPERAND";
+    else if(newStep == CALCULATED)
+        stepString = @"CALCULATED";
+    NSLog(@"[CalcController] setCalculationStep %@", stepString);
     
-    if(order == FIRST) {
+    step = newStep;
+}
+
+#pragma mark - Calc operations (used by ViewController)
+
+- (void) addNextOperand:(double)value
+{
+    NSLog(@"[CalcController] addNextOperand %f", value);
+    
+    if(step == FIRST_OPERAND) {
+        NSLog(@"first operand");
         [calc setFirstOperand: value];
         [view showFirstOperand: [NSString stringWithFormat:@"%g", value]];
         [view clearMain];
     }
-    else if(order == SECOND) {
+    else if(step == SECOND_OPERAND) {
+        NSLog(@"second operand");
         [calc setSecondOperand: value];
         [view showSecondOperand: [NSString stringWithFormat:@"%g", value]];
     }
 }
 
+- (void) inputNumbersNotify {
+    if(step == SET_ACTION) {
+        [self setCalculationStep:SECOND_OPERAND];
+    }
+    else if(step == CALCULATED) {
+        [self dropCalculation];
+    }
+}
+
 - (void) addAction: (enum Action) action {
-    NSLog(@"addAction %i", action);
+    NSLog(@"[CalcController] addAction %@", [ActionHelper actionToString:action]);
     
-    if(order == FIRST) {
+    if(step == FIRST_OPERAND) {
         [calc setAction: action];
         [view showAction: [ActionHelper actionToString:action]];
-        order = SECOND;
+        [self setCalculationStep:SET_ACTION];
     }
-    else if(order == SECOND) {
+    else if(step == SET_ACTION) {
+        [calc setAction: action];
+        [view showAction: [ActionHelper actionToString:action]];
+    }
+    else if(step == SECOND_OPERAND) {
+        double firstOperand = [calc calc];
+        [calc setFirstOperand: firstOperand];
+        [view showFirstOperand: [NSString stringWithFormat:@"%g", firstOperand]];
+        
+        [calc setAction: action];
+        [view showAction: [ActionHelper actionToString:action]];
+        
+        [view showSecondOperand: @""];
+        [view clearMain];
+        
+        [self setCalculationStep:SET_ACTION];
+    }
+    else if(step == CALCULATED) {
         double firstOperand = [calc lastResult];
         [calc setFirstOperand: firstOperand];
         [view showFirstOperand: [NSString stringWithFormat:@"%g", firstOperand]];
@@ -69,28 +113,32 @@
         [view showSecondOperand: @""];
         [view clearMain];
         
-        order = SECOND;
+        [self setCalculationStep:SET_ACTION];
     }
 }
 
 - (void) makeCalculation {
-    if(order == SECOND) {
-        double res = [calc calc];
-        NSLog(@"res is %f", res);
-        [view showResult: [NSString stringWithFormat:@"%g", res]];
-        //order = FIRST;
+    NSLog(@"[CalcController] makeCalculation");
+    if(step == SECOND_OPERAND) {
+        [view showResult: [NSString stringWithFormat:@"%g", [calc calc]]];
+        [self setCalculationStep:CALCULATED];
+    }
+    else if(step == CALCULATED) {
+        // repeat all
+        double firstOperand = [calc lastResult];
+        [calc setFirstOperand: firstOperand];
+        [view showFirstOperand: [NSString stringWithFormat:@"%g", firstOperand]];
+        
+        [view showResult: [NSString stringWithFormat:@"%g", [calc calc]]];
     }
 }
 
 - (void) dropCalculation {
-    if(order == FIRST) {
-        [view clearMain];
-    }
-    else if(order == SECOND) {
-        [view clearMain];
-        [view clearHistory];
-        order = FIRST;
-    }
+    NSLog(@"[CalcController] dropCalculation");
+    [calc drop];
+    [view clearMain];
+    [view clearHistory];
+    [self setCalculationStep:FIRST_OPERAND];
 }
 
 @end

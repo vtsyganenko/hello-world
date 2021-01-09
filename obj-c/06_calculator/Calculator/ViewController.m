@@ -99,7 +99,9 @@
 #pragma mark - UI elements action handlers
 
 - (IBAction) NumberHandler: (UIButton*) sender {
-    NSLog(@"Pressed %@ button", sender.titleLabel.text);
+    NSLog(@"[ViewController] Pressed %@ button", sender.titleLabel.text);
+    
+    [calcController inputNumbersNotify];
     
     // replace "0" by the either number except "."
     if([self.mainLabel.text isEqualToString: @"0"] == YES &&
@@ -121,7 +123,7 @@
         else if([self.mainLabel.text isEqualToString: @"0."] == YES &&
                  [sender.titleLabel.text isEqualToString: @"."] == YES)
         {
-            //NSLog(@"sssss");
+            //...
         }
         else
         {
@@ -137,23 +139,22 @@
 }
 
 - (IBAction) actionButtonHandler: (UIButton *)sender {
-    NSLog(@"actionButtonHandler (%@) (%@)",
-          self.mainLabel.text,
+    NSLog(@"[ViewController] actionButtonHandler (%@)",
           sender.titleLabel.text);
     
     double operand = [self.mainLabel.text doubleValue];
-    [calcController addNextOperandString: operand];
+    [calcController addNextOperand: operand];
     
     [calcController addAction: [ActionHelper stringToAction: sender.titleLabel.text]];
     [self showAction: sender.titleLabel.text];
 }
 
 - (IBAction) equalButtonHandler: (UIButton *)sender {
+    // get second (next) operand and make calculation
     double operand = [self.mainLabel.text doubleValue];
-    NSLog(@"operand is %f", operand);
-        
-    [calcController addNextOperandString: operand];
-    
+    NSLog(@"[ViewController] equalButtonHandler: next operand is %f", operand);
+
+    [calcController addNextOperand: operand];
     [calcController makeCalculation];
 }
 

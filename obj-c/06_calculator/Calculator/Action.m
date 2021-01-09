@@ -14,18 +14,15 @@
 
 + (enum Action) stringToAction: (NSString*) str
 {
-    NSLog(@"stringToAction %@", str);
     if([str isEqualToString: @"+"]) {
-        NSLog(@"ADD");
         return ADD;
     }
     if([str isEqualToString: @"-"]) {
-        NSLog(@"SUB");
         return SUB;
     }
 
     NSLog(@"ADD");
-    return ADD;
+    return ADD; // ?
 }
 
 + (NSString*) actionToString: (enum Action) action
