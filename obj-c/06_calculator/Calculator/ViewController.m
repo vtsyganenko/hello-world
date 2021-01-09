@@ -65,13 +65,10 @@
 }
 
 - (void) setCalcController:(CalcController *)calcCont {
-    NSLog(@"setCalcController %p", calcCont);
-    
-    if(calcCont == nil) {
-        NSLog(@"NIL!!");
-    }
     calcController = calcCont;
 }
+
+#pragma mark - View's modifiers (used by ViewController user - calcController)
 
 - (void) showFirstOperand: (NSString*) str {
     self.firstOperandLabel.text = str;
@@ -89,15 +86,17 @@
     self.mainLabel.text = @"0";
 }
 
+- (void) showResult: (NSString *) str {
+    self.mainLabel.text = str;
+}
+
 - (void) clearHistory {
     self.firstOperandLabel.text = @"";
     self.actionLabel.text = @"";
     self.secondOperandLabel.text = @"";
 }
 
-- (void) showResult: (NSString *) str {
-    self.mainLabel.text = str;
-}
+#pragma mark - UI elements action handlers
 
 - (IBAction) NumberHandler: (UIButton*) sender {
     NSLog(@"Pressed %@ button", sender.titleLabel.text);
@@ -122,7 +121,7 @@
         else if([self.mainLabel.text isEqualToString: @"0."] == YES &&
                  [sender.titleLabel.text isEqualToString: @"."] == YES)
         {
-            NSLog(@"sssss");
+            //NSLog(@"sssss");
         }
         else
         {
@@ -137,21 +136,6 @@
     [calcController dropCalculation];
 }
 
-- (enum Action) stringToAction: (NSString*) str {
-    NSLog(@"stringToAction %@", str);
-    if([str isEqualToString: @"+"]) {
-        NSLog(@"ADD");
-        return ADD;
-    }
-    if([str isEqualToString: @"-"]) {
-        NSLog(@"SUB");
-        return SUB;
-    }
-
-    NSLog(@"ADD");
-    return ADD;
-}
-
 - (IBAction) actionButtonHandler: (UIButton *)sender {
     NSLog(@"actionButtonHandler (%@) (%@)",
           self.mainLabel.text,
@@ -160,7 +144,7 @@
     double operand = [self.mainLabel.text doubleValue];
     [calcController addNextOperandString: operand];
     
-    [calcController addAction: [self stringToAction: sender.titleLabel.text]];
+    [calcController addAction: [ActionHelper stringToAction: sender.titleLabel.text]];
     [self showAction: sender.titleLabel.text];
 }
 

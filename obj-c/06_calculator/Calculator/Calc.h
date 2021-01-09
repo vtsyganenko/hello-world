@@ -15,14 +15,13 @@
 
 @interface Calc : NSObject
 
-- (void) drop;
-
 - (void) setFirstOperand: (double) value;
 - (void) setAction: (enum Action) action;
 - (void) setSecondOperand: (double) value;
-
 - (double) calc;
+
 - (double) lastResult;
+- (void) drop;
 
 @end
 

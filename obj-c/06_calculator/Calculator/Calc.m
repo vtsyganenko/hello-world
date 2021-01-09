@@ -22,16 +22,9 @@
     if(self = [super init])
     {
         // initialization
-        //order = FIRST;
+        [self drop];
     }
     return self;
-}
-
-- (void) drop
-{
-    firstOperand = 0.0;
-    secondOperand = 0.0;
-    result = 0.0;
 }
 
 - (void) setFirstOperand: (double) value
@@ -68,6 +61,13 @@
 
 - (double) lastResult {
     return result;
+}
+
+- (void) drop
+{
+    firstOperand = 0.0;
+    secondOperand = 0.0;
+    result = 0.0;
 }
 
 @end

@@ -22,13 +22,15 @@
     // Override point for customization after application launch.
     self.window  = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen]bounds]];
     
+    // ViewController and CalcController should be interconnected
     ViewController* view = [[ViewController alloc] init];
+    NSLog(@"ViewController created");
     CalcController* calc = [[CalcController alloc] initWithViewController: view];
-    NSLog(@"created! %p %p", view, calc);
+    NSLog(@"CalcController created");
     [view setCalcController: calc];
-    NSLog(@"added!");
+    NSLog(@"ViewController connected with CalcController");
+
     self.window.rootViewController = view;
-    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;

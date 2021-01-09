@@ -9,9 +9,16 @@
 #ifndef Action_h
 #define Action_h
 
+#import <Foundation/Foundation.h>
+
 enum Action {
-    ADD,
-    SUB
+    ADD,    // +
+    SUB     // -
 };
+
+@interface ActionHelper : NSObject
++ (enum Action) stringToAction: (NSString*) str;
++ (NSString*) actionToString: (enum Action) action;
+@end
 
 #endif /* Action_h */

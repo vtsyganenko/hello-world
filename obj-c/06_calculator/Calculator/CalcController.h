@@ -14,15 +14,14 @@
 @class ViewController;
 
 @interface CalcController : NSObject
-
+// init with mandatory view controller
 - (id) initWithViewController: (ViewController*) vc;
 
+// calc operation
 - (void) addNextOperandString: (double) value;
 - (void) addAction: (enum Action) action;
 - (void) makeCalculation;
-
 - (void) dropCalculation;
-
 @end
 
 #endif /* CalcController_h */

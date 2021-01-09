@@ -33,6 +33,8 @@
     return self;
 }
 
+#pragma mark - Calc operation (used by ViewController)
+
 - (void) addNextOperandString:(double)value
 {
     NSLog(@"add next operand %f", value);
@@ -48,24 +50,12 @@
     }
 }
 
-- (NSString*) actionToString: (enum Action) action {
-    switch (action) {
-        case ADD:
-            return @"+";
-        case SUB:
-            return @"-";
-        default:
-            break;
-    }
-    return @"?";
-}
-
 - (void) addAction: (enum Action) action {
     NSLog(@"addAction %i", action);
     
     if(order == FIRST) {
         [calc setAction: action];
-        [view showAction: [self actionToString:action]];
+        [view showAction: [ActionHelper actionToString:action]];
         order = SECOND;
     }
     else if(order == SECOND) {
@@ -74,7 +64,7 @@
         [view showFirstOperand: [NSString stringWithFormat:@"%g", firstOperand]];
         
         [calc setAction: action];
-        [view showAction: [self actionToString:action]];
+        [view showAction: [ActionHelper actionToString:action]];
         
         [view showSecondOperand: @""];
         [view clearMain];
