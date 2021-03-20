@@ -9,6 +9,9 @@ class Socket : public std::enable_shared_from_this<Socket>
 public:
 	static std::shared_ptr<Socket> factory();
 
+    static bool winInit();
+    static int winCleanup();
+
 	class Implementation;
 
 	struct Status {

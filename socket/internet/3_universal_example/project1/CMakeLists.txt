@@ -17,6 +17,8 @@ set(SOURCES
 )
 
 add_executable(project1 ${SOURCES} ${HEADERS})
-#target_link_libraries(project1 ws2_32.lib)
-
-target_link_libraries(project1 pthread)
+if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
+    target_link_libraries(project1 ws2_32.lib)
+elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux" || ${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+    target_link_libraries(project1 pthread)
+endif()

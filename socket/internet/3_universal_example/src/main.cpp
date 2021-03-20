@@ -1,22 +1,9 @@
 #include "socket.h"
 
-//#include <winsock.h>
-
 #include <iostream>
 #include <thread>
 #include <mutex>
 #include <sstream>
-/*
-void regWinsock()
-{
-	WSADATA wsaData;
-	if (WSAStartup(MAKEWORD(2, 0), &wsaData) != 0)
-	{
-		std::cout << "WSA startup failed" << std::endl;
-	}
-	else
-		std::cout << "WSA startup ok" << std::endl;
-}*/
 
 void print(const std::string threadName, const std::string& message) {
 	static std::mutex mtx;
@@ -192,7 +179,9 @@ void thread_B()
 
 int main()
 {
-	//regWinsock();
+    if(!Socket::winInit()) {
+        std::cout << "socket init failed" << std::endl;
+    }
 
 	std::thread t1(thread_A);
 	std::thread t2(thread_B);
@@ -200,6 +189,6 @@ int main()
 	t2.join();
 	t1.join();
 
-	//std::cout << "cleanup " << WSACleanup() << std::endl;
+    std::cout << "cleanup: " << Socket::winCleanup() << std::endl;
 	return 0;
 }

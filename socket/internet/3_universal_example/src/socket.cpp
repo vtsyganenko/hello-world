@@ -12,6 +12,14 @@ std::shared_ptr<Socket> Socket::factory() {
 	return nullptr;
 }
 
+bool Socket::winInit() {
+    return Implementation::winInit();
+}
+
+int Socket::winCleanup() {
+    return Implementation::winCleanup();
+}
+
 Socket::Socket() {
 	impl = std::make_unique<Implementation>();
 }

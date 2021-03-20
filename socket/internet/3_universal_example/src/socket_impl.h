@@ -3,37 +3,40 @@
 #include "socket.h"
 
 #if defined(_WIN32)
-	#include <winsock.h> // sockaddr_in
+    #include <winsock.h> // sockaddr_in
 #endif
 #if defined(__linux__) || defined(__APPLE__)
-	#include <netinet/ip.h>
+    #include <netinet/ip.h>
 #endif
 
 class Socket::Implementation
 {
 public:
-	Implementation();
-	~Implementation();
+    static bool winInit();
+    static int winCleanup();
 
-	bool isDescriptorValid();
+    Implementation();
+    ~Implementation();
 
-	const Status& status();
+    bool isDescriptorValid();
 
-	// "127.0.0.1" 60000
-	void setSendingAddress(const std::string& address, uint16_t port);
+    const Status& status();
 
-	bool send(const std::vector<char>& data);
+    // "127.0.0.1" 60000
+    void setSendingAddress(const std::string& address, uint16_t port);
 
-	bool bindToAddress(const std::string& address, uint16_t port);
+    bool send(const std::vector<char>& data);
 
-	std::vector<char> blockOnReceiving();
+    bool bindToAddress(const std::string& address, uint16_t port);
+
+    std::vector<char> blockOnReceiving();
 
 private:
-	void fillAddress(sockaddr_in& addressStruct, const std::string& addressString, const uint16_t port);
+    void fillAddress(sockaddr_in& addressStruct, const std::string& addressString, const uint16_t port);
 
-	Status m_status;
-	int m_descriptior;
-	char m_buffer[255];
-	sockaddr_in m_send_addr;
-	sockaddr_in m_bind_addr;
+    Status m_status;
+    int m_descriptior;
+    char m_buffer[255];
+    sockaddr_in m_send_addr;
+    sockaddr_in m_bind_addr;
 };
