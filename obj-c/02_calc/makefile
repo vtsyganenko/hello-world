@@ -5,14 +5,15 @@ GNUSTEP_FLAGS = $(shell gnustep-config --objc-flags)
 .PHONY = clean all
 PROGS = calc
 
-SOURCES = main.m
+HEADERS = calc.h
+SOURCES = calc.m main.m
 
 all: $(PROGS)
 
 %.o: %.m
 	$(CC) $(GNUSTEP_FLAGS) -c $^
 
-calc: main.o
+calc: calc.o main.o
 	$(CC) -o $@ $^ $(GNUSTEP_LIBS)
 
 clean: 
