@@ -5,11 +5,24 @@
 #include <mutex>
 #include <sstream>
 
-void print(const std::string threadName, const std::string& message) {
+// printing functor
+class Print
+{
+public:
+	explicit Print(const std::string& threadName) : m_threadName(threadName) {}
+	void operator () (const std::string& message) {
+		std::lock_guard<std::mutex> lock(mtx);
+		std::cout << std::this_thread::get_id() << " [" << m_threadName << "] " << message << std::endl;
+	}
+
+private:
+	std::string m_threadName;
+
 	static std::mutex mtx;
-	std::lock_guard<std::mutex> lock(mtx);
-	std::cout << "[" << threadName << "] " << message << std::endl;
-}
+};
+
+// static
+std::mutex Print::mtx;
 
 void initRandom() {
 	srand(time(NULL));
@@ -18,6 +31,8 @@ void initRandom() {
 int getRandom(int from, int to) {
 	return rand() % to + from;
 }
+
+//-------------------------------------------------------------------------------------------------
 
 // thread_A
 // send to 65000
@@ -32,8 +47,8 @@ int getRandom(int from, int to) {
 // check that they are square of initial values
 void thread_A()
 {
-	std::string name{ "thread_A" };
-	print(name, "started");
+	Print print("thread_A");
+	print("started");
 
 	// generate random data
 	std::vector<int> data(10, 0);
@@ -43,11 +58,11 @@ void thread_A()
 
 	// print data
 	std::stringstream ss;
-	ss << "have data: ";
+	ss << "have prepared data: ";
 	for (int value : data) {
 		ss << std::to_string(value) << " ";
 	}
-	print(name, ss.str());
+	print(ss.str());
 
 	auto socket = Socket::factory();
 	if (socket) {
@@ -56,7 +71,7 @@ void thread_A()
 		
 		// bind
 		if (!socket->bindToAddress("127.0.0.1", 65001)) {
-			print(name, "bind fail");
+			print("bind fail");
 			return;
 		}
 
@@ -65,8 +80,8 @@ void thread_A()
 			std::string message{ "value is " + std::to_string(data[i]) };
 			socket->send(std::vector<char>{message.begin(), message.end()});
 			
-			std::string info{ "send [" + message + "] (" + std::to_string(message.size()) + ")" };
-			print(name, info);
+			std::string info{ "send " + std::to_string(message.size()) + " bytes: [" + message + "]" };
+			print(info);
 		}
 
 		// receive 10 values
@@ -78,8 +93,8 @@ void thread_A()
 				data.push_back('\0');
 				std::string message{ data.data() };
 
-				std::string text{ "received [" + message + "] (" + std::to_string(received_size) + ")" };
-				print(name, text);
+				std::string text{ "received " + std::to_string(received_size) + " bytes: [" + message + "]" };
+				print(text);
 
 				// parse value from message
 				auto n = message.rfind(' ');
@@ -93,6 +108,7 @@ void thread_A()
 		}
 
 		// check
+		print("let's check results:");
 		for (size_t i = 0; i < data.size(); ++i) {
 			std::string status;
 			int date_square = data[i] * data[i];
@@ -103,25 +119,25 @@ void thread_A()
 				status = " error";
 			}
 			std::string text{ "value " + std::to_string(data[i]) + " square " + std::to_string(receive_values[i]) + status };
-			print(name, text);
+			print(text);
 		}
 
 	}
 	else {
-		print(name, "socket is not created");
+		print("socket is not created");
 	}
-	print(name, "finished");
+	print("finished");
 }
 
-//--------------------------------------------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------
 
 // receive 10 values
 // process them: value*value
 // send 10 'squares'
 void thread_B()
 {
-	std::string name{ "thread_B" };
-	print(name, "started");
+	Print print("thread_B");
+	print("started");
 
 	auto socket = Socket::factory();
 	if (socket) {
@@ -130,7 +146,7 @@ void thread_B()
 
 		// bind
 		if (!socket->bindToAddress("127.0.0.1", 65000)) {
-			print(name, "bind fail");
+			print("bind fail");
 			return;
 		}
 
@@ -143,8 +159,8 @@ void thread_B()
 				data.push_back('\0');
 				std::string message{ data.data() };
 
-				std::string text{ "received [" + message + "] (" + std::to_string(received_size) + ")" };
-				print(name, text);
+				std::string text{ "received " + std::to_string(received_size) + " bytes: [" + message + "]" };
+				print(text);
 
 				// parse value from message
 				auto n = message.rfind(' ');
@@ -161,24 +177,28 @@ void thread_B()
 		for (auto& val : receive_values) {
 			val = val * val;
 		}
+		print("made calculations");
 
 		// send 10 values
 		for (size_t i = 0; i < receive_values.size(); ++i) {
 			std::string message{ "square is " + std::to_string(receive_values[i]) };
 			socket->send(std::vector<char>{message.begin(), message.end()});
 
-			std::string info{ "send [" + message + "] (" + std::to_string(message.size()) + ")" };
-			print(name, info);
+			std::string info{ "send " + std::to_string(message.size()) + " bytes: [" + message + "]" };
+			print(info);
 		}
 	}
 	else {
-		print(name, "socket is not created");
+		print("socket is not created");
 	}
-	print(name, "finished");
+	print("finished");
 }
+
+//-------------------------------------------------------------------------------------------------
 
 int main()
 {
+	initRandom();
     if(!Socket::winInit()) {
         std::cout << "socket init failed" << std::endl;
     }
@@ -186,8 +206,8 @@ int main()
 	std::thread t1(thread_A);
 	std::thread t2(thread_B);
 
-	t2.join();
 	t1.join();
+	t2.join();
 
     std::cout << "cleanup: " << Socket::winCleanup() << std::endl;
 	return 0;
