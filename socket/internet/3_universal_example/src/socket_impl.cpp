@@ -32,20 +32,20 @@ Socket::Implementation::Implementation() {
 
 Socket::Implementation::~Implementation() {
 	#if defined(_WIN32)
-		closesocket(m_descriptior);
-	#endif
-	#if defined(__linux__) || defined(__APPLE__)
+        closesocket(m_descriptior);
+    #endif
+    #if defined(__linux__) || defined(__APPLE__)
         close(m_descriptior);
-	#endif
+    #endif
 }
 
 bool Socket::Implementation::isDescriptorValid() {
     #if defined(_WIN32)
         return m_descriptior != INVALID_SOCKET;
-	#endif
-	#if defined(__linux__) || defined(__APPLE__)
+    #endif
+    #if defined(__linux__) || defined(__APPLE__)
         return m_descriptior != -1;
-	#endif
+    #endif
 }
 
 const Socket::Status& Socket::Implementation::status()
