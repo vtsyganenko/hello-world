@@ -9,6 +9,8 @@ public:
     // assumes an appropriate integer
     std::string intToRoman(int integer);
 
+    // I, V, X, L, C, D, M
     bool isCorrectRomanString(const std::string& roman);
+    // 1..4999
     bool isAppropriateIntegerValue(int integer);
 };

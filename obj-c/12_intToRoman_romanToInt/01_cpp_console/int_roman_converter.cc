@@ -190,6 +190,8 @@ std::string IntRomanConverter::intToRoman(int integer) {
 }
 
 bool IntRomanConverter::isCorrectRomanString(const std::string& roman) {
+    if(roman.empty()) return false;
+    
     return std::all_of(roman.begin(), roman.end(), [](const char& character) {
         return std::any_of(dictionary.begin(), dictionary.end(), [&character](const std::pair<char,int>& pair) {
             return pair.first == character;
