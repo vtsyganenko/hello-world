@@ -6,13 +6,16 @@
 class Fraction {
 public:
     Fraction();
-    Fraction(int numenator, int denominator);
+    Fraction(int numenator, int denominator, bool needReducing = true);
     Fraction(int integerPart, int numenator, int denominator);
 
     void setNumerator(int numerator);
     void setDenominator(int denominator);
 
+    friend std::pair<Fraction, Fraction> convertToLikeQuantities(const Fraction& left,
+                                                                const Fraction& right);
 
+    friend Fraction operator + (const Fraction& left, const Fraction& right);
     friend Fraction operator * (const Fraction& left, const Fraction& right);
 
     friend std::ostream& operator << (std::ostream& out, const Fraction& f);
@@ -23,7 +26,10 @@ public:
     int m_denominator{0};
 
     void reduce();
-    int greatestCommonDivisor(int m, int n);
+    
+
+    
+
 };
 
 #endif // FRACTION_H
