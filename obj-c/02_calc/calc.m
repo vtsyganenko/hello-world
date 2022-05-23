@@ -1,17 +1,14 @@
 #import "calc.h"
 
 @implementation Calc
-{
-    float value1_;
-    float value2_;
+{    
     char action_;
 }
 
--(void) setValue: (float) value1 secondValue: (float) value2
-{
-    value1_ = value1;
-    value2_ = value2;
-}
+// this generates the next methods:
+// setter setValue1(...) and getter value1()
+// setter setValue2(...) and getter value2()
+@synthesize value1, value2;
 
 -(void) setActionChar: (char) c
 {
@@ -28,23 +25,23 @@
         }
 }
 
+-(char) getActionChar
+{
+    return action_;
+}
+
 -(float) calc
 {
     float res = 0.0;
     switch(action_){
-    case '+': res = value1_ + value2_; break;
-    case '-': res = value1_ - value2_; break;
-    case '*': res = value1_ * value2_; break;
-    case '/': res = value1_ / value2_; break;
+    case '+': res = value1 + value2; break;
+    case '-': res = value1 - value2; break;
+    case '*': res = value1 * value2; break;
+    case '/': res = value1 / value2; break;
     default:
         break;
     }
     return res;
-}
-
--(void) printLastCalc
-{
-    NSLog (@"%g %c %g = %g", value1_, action_, value2_, [self calc]);
 }
 
 @end
