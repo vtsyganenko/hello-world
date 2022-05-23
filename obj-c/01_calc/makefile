@@ -20,14 +20,17 @@ all: $(TARGET)
 %.o: %.m
 	$(CC) $(GNUSTEP_FLAGS) -c $^
 
+# for Linux
 ifeq ($(UNAME), Linux)
 calc: main.o
+	@echo System is $(UNAME)
 	$(CC) -o $@ $^ $(GNUSTEP_LIBS)
 endif
 
+# for MacOS
 ifeq ($(UNAME), Darwin)
 calc:
-	@echo "System is "$(UNAME)
+	@echo System is $(UNAME)
 	$(CC) -fobjc-arc main.m -o $@
 endif
 
