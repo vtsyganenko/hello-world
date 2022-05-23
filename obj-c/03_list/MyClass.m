@@ -9,16 +9,20 @@
 #import "MyClass.h"
 
 @implementation MyClass
-
--(void) setValue1: (int) v1 andValue2: (float) v2
 {
-    value1 = v1;
-    value2 = v2;
+    int intValue;
+    float floatValue;
+}
+
+-(void) setValues: (int) i : (float) f;
+{
+    intValue = i;
+    floatValue = f;
 }
 
 -(NSString*) description
 {
-    return [NSString stringWithFormat:@"[%d %f]", value1, value2];
+    return [NSString stringWithFormat:@"[%d %f]", intValue, floatValue];
 }
 
 @end

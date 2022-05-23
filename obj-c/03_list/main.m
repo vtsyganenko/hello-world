@@ -11,16 +11,15 @@
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        
         List* list = [[List alloc] init];
-        for(int i=0; i<5; ++i) {
+
+        for(int i=1; i<6; ++i) {
             MyClass* obj = [[MyClass alloc] init];
-            int v = i+1;
-            [obj setValue1:v+10 andValue2:v*22.4];
+            [obj setValues :i*10 :i*22.4];
             [list add:obj];
         }
+
         [list print];
-        
     }
     return 0;
 }

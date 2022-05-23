@@ -11,13 +11,12 @@
 
 #import <Foundation/Foundation.h>
 
+// placeholder class
 @interface MyClass : NSObject
-{
-    int value1;
-    float value2;
-}
 
--(void) setValue1: (int) v1 andValue2: (float) v2;
+// argument names are optional (not good style)
+-(void) setValues: (int) i : (float) f;
+// this method is called when we call NSLog(@"%@", object)
 -(NSString*) description;
 
 @end
