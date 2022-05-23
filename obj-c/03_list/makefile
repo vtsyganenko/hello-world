@@ -27,4 +27,4 @@ ${TARGET}: ${OBJECTS}
 endif
 
 clean: 
-	rm $(TARGET) *.o
+	rm $(TARGET) *.o *.d
