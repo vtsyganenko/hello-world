@@ -3,7 +3,7 @@ CC := clang
 
 SOURCES = list.m MyClass.m main.m
 OBJECTS=$(SOURCES:.m=.o)
-TARGET = list
+TARGET = test
 
 all: $(TARGET)
 

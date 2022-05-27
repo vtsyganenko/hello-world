@@ -11,6 +11,7 @@
 
 #import <Foundation/Foundation.h>
 
+// wrapper for user's object
 @interface Node : NSObject
 {
 @public
@@ -22,8 +23,11 @@
 
 @interface List : NSObject
 
-- (void) add : (id) object;
-- (void) print;
+-(void) add : (id) object;
+-(void) remove : (id) object;
+
+-(void) printForward;
+-(void) printBackward;
 
 @end
 

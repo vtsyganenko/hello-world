@@ -14,14 +14,12 @@
     float floatValue;
 }
 
--(void) setValues: (int) i : (float) f;
-{
+-(void) setValues: (int) i : (float) f {
     intValue = i;
     floatValue = f;
 }
 
--(NSString*) description
-{
+-(NSString*) description {
     return [NSString stringWithFormat:@"[%d %f]", intValue, floatValue];
 }
 
