@@ -1,0 +1,1 @@
+cmake example with several files and include directories

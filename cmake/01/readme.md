@@ -1,0 +1,1 @@
+simpliest cmake example

@@ -1,0 +1,1 @@
+cmake example with two libraries and two executables
