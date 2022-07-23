@@ -1,0 +1,1 @@
+Examples with arrays: one- and two-dimensionals. Dynamic allocate and pass to the function.
