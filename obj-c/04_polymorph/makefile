@@ -3,7 +3,6 @@ CC := clang
 .PHONY = clean all
 PROGS = polymorph
 
-HEADERS = objects.h
 SOURCES = objects.m main.m
 OBJECTS=$(SOURCES:.m=.o)
 
@@ -11,6 +10,7 @@ all: $(PROGS)
 
 UNAME := $(shell uname)
 
+# for Linux
 ifeq ($(UNAME), Linux)
 	
 GNUSTEP_LIBS = $(shell gnustep-config --base-libs)
@@ -24,6 +24,7 @@ ${PROGS}: ${OBJECTS}
 
 endif
 
+# for MacOS
 ifeq ($(UNAME), Darwin)
 
 ${PROGS}: ${OBJECTS}
@@ -32,5 +33,5 @@ ${PROGS}: ${OBJECTS}
 endif
 
 clean: 
-	rm $(PROGS) *.o
+	rm $(PROGS) *.o *.d
 
