@@ -2,6 +2,11 @@
 
 @implementation Object1
 
+-(NSString*) description 
+{
+    return @"Object1";
+}
+
 -(void) methodOne
 {
     NSLog(@"Object1 methodOne");
@@ -14,7 +19,12 @@
 
 -(void) methodThree: (const char*) str
 {
-    NSLog(@"Object1 methodTwo %s", str);
+    NSLog(@"Object1 methodThree %s", str);
+}
+
+-(void) methodFour: (Object2*) obj
+{
+    NSLog(@"Object1 methodFour with param %@", obj);
 }
 
 @end

@@ -23,6 +23,10 @@ int main(int argc, const char * argv[]) {
         // disagreed methods
         [(Object1*)obj1 methodTwo: 22.3];
         [(Object2*)obj2 methodTwo: 44];
+
+        // inconsistency is only different type of object, so ok
+        [obj1 methodFour: obj2];
+        [obj2 methodFour: obj1];
     }
     return 0;
 }
