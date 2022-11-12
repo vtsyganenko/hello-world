@@ -34,7 +34,7 @@ int main(int argc, const char * argv[]) {
 
         NSLog(@"array_id:");
         for(int i=0; i<ARRAY_SIZE; ++i) {
-            [(A*)array_obj[i] print];
+            [(A*)array_id[i] print];
         }
 
         // id as pointer changed value in both arrays
