@@ -31,6 +31,9 @@ int main(int argc, const char * argv[]) {
         ClassA* a = [[ClassA alloc] init];
         ClassB* b = [[ClassB alloc] init];
         ClassC* c = [[ClassC alloc] init];
+
+        NSLog(@"classes: A <- B ; C");
+        NSLog(@" ");
         
         // isKindOfClass
         NSLog(@"object a isKindOfClass NSObject is %@", boolToStr([a isKindOfClass: [NSObject class]]));
@@ -40,8 +43,11 @@ int main(int argc, const char * argv[]) {
         NSLog(@"object a isKindOfClass b is %@", boolToStr([a isKindOfClass: [b class]]));
         NSLog(@"object a isKindOfClass c is %@", boolToStr([a isKindOfClass: [c class]]));
         NSLog(@"object b isKindOfClass a is %@", boolToStr([b isKindOfClass: [a class]]));
+        NSLog(@"object b isKindOfClass b is %@", boolToStr([b isKindOfClass: [b class]]));
+        NSLog(@"object b isKindOfClass c is %@", boolToStr([b isKindOfClass: [c class]]));
         NSLog(@"object c isKindOfClass a is %@", boolToStr([c isKindOfClass: [a class]]));
         NSLog(@"object c isKindOfClass b is %@", boolToStr([c isKindOfClass: [b class]]));
+        NSLog(@"object c isKindOfClass c is %@", boolToStr([c isKindOfClass: [c class]]));
         NSLog(@" ");
         
         // isMemberOfClass
@@ -49,17 +55,18 @@ int main(int argc, const char * argv[]) {
         NSLog(@"object b isMemberOfClass NSObject is %@", boolToStr([b isMemberOfClass: [NSObject class]]));
         NSLog(@"object c isMemberOfClass NSObject is %@", boolToStr([b isMemberOfClass: [NSObject class]]));
         NSLog(@"object a isMemberOfClass a is %@", boolToStr([a isMemberOfClass: [a class]]));
-        NSLog(@"object b isMemberOfClass a is %@", boolToStr([b isMemberOfClass: [a class]]));
-        NSLog(@"object c isMemberOfClass a is %@", boolToStr([c isMemberOfClass: [a class]]));
         NSLog(@"object a isMemberOfClass b is %@", boolToStr([a isMemberOfClass: [b class]]));
-        NSLog(@"object b isMemberOfClass b is %@", boolToStr([b isMemberOfClass: [b class]]));
-        NSLog(@"object c isMemberOfClass b is %@", boolToStr([c isMemberOfClass: [b class]]));
         NSLog(@"object a isMemberOfClass c is %@", boolToStr([a isMemberOfClass: [c class]]));
+        NSLog(@"object b isMemberOfClass a is %@", boolToStr([b isMemberOfClass: [a class]]));
+        NSLog(@"object b isMemberOfClass b is %@", boolToStr([b isMemberOfClass: [b class]]));
         NSLog(@"object b isMemberOfClass c is %@", boolToStr([b isMemberOfClass: [c class]]));
+        NSLog(@"object c isMemberOfClass a is %@", boolToStr([c isMemberOfClass: [a class]]));
+        NSLog(@"object c isMemberOfClass b is %@", boolToStr([c isMemberOfClass: [b class]]));
         NSLog(@"object c isMemberOfClass c is %@", boolToStr([c isMemberOfClass: [c class]]));
         NSLog(@" ");
         
         // respondsToSelector
+
         // for instances about "-"
         NSLog(@"Call respondsToSelector for object (ask about instance methods \"-\"):");
         NSLog(@"object a respondsToSelector method1 is %@", boolToStr([a respondsToSelector: @selector (method1)]));
@@ -76,6 +83,7 @@ int main(int argc, const char * argv[]) {
         NSLog(@"object a respondsToSelector staticMethod is %@", boolToStr([a respondsToSelector: @selector (staticMethod)]));
         NSLog(@"object b respondsToSelector staticMethod is %@", boolToStr([b respondsToSelector: @selector (staticMethod)]));
         NSLog(@"object c respondsToSelector staticMethod is %@", boolToStr([c respondsToSelector: @selector (staticMethod)]));
+
         // for classes about "-"
         NSLog(@"Call respondsToSelector for class (ask about instance methods \"-\"):");
         NSLog(@"ClassA respondsToSelector method1 is %@", boolToStr([ClassA respondsToSelector: @selector (method1)]));
@@ -121,13 +129,25 @@ int main(int argc, const char * argv[]) {
         NSLog(@"ClassA isSubclassOfClass ClassA is %@", boolToStr([ClassA isSubclassOfClass: [ClassA class]]));
         NSLog(@"ClassB isSubclassOfClass ClassA is %@", boolToStr([ClassB isSubclassOfClass: [ClassA class]]));
         NSLog(@"ClassC isSubclassOfClass ClassA is %@", boolToStr([ClassC isSubclassOfClass: [ClassA class]]));
-        
+        NSLog(@" ");
+
         // performSelector
         SEL action = getAppropriateSelector(a);
+        NSLog(@"appropriate action for a:");
         [a performSelector: action];
+        NSLog(@"appropriate action for c:");
         action = getAppropriateSelector(c);
         [c performSelector: action];
 
+        NSLog(@" ");
+        [a performSelector: @selector(method1)];
+        // need : if method has arguments
+        [b performSelector: @selector(method2:)];
+
+        MyClass* obj = [[MyClass alloc] init];
+        [obj setValue:10];
+        [a performSelector: @selector(methodTakesObject:) withObject:obj];
+        
         NSLog(@" ");
         NSLog(@"end!");
     }
