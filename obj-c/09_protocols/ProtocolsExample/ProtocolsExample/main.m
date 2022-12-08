@@ -25,16 +25,22 @@ int main(int argc, const char * argv[]) {
         [addr setStreet:@"Fedoseenko"];
         NSLog(@"Full address is %@", [addr generate]);
         
-        // test saving
-        NSString* addressFilePath = @"MyAddress.txt";
-        BOOL res = [addr saveToFile:addressFilePath];
-        NSLog(@"saving is %d", res);
-        
-        // load
-        loadAndLog(addressFilePath);
-        
-        // test printing
-        [addr printSaveableInfo];
+        if([addr conformsToProtocol: @protocol(SaveableToFile)] == YES) {
+            
+            // test saving
+            NSString* addressFilePath = @"MyAddress.txt";
+            BOOL res = [addr saveToFile:addressFilePath];
+            NSLog(@"saving is %d", res);
+            
+            // load
+            loadAndLog(addressFilePath);
+            
+            if([addr respondsToSelector: @selector(printSaveableInfo)] == YES) {
+                
+            // test printing
+            [addr printSaveableInfo];
+            }
+        }
     }
     return 0;
 }
