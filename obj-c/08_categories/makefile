@@ -3,8 +3,8 @@ CC := clang
 .PHONY = clean all
 PROGS = test
 
-HEADERS = calc.h calcmath.h unnecessary.h
-SOURCES = main.m calc.m calcmath.m unnecessary.m
+HEADERS = calc.h calc+math.h unnecessary.h
+SOURCES = main.m calc.m calc+math.m unnecessary.m
 OBJECTS=$(SOURCES:.m=.o)
 
 all: $(PROGS)

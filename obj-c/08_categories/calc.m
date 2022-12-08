@@ -1,17 +1,31 @@
 #import "calc.h"
 
-@implementation Calc
+// class extension - private methods
+@interface Calc ()
+-(void) logOperand: (double) value;
+@end
 
--(void) setValue1: (double) value {
+@implementation Calc
+{
+	int value3;
+}
+
+-(void) setOperand1: (double) value {
+	[self logOperand:value];
 	value1 = value;
 }
 
--(void) setValue2: (double) value {
+-(void) setOperand2: (double) value {
+	[self logOperand:value];
 	value2 = value;
 }
 
 -(void) print {
-	NSLog(@"value 1 is %g value 2 is %g", value1, value2);
+	NSLog(@"Calc: value 1 is %g value 2 is %g", value1, value2);
+}
+
+-(void) logOperand: (double) value {
+	NSLog(@"operand is %g", value);
 }
 
 @end

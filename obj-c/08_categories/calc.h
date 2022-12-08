@@ -6,8 +6,8 @@
 	double value2;
 }
 
--(void) setValue1: (double) value;
--(void) setValue2: (double) value;
+-(void) setOperand1: (double) value;
+-(void) setOperand2: (double) value;
 -(void) print;
 
 @end

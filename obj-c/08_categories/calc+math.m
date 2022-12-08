@@ -1,12 +1,12 @@
-#import "calcmath.h"
+#import "calc+math.h"
 
 @implementation Calc ( Math )
 
--(double) addValues {
+-(double) addOperands {
 	return value1 + value2;
 }
 
--(double) subValues {
+-(double) subOperands {
 	return value1 - value2;
 }
 
