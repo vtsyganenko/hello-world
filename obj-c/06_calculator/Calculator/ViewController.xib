@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -36,188 +37,262 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BLM-Lt-GiY">
-                    <rect key="frame" x="10" y="157" width="394" height="62"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="first operand" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x4P-5a-AUa">
+                    <rect key="frame" x="296.5" y="64" width="97.5" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="action" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qwg-mQ-Ehw">
+                    <rect key="frame" x="347" y="105" width="47" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="second operand" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iQa-oe-O4E">
+                    <rect key="frame" x="270" y="146" width="124" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BLM-Lt-GiY">
+                    <rect key="frame" x="20" y="187" width="374" height="60"/>
                     <fontDescription key="fontDescription" type="system" pointSize="50"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yqj-QV-fLt">
-                    <rect key="frame" x="10" y="310" width="72" height="72"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yqj-QV-fLt">
+                    <rect key="frame" x="10" y="353" width="72" height="72"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
-                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="tintColor" systemColor="darkTextColor"/>
                     <state key="normal" title="7"/>
+                    <buttonConfiguration key="configuration" style="filled" title="7">
+                        <fontDescription key="titleFontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
+                        <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                    </buttonConfiguration>
                     <connections>
                         <action selector="NumberHandler:" destination="-1" eventType="touchUpInside" id="oof-lR-CRD"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wfU-js-gpi">
-                    <rect key="frame" x="87" y="310" width="72" height="72"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wfU-js-gpi">
+                    <rect key="frame" x="86" y="353" width="72" height="72"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
-                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="tintColor" systemColor="darkTextColor"/>
                     <state key="normal" title="8"/>
+                    <buttonConfiguration key="configuration" style="filled" title="8">
+                        <fontDescription key="titleFontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
+                        <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                    </buttonConfiguration>
                     <connections>
                         <action selector="NumberHandler:" destination="-1" eventType="touchUpInside" id="fPs-Tk-Qf4"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Rd-6a-7dX">
-                    <rect key="frame" x="164" y="310" width="72" height="72"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Rd-6a-7dX">
+                    <rect key="frame" x="163" y="353" width="72" height="72"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
-                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="tintColor" systemColor="darkTextColor"/>
                     <state key="normal" title="9"/>
+                    <buttonConfiguration key="configuration" style="filled" title="9">
+                        <fontDescription key="titleFontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
+                        <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                    </buttonConfiguration>
                     <connections>
                         <action selector="NumberHandler:" destination="-1" eventType="touchUpInside" id="kcQ-sh-hJc"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MGD-72-uDJ">
-                    <rect key="frame" x="259" y="310" width="70" height="70"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MGD-72-uDJ">
+                    <rect key="frame" x="258" y="353" width="70" height="70"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
-                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="tintColor" systemColor="darkTextColor"/>
                     <state key="normal" title="+"/>
+                    <buttonConfiguration key="configuration" style="filled" title="+">
+                        <fontDescription key="titleFontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
+                        <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                    </buttonConfiguration>
                     <connections>
                         <action selector="actionButtonHandler:" destination="-1" eventType="touchUpInside" id="b0P-jW-3bH"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vS0-bt-HU5">
-                    <rect key="frame" x="10" y="387" width="72" height="72"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vS0-bt-HU5">
+                    <rect key="frame" x="10" y="430" width="72" height="72"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
-                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="tintColor" systemColor="darkTextColor"/>
                     <state key="normal" title="4"/>
+                    <buttonConfiguration key="configuration" style="filled" title="4">
+                        <fontDescription key="titleFontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
+                        <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                    </buttonConfiguration>
                     <connections>
                         <action selector="NumberHandler:" destination="-1" eventType="touchUpInside" id="NYk-4a-Dwg"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AWu-z9-KAM">
-                    <rect key="frame" x="87" y="387" width="72" height="72"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AWu-z9-KAM">
+                    <rect key="frame" x="86" y="430" width="72" height="72"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
-                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="tintColor" systemColor="darkTextColor"/>
                     <state key="normal" title="5"/>
+                    <buttonConfiguration key="configuration" style="filled" title="5">
+                        <fontDescription key="titleFontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
+                        <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                    </buttonConfiguration>
                     <connections>
                         <action selector="NumberHandler:" destination="-1" eventType="touchUpInside" id="OBD-Ww-Ey9"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2rV-so-PDP">
-                    <rect key="frame" x="164" y="387" width="72" height="72"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2rV-so-PDP">
+                    <rect key="frame" x="163" y="430" width="72" height="72"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
-                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="tintColor" systemColor="darkTextColor"/>
                     <state key="normal" title="6"/>
+                    <buttonConfiguration key="configuration" style="filled" title="6">
+                        <fontDescription key="titleFontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
+                        <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                    </buttonConfiguration>
                     <connections>
                         <action selector="NumberHandler:" destination="-1" eventType="touchUpInside" id="8ER-n7-f3l"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xuy-2M-WjX">
-                    <rect key="frame" x="10" y="464" width="72" height="72"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xuy-2M-WjX">
+                    <rect key="frame" x="10" y="507" width="72" height="72"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
-                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="tintColor" systemColor="darkTextColor"/>
                     <state key="normal" title="1"/>
+                    <buttonConfiguration key="configuration" style="filled" title="1">
+                        <fontDescription key="titleFontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
+                        <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                    </buttonConfiguration>
                     <connections>
                         <action selector="NumberHandler:" destination="-1" eventType="touchUpInside" id="zNc-Fr-e6Q"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tkV-44-N3a">
-                    <rect key="frame" x="87" y="464" width="72" height="72"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tkV-44-N3a">
+                    <rect key="frame" x="86" y="507" width="72" height="72"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
-                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="tintColor" systemColor="darkTextColor"/>
                     <state key="normal" title="2"/>
+                    <buttonConfiguration key="configuration" style="filled" title="2">
+                        <fontDescription key="titleFontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
+                        <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                    </buttonConfiguration>
                     <connections>
                         <action selector="NumberHandler:" destination="-1" eventType="touchUpInside" id="jei-wk-0R4"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZLH-T7-bVA">
-                    <rect key="frame" x="164" y="464" width="72" height="72"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZLH-T7-bVA">
+                    <rect key="frame" x="163" y="507" width="72" height="72"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
-                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="tintColor" systemColor="darkTextColor"/>
                     <state key="normal" title="3"/>
+                    <buttonConfiguration key="configuration" style="filled" title="3">
+                        <fontDescription key="titleFontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
+                        <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                    </buttonConfiguration>
                     <connections>
                         <action selector="NumberHandler:" destination="-1" eventType="touchUpInside" id="c1f-WU-FvB"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FgE-sT-bHl">
-                    <rect key="frame" x="334" y="235" width="70" height="70"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FgE-sT-bHl">
+                    <rect key="frame" x="333" y="278" width="70" height="70"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
-                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="tintColor" systemColor="darkTextColor"/>
                     <state key="normal" title="C"/>
+                    <buttonConfiguration key="configuration" style="filled" title="C">
+                        <fontDescription key="titleFontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
+                        <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                    </buttonConfiguration>
                     <connections>
                         <action selector="cButtonHandler" destination="-1" eventType="touchUpInside" id="Pbh-ds-AR8"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="first operand" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x4P-5a-AUa">
-                    <rect key="frame" x="20" y="70" width="374" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="action" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qwg-mQ-Ehw">
-                    <rect key="frame" x="20" y="99" width="374" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="second operand" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iQa-oe-O4E">
-                    <rect key="frame" x="20" y="128" width="374" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ipn-Tb-b7K">
-                    <rect key="frame" x="10" y="541" width="72" height="72"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ipn-Tb-b7K">
+                    <rect key="frame" x="10" y="584" width="72" height="72"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
-                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="tintColor" systemColor="darkTextColor"/>
                     <state key="normal" title="0"/>
+                    <buttonConfiguration key="configuration" style="filled" title="0">
+                        <fontDescription key="titleFontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
+                        <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                    </buttonConfiguration>
                     <connections>
                         <action selector="NumberHandler:" destination="-1" eventType="touchUpInside" id="U4v-dO-R3z"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LJv-WP-iTh">
-                    <rect key="frame" x="87" y="541" width="72" height="72"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LJv-WP-iTh">
+                    <rect key="frame" x="86" y="584" width="72" height="72"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
-                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="tintColor" systemColor="darkTextColor"/>
                     <state key="normal" title="."/>
+                    <buttonConfiguration key="configuration" style="filled" title=".">
+                        <fontDescription key="titleFontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
+                        <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                    </buttonConfiguration>
                     <connections>
                         <action selector="NumberHandler:" destination="-1" eventType="touchUpInside" id="jQo-yz-IR5"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hm3-db-U14">
-                    <rect key="frame" x="334" y="310" width="70" height="70"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hm3-db-U14">
+                    <rect key="frame" x="333" y="353" width="70" height="70"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
-                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="tintColor" systemColor="darkTextColor"/>
                     <state key="normal" title="-"/>
+                    <buttonConfiguration key="configuration" style="filled" title="-">
+                        <fontDescription key="titleFontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
+                        <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                    </buttonConfiguration>
                     <connections>
                         <action selector="actionButtonHandler:" destination="-1" eventType="touchUpInside" id="ABZ-Rw-oa6"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y6u-9U-8hp">
-                    <rect key="frame" x="334" y="541" width="70" height="70"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y6u-9U-8hp">
+                    <rect key="frame" x="333" y="584" width="70" height="70"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
-                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="tintColor" systemColor="darkTextColor"/>
                     <state key="normal" title="="/>
+                    <buttonConfiguration key="configuration" style="filled" title="=">
+                        <fontDescription key="titleFontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
+                        <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                    </buttonConfiguration>
                     <connections>
                         <action selector="equalButtonHandler:" destination="-1" eventType="touchUpInside" id="oZ4-nz-ft6"/>
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <constraints>
+                <constraint firstItem="BLM-Lt-GiY" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="0s5-az-V2i"/>
+                <constraint firstItem="qwg-mQ-Ehw" firstAttribute="top" secondItem="x4P-5a-AUa" secondAttribute="bottom" constant="20" id="3GJ-UN-1Wi"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="BLM-Lt-GiY" secondAttribute="trailing" constant="20" id="Rw9-jA-RzG"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="qwg-mQ-Ehw" secondAttribute="trailing" constant="20" id="ScU-Eg-oH5"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="iQa-oe-O4E" secondAttribute="trailing" constant="20" id="duN-9w-1v6"/>
+                <constraint firstItem="iQa-oe-O4E" firstAttribute="top" secondItem="qwg-mQ-Ehw" secondAttribute="bottom" constant="20" id="fRX-6l-hnK"/>
+                <constraint firstItem="BLM-Lt-GiY" firstAttribute="top" secondItem="iQa-oe-O4E" secondAttribute="bottom" constant="20" id="iq2-0T-M73"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="x4P-5a-AUa" secondAttribute="trailing" constant="20" id="qaD-mU-Nfa"/>
+                <constraint firstItem="x4P-5a-AUa" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="20" id="zmj-Xf-qPU"/>
+            </constraints>
             <point key="canvasLocation" x="131.8840579710145" y="153.34821428571428"/>
         </view>
     </objects>
+    <resources>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
