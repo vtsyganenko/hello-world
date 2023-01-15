@@ -1,0 +1,3 @@
+Hello from text file!
+Here is all information.
+bla-bla-bla
