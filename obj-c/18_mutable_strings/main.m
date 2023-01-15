@@ -12,6 +12,7 @@ int main(int argc, const char* argv[]) {
         // create mutable string from non-mutable
         mstr = [NSMutableString stringWithString: str];
         NSLog(@"created mutable from source: %@", mstr);
+        NSLog(@"\n");
 
         // insert characters
         [mstr insertString: @" mutable" atIndex: 10];
@@ -26,6 +27,7 @@ int main(int argc, const char* argv[]) {
         mstr = [NSMutableString stringWithString: @"first"];
         [mstr appendString: @" and second"];
         NSLog(@"%@", mstr);
+        NSLog(@"\n");
 
         // delete substring (known range)
         mstr = [NSMutableString stringWithString: str];
@@ -46,12 +48,14 @@ int main(int argc, const char* argv[]) {
         else {
             NSLog(@"subsrting is not found!");
         }
+        NSLog(@"\n");
 
         // replace a range of chars with another
         mstr = [NSMutableString stringWithString: @"This is a string !"];
         NSLog(@"source: %@", mstr);
         [mstr replaceCharactersInRange: NSMakeRange(10,6) withString: @"mutable string"];
         NSLog(@"result: %@", mstr);
+        NSLog(@"\n");
 
         //search and replace
         mstr = [NSMutableString stringWithString: @"one two three four five one two three four five one two three four five"];
@@ -63,6 +67,7 @@ int main(int argc, const char* argv[]) {
             [mstr replaceCharactersInRange: range withString: replace];
             NSLog(@"result: %@", mstr);
         }
+        NSLog(@"\n");
 
         //search and replace (all occurences)
         mstr = [NSMutableString stringWithString: @"one two three four five one two three four five one two three four five"];
@@ -75,6 +80,29 @@ int main(int argc, const char* argv[]) {
             range = [mstr rangeOfString: search];
             NSLog(@"result: %@", mstr);
         }
+        NSLog(@"\n");
+
+        // if replacement string is empty
+        mstr = [NSMutableString stringWithString: @"one two three four five one two three four five one two three four five"];
+        NSLog(@"source: %@", mstr);
+        search = @"one ";
+        replace = @"";
+        range = [mstr rangeOfString: search];
+        while(range.location != NSNotFound) {
+            [mstr replaceCharactersInRange: range withString: replace];
+            range = [mstr rangeOfString: search];
+            NSLog(@"result: %@", mstr);
+        }
+
+        // if replacement string contains the search string - it could provide infinite loop
+        // so better to use method below
+        mstr = [NSMutableString stringWithString: @"one two three four five one two three four five one two three four five"];
+        NSLog(@"source: %@", mstr);
+        search = @"two";
+        replace = @"twenty-two";
+        [mstr replaceOccurrencesOfString: search withString: replace 
+            options: 0 range: NSMakeRange(0, [mstr length])];
+        NSLog(@"result: %@", mstr);
 
     }
     return 0;
