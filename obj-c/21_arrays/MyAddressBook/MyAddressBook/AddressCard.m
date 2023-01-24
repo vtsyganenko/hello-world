@@ -43,4 +43,8 @@
             self.email, [address toString]];
 }
 
+-(NSString*) description {
+    return self.toString;
+}
+
 @end

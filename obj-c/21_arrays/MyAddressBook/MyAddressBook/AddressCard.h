@@ -34,6 +34,8 @@
 
 -(NSString*) toString;
 
+-(NSString*) description;
+
 @end
 
 #endif /* AddressCard_h */

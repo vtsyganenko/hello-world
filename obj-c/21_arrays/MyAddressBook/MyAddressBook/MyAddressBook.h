@@ -22,8 +22,12 @@
       email: (NSString*) emailVal country: (NSString*) countryVal
        city: (NSString*) cityVal zip: (NSUInteger) zipVal;
 
+-(AddressCard*) searchOneCardWithFirstName: (NSString*) firstNameVal andLastName: (NSString*) lastNameVal;
 
--(void) printAll;
+-(NSArray*) searchCardsWithFirstName: (NSString*) firstNameVal andLastName: (NSString*) lastNameVal;
+
+-(void) printAllv1;
+-(void) printAllv2;
 
 @end
 
