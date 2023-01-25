@@ -36,4 +36,13 @@
             self.country, self.city, self.zip];
 }
 
+-(BOOL) isEqual: (Address*) other {
+    if([country isEqualToString:other.country] == YES &&
+        [city isEqualToString:other.city] == YES &&
+         zip == other.zip) {
+        return YES;
+    }
+    return NO;
+}
+
 @end

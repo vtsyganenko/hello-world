@@ -20,6 +20,8 @@
 
 -(NSString*) toString;
 
+-(BOOL) isEqual: (Address*) other;
+
 @end
 
 #endif /* Address_h */

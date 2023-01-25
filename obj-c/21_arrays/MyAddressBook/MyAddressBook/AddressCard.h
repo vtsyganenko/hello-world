@@ -31,6 +31,9 @@
                             email: (NSString*) emailVal
                           address: (Address*) addressVal;
 
+-(Address*) getAddress;
+
+-(BOOL) isEqual: (AddressCard*) other;
 
 -(NSString*) toString;
 

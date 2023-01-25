@@ -16,6 +16,12 @@
 
 -(NSArray*) searchCardsWithFirstName: (NSString*) firstNameVal andLastName: (NSString*) lastNameVal;
 
+-(void) removeCard: (AddressCard*) cardVal;
+
+-(void) removeOneCardWithFirstName: (NSString*) firstNameVal andLastName: (NSString*) lastNameVal;
+
+-(void) removeEqualCard: (AddressCard*) cardVal;
+
 @end
 
 #endif /* MyAddressBook_Search_h */

@@ -38,6 +38,21 @@
     return [self initWithFirstName:@"-" lastName:@"-" email:@"-" country:@"-" city:@"-" zip:0];
 }
 
+-(Address*) getAddress {
+    Address* addr = [[Address alloc] initWithCountry:address.country City:address.city Zip:address.zip];
+    return addr;
+}
+
+-(BOOL) isEqual: (AddressCard*) other {
+    if([firstName isEqualToString:other.firstName] == YES &&
+        [lastName isEqualToString:other.lastName] == YES &&
+         [email isEqualToString:other.email] == YES &&
+          [address isEqual:other.getAddress] == YES) {
+        return YES;
+    }
+    return NO;
+}
+
 -(NSString*) toString {
     return [NSString stringWithFormat:@"%@.%@ %@ [%@]", self.firstName, self.lastName,
             self.email, [address toString]];

@@ -86,5 +86,25 @@
     return nil;
 }
 
+-(void) removeCard: (AddressCard*) cardVal {
+    [list removeObjectIdenticalTo: cardVal];
+}
+
+-(void) removeOneCardWithFirstName: (NSString*) firstNameVal andLastName: (NSString*) lastNameVal {
+    AddressCard* card = [self searchOneCardWithFirstName:firstNameVal andLastName:lastNameVal];
+    [self removeCard:card];
+}
+
+-(void) removeEqualCard: (AddressCard*) cardVal {
+    NSMutableArray* toRemove = [NSMutableArray array];
+    for(AddressCard* card in list) {
+        if([cardVal isEqual:card] == YES) {
+            [toRemove addObject:card];
+        }
+    }
+    for(int i=0; i<[toRemove count]; ++i) {
+        [self removeCard:toRemove[i]];
+    }
+}
 
 @end
