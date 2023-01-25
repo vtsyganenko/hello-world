@@ -8,9 +8,12 @@
 #ifndef MyAddressBook_h
 #define MyAddressBook_h
 
-@class AddressCard;
+#include "AddressCard.h"
 
 @interface MyAddressBook : NSObject
+{
+    NSMutableArray* list;   // only for be available from categories
+}
 
 @property (readonly, nonatomic) NSString* name;
 
@@ -21,10 +24,6 @@
 -(void) addRecordWithName: (NSString*) firstNameVal lastName: (NSString*) lastNameVal
       email: (NSString*) emailVal country: (NSString*) countryVal
        city: (NSString*) cityVal zip: (NSUInteger) zipVal;
-
--(AddressCard*) searchOneCardWithFirstName: (NSString*) firstNameVal andLastName: (NSString*) lastNameVal;
-
--(NSArray*) searchCardsWithFirstName: (NSString*) firstNameVal andLastName: (NSString*) lastNameVal;
 
 -(void) printAllv1;
 -(void) printAllv2;

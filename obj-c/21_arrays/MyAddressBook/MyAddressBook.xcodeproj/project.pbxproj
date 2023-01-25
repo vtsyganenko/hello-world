@@ -11,6 +11,7 @@
 		D8C3621E297C238500851458 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C3621D297C238500851458 /* main.m */; };
 		D8C36226297C27DA00851458 /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C36225297C27DA00851458 /* Address.m */; };
 		D8C36229297C41C500851458 /* AddressCard.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C36228297C41C500851458 /* AddressCard.m */; };
+		D8FFFA4A2981BAC200A07E19 /* MyAddressBook+Search.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FFFA492981BAC200A07E19 /* MyAddressBook+Search.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,6 +35,8 @@
 		D8C36225297C27DA00851458 /* Address.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Address.m; sourceTree = "<group>"; };
 		D8C36227297C41B600851458 /* AddressCard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressCard.h; sourceTree = "<group>"; };
 		D8C36228297C41C500851458 /* AddressCard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressCard.m; sourceTree = "<group>"; };
+		D8FFFA482981BAB000A07E19 /* MyAddressBook+Search.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyAddressBook+Search.h"; sourceTree = "<group>"; };
+		D8FFFA492981BAC200A07E19 /* MyAddressBook+Search.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MyAddressBook+Search.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +76,8 @@
 				D8C36228297C41C500851458 /* AddressCard.m */,
 				D8283ED5297C6B03009374DA /* MyAddressBook.m */,
 				D8283ED7297C6B14009374DA /* MyAddressBook.h */,
+				D8FFFA482981BAB000A07E19 /* MyAddressBook+Search.h */,
+				D8FFFA492981BAC200A07E19 /* MyAddressBook+Search.m */,
 			);
 			path = MyAddressBook;
 			sourceTree = "<group>";
@@ -138,6 +143,7 @@
 				D8283ED6297C6B03009374DA /* MyAddressBook.m in Sources */,
 				D8C36226297C27DA00851458 /* Address.m in Sources */,
 				D8C3621E297C238500851458 /* main.m in Sources */,
+				D8FFFA4A2981BAC200A07E19 /* MyAddressBook+Search.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

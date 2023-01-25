@@ -8,7 +8,7 @@
 #import <Foundation/Foundation.h>
 
 #import "MyAddressBook.h"
-#import "AddressCard.h"
+#import "MyAddressBook+Search.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
@@ -28,7 +28,7 @@ int main(int argc, const char * argv[]) {
         [book addRecordWithName:@"Fedor" lastName:@"Mykolenko" email:@"fed.gov@oda.ua" country:@"UA" city:@"Odessa" zip:65065];
         [book addRecordWithName:@"John" lastName:@"Doe" email:@"jdoe@gmail.com" country:@"USA" city:@"Phoenix" zip:72901];
         [book addRecordWithName:@"Satoshi" lastName:@"Nahki" email:@"satna@jss.jp" country:@"Japan" city:@"Fukuoka" zip:810];
-        [book addRecordWithName:@"Giovanni" lastName:@"Ciesa" email:@"ciesa@seriaa.it" country:@"Italian Respublic" city:@"Rome" zip:98100];
+        [book addRecordWithName:@"Giovanni" lastName:@"Ciesa" email:@"ciesa@seriaa.it" country:@"Italy" city:@"Rome" zip:98100];
         NSLog(@"Full book: %@", book);
         
         NSLog(@"Added %lu records to address book", [book count]);
@@ -79,6 +79,8 @@ int main(int argc, const char * argv[]) {
         };
         NSArray* resultGroup = [book searchCardsWithFirstName:@"Ivan" andLastName:@""];
         printSearchResultGroup(resultGroup);
+        
+        
         
     }
     return 0;
