@@ -21,6 +21,7 @@ int main(int argc, const char * argv[]) {
             // email
             // address object (country, city, zip)
         
+        
         MyAddressBook* book = [[MyAddressBook alloc] initWithName:@"MyBook"];
         NSLog(@"Empty book: %@", book);
         
@@ -31,14 +32,17 @@ int main(int argc, const char * argv[]) {
         [book addRecordWithName:@"Giovanni" lastName:@"Ciesa" email:@"ciesa@seriaa.it" country:@"Italy" city:@"Rome" zip:98100];
         NSLog(@"Full book: %@", book);
         
-        NSLog(@"Added %lu records to address book", [book count]);
+        NSLog(@"Book contains %lu records", [book count]);
         
-        NSLog(@"Print full book by two ways:");
+        NSLog(@"Print book by the first way:");
         [book printAllv1];
+        NSLog(@"Print book by the second way:");
         [book printAllv2];
         
         
         // search one
+        NSLog(@" ");
+        NSLog(@"Search:");
         void (^printSearchResult) (AddressCard* result) =
             ^(AddressCard* result) {
                 if(!result)
@@ -60,7 +64,6 @@ int main(int argc, const char * argv[]) {
         // add record with same first name
         [book addRecordWithName:@"Ivan" lastName:@"Fedorov" email:@"ivan_fed11@mail.ru" country:@"Russia" city:@"SPB" zip:187015];
         [book printAllv1];
-        
         
         // search group
         void (^printSearchResultGroup) (NSArray* result) =
@@ -85,6 +88,7 @@ int main(int argc, const char * argv[]) {
         
         // remove
         NSLog(@" ");
+        NSLog(@"Remove:");
         [book printAllv2];
         NSLog(@"Let's remove card: %@", resultGroup[0]);
         [book removeCard:resultGroup[0]];
@@ -93,8 +97,7 @@ int main(int argc, const char * argv[]) {
         [book removeOneCardWithFirstName:@"Giovanni" andLastName:@""];
         [book printAllv2];
         
-        
-        // create an equal object
+        // create an equal object (with the same data) to test removal
         AddressCard* cardObj = [[AddressCard alloc] initWithFirstName:@"John" lastName:@"Doe" email:@"jdoe@gmail.com" country:@"USA" city:@"Phoenix" zip:72901];
         result = [book searchOneCardWithFirstName:@"John" andLastName:@"Doe"];
         if([cardObj isEqual:result] == YES) {
@@ -109,7 +112,8 @@ int main(int argc, const char * argv[]) {
         [book printAllv1];
         
         NSLog(@"Try to remove as the equal object:");
-        [book removeEqualCard:cardObj];
+        //[book removeEqualCard:cardObj];
+        [book removeEqualCardv2:cardObj];
         [book printAllv1];
         
     }

@@ -21,6 +21,7 @@
 -(void) removeOneCardWithFirstName: (NSString*) firstNameVal andLastName: (NSString*) lastNameVal;
 
 -(void) removeEqualCard: (AddressCard*) cardVal;
+-(void) removeEqualCardv2: (AddressCard*) cardVal;
 
 @end
 

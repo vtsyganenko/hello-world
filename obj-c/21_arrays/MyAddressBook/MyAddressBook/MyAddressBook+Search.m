@@ -107,4 +107,9 @@
     }
 }
 
+// the same thing as in "removeEqualCard" could be done easily
+-(void) removeEqualCardv2: (AddressCard*) cardVal {
+    [list removeObject:cardVal];
+}
+
 @end
