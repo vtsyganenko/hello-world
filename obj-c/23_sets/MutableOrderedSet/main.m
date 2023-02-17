@@ -135,7 +135,7 @@ int main(int argc, const char* argv[]) {
 
         // move objects
 
-        NSLog(@"move objects with indexes 1 and 3 to index 4:");
+        NSLog(@"move objects with indexes 1 and 3 to index 3:");
         indexes = [NSMutableIndexSet indexSet];
         [indexes addIndex:1];
         [indexes addIndex:3];
@@ -170,21 +170,42 @@ int main(int argc, const char* argv[]) {
 
         // combining and recombining entries (intersect/minus/union)
 
+        NSLog(@"UNION");
         NSOrderedSet* orderedSet = [NSOrderedSet orderedSetWithObjects: @"that", @"from", @"me", nil];
         [orderedSet print:@"orderedSet"];
         [set1 print:@"set1"];
         [set1 unionOrderedSet:orderedSet];
-        NSLog(@"after:");
+        NSLog(@"after [set1 unionOrderedSet:orderedSet]:");
         [set1 print:@"set1"];
-        // order is saved
+        NSLog(@" ");
 
         NSSet* set = [NSSet setWithObjects:@"one", @"zero", @"eleven", nil];
         NSLog(@"set: %@", set);
         [set3 print:@"set3"];
         [set3 unionSet:set];
-        NSLog(@"after:");
+        NSLog(@"after [set3 unionSet:set]:");
         [set3 print:@"set3"];
-        // no order saved
+        NSLog(@" ");
+
+        NSLog(@"MINUS");
+        orderedSet = [NSOrderedSet orderedSetWithObjects: @30, @40, @50, @60, nil];
+        [orderedSet print:@"orderedSet"];
+        set1 = [NSMutableOrderedSet orderedSetWithObjects: @10, @20, @30, @40, nil];
+        [set1 print:@"set1"];
+        NSLog(@"after [set1 minusOrderedSet:orderedSet]");
+        [set1 minusOrderedSet:orderedSet];
+        [set1 print:@"set1"];
+        NSLog(@" ");
+
+        NSLog(@"INTERSECT");
+        orderedSet = [NSOrderedSet orderedSetWithObjects: @30, @40, @50, @60, nil];
+        [orderedSet print:@"orderedSet"];
+        set1 = [NSMutableOrderedSet orderedSetWithObjects: @10, @20, @30, @40, nil];
+        [set1 print:@"set1"];
+        NSLog(@"after [set1 intersectOrderedSet:orderedSet]");
+        [set1 intersectOrderedSet:orderedSet];
+        [set1 print:@"set1"];
+        NSLog(@" ");
 
     }
     return 0;
