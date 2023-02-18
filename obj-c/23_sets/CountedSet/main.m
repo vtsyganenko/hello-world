@@ -84,8 +84,14 @@ int main(int argc, const char* argv[]) {
 
         // union
         NSLog(@"\"unionSet:\"");
+        set1 = [[NSCountedSet alloc] initWithSet: set2];
+        [set1 addObject: @5];
+        [set1 addObject: @20];
+        [set1 addObject: @510];
+        [set1 printWithCounts:@"before set1"];
+        [set2 printWithCounts:@"before set2"];
         [set1 unionSet:set2];
-        [set1 printWithCounts:@"set1"];
+        [set1 printWithCounts:@"after set1"];
         NSLog(@" ");
         
         // intersect
