@@ -12,6 +12,9 @@
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         
+        // Kochan - Programming in Objective-C 6th
+        // chapter 15, exercise 1
+        
         NSDate* dateNow = [NSDate now];
         NSLog(@"date now: %@", dateNow);
         
