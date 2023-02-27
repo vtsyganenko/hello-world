@@ -67,8 +67,13 @@
 -(void) dealloc {
     NSLog(@"MyClass dealloc");
     for(NSUInteger i=0; i<[array count]; i++) {
-        [array[i] dealloc];
+        // array[i] has retainCount = 2
+        // alloc/init increments counter
+        // NSMutableArray addObject: increments counter
+        [array[i] release];
     }
+    [array removeAllObjects]; // decrements counters for every object
+    [array release];
     [super dealloc];
 }
 
