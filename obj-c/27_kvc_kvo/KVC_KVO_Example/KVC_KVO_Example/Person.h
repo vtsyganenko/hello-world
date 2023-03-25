@@ -11,8 +11,12 @@
 @interface Person : NSObject
 
 @property (nonatomic, strong) NSString* name;
+@property (nonatomic, strong) NSString* city;
+@property (nonatomic) NSUInteger age;
 
 @property (nonatomic, weak) Person* spouse;
+
+-(void) incrementAge;
 
 @end
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D8039AFD29CCF21D00BFF0EA /* PersonWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = D8039AFC29CCF21D00BFF0EA /* PersonWatcher.m */; };
 		D891ED8129CA39B0004BF8F7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D891ED8029CA39B0004BF8F7 /* main.m */; };
 		D891ED8929CA3AA6004BF8F7 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = D891ED8829CA3AA6004BF8F7 /* Person.m */; };
 /* End PBXBuildFile section */
@@ -24,6 +25,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D8039AFB29CCF21100BFF0EA /* PersonWatcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonWatcher.h; sourceTree = "<group>"; };
+		D8039AFC29CCF21D00BFF0EA /* PersonWatcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonWatcher.m; sourceTree = "<group>"; };
 		D891ED7D29CA39B0004BF8F7 /* KVC_KVO_Example */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = KVC_KVO_Example; sourceTree = BUILT_PRODUCTS_DIR; };
 		D891ED8029CA39B0004BF8F7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D891ED8729CA3A99004BF8F7 /* Person.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
@@ -63,6 +66,8 @@
 				D891ED8029CA39B0004BF8F7 /* main.m */,
 				D891ED8729CA3A99004BF8F7 /* Person.h */,
 				D891ED8829CA3AA6004BF8F7 /* Person.m */,
+				D8039AFB29CCF21100BFF0EA /* PersonWatcher.h */,
+				D8039AFC29CCF21D00BFF0EA /* PersonWatcher.m */,
 			);
 			path = KVC_KVO_Example;
 			sourceTree = "<group>";
@@ -125,6 +130,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D891ED8929CA3AA6004BF8F7 /* Person.m in Sources */,
+				D8039AFD29CCF21D00BFF0EA /* PersonWatcher.m in Sources */,
 				D891ED8129CA39B0004BF8F7 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
