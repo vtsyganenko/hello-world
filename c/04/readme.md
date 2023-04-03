@@ -1,1 +1,1 @@
-Bytes convertation example
+Bytes-value convertation example with union
