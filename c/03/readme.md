@@ -1,1 +1,1 @@
-Here the example of convertation two bytes to one number
+Here the example of convertation bytes to number (2-bytes and 4-bytes values)
