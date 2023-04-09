@@ -228,7 +228,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="taP-08-DUE">
-                                <rect key="frame" x="20" y="700" width="149" height="35"/>
+                                <rect key="frame" x="20" y="700.66666666666663" width="148.66666666666666" height="34.333333333333371"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Previouse scene"/>
                                 <connections>
@@ -236,25 +236,78 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Third scene" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GRa-tj-30T">
-                                <rect key="frame" x="142.66666666666666" y="77" width="90" height="21"/>
+                                <rect key="frame" x="142.66666666666666" y="77" width="89.666666666666657" height="20.333333333333329"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="1ff-aR-r8y">
+                                <rect key="frame" x="40" y="262" width="295" height="231"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Action sheet title" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9gg-78-SEA">
+                                        <rect key="frame" x="0.0" y="0.0" width="295" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nbc-jP-Qf1">
+                                        <rect key="frame" x="0.0" y="42.333333333333314" width="295" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Action sheet message" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="djw-Cj-xuc">
+                                        <rect key="frame" x="0.0" y="98.333333333333314" width="295" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TE2-Ge-1dv">
+                                        <rect key="frame" x="0.0" y="140.66666666666669" width="295" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ekM-Gg-hwN">
+                                        <rect key="frame" x="0.0" y="196.66666666666669" width="295" height="34.333333333333343"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Show action sheet"/>
+                                        <connections>
+                                            <action selector="showActionSheet" destination="KKj-yv-QzI" eventType="touchUpInside" id="S5y-XD-tCG"/>
+                                            <action selector="showAlert" destination="mMu-Ee-Mij" eventType="touchUpInside" id="LK1-up-SGY"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="NZg-Jo-XtV"/>
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
+                        <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="1ff-aR-r8y" firstAttribute="centerX" secondItem="oNM-0j-5qI" secondAttribute="centerX" id="4JQ-b1-aKy"/>
                             <constraint firstItem="taP-08-DUE" firstAttribute="leading" secondItem="NZg-Jo-XtV" secondAttribute="leading" constant="20" id="4lZ-BL-JdO"/>
+                            <constraint firstItem="1ff-aR-r8y" firstAttribute="leading" secondItem="NZg-Jo-XtV" secondAttribute="leading" constant="40" id="5SC-ha-mza"/>
                             <constraint firstItem="GRa-tj-30T" firstAttribute="centerX" secondItem="oNM-0j-5qI" secondAttribute="centerX" id="6Pw-bt-hQa"/>
+                            <constraint firstItem="NZg-Jo-XtV" firstAttribute="trailing" secondItem="1ff-aR-r8y" secondAttribute="trailing" constant="40" id="AAm-4g-VYa"/>
                             <constraint firstItem="NZg-Jo-XtV" firstAttribute="bottom" secondItem="taP-08-DUE" secondAttribute="bottom" constant="20" id="bJm-Ug-kFZ"/>
                             <constraint firstItem="GRa-tj-30T" firstAttribute="top" secondItem="oNM-0j-5qI" secondAttribute="topMargin" constant="30" id="nGp-nO-jic"/>
+                            <constraint firstItem="1ff-aR-r8y" firstAttribute="centerY" secondItem="oNM-0j-5qI" secondAttribute="centerY" id="oYA-uW-8fG"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="oL1-nU-GeZ" appends="YES" id="hQj-i4-h59"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="G6g-YY-Kwf"/>
+                    <connections>
+                        <outlet property="ASMessageTextField" destination="TE2-Ge-1dv" id="6JB-Wm-3id"/>
+                        <outlet property="ASTitleTextField" destination="nbc-jP-Qf1" id="PcE-xj-bkj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pAc-nL-123" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="0or-CC-4IE" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="oL1-nU-GeZ">
+                    <connections>
+                        <action selector="onTapGesture:" destination="KKj-yv-QzI" id="nh3-mD-a34"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1536.6412213740457" y="3.5211267605633805"/>
         </scene>

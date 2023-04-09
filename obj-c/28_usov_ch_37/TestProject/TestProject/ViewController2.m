@@ -26,18 +26,34 @@
 }
 
 -(IBAction) showAlert {
-    NSLog(@"show alert!");
     
     UIAlertController* alert = [UIAlertController
         alertControllerWithTitle: self.alertTitleTextField.text.length == 0 ? @"Default title" : self.alertTitleTextField.text
         message: self.alertMessageTextField.text.length == 0 ? @"Default message" : self.alertMessageTextField.text
         preferredStyle: UIAlertControllerStyleAlert];
     
-    UIAlertAction* buttonOK = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+    void (^handler1) (UIAlertAction* action) =
+        ^(UIAlertAction* action) {
+            NSLog(@"alert: button OK is chosen");
+    };
+    
+    void (^handler2) (UIAlertAction* action) =
+        ^(UIAlertAction* action) {
+            NSLog(@"alert: button %@ is chosen", [action title]);
+    };
+    
+    UIAlertAction* buttonOK = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:handler1];
+    UIAlertAction* buttonCancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:handler2];
+    UIAlertAction* buttonDel = [UIAlertAction actionWithTitle:@"Del" style:UIAlertActionStyleDestructive
+                                                      handler: ^(UIAlertAction* action) {
+        NSLog(@"alert: button %@ is chosen", [action title]);
+    }];
     
     [alert addAction:buttonOK];
+    [alert addAction:buttonCancel];
+    [alert addAction:buttonDel];
     
-    [self presentViewController:alert animated:YES completion:nil];
+    [self presentViewController:alert animated:YES completion:^(void){NSLog(@"alert is shown");}];
 }
 
 - (IBAction)onTapGesture:(id)sender {
