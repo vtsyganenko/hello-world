@@ -33,4 +33,8 @@
     self.label.text = self.textField.text;
 }
 
+- (IBAction)onTapGesture:(id)sender {
+    [self.textField resignFirstResponder];
+}
+
 @end

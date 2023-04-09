@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -81,6 +82,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="bxf-0m-W8b" secondAttribute="bottom" constant="50" id="7g7-UV-Yvh"/>
                             <constraint firstItem="ncT-Q7-4Kj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="B22-Q8-tNm"/>
@@ -90,6 +92,9 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wM2-dA-hC2" secondAttribute="trailing" constant="40" id="sl0-bK-LJb"/>
                             <constraint firstItem="ncT-Q7-4Kj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zFx-x7-yRC"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="MfD-Rn-RoI" appends="YES" id="jWV-ie-9Vf"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="label" destination="8cQ-WP-fPR" id="ZWM-KX-dBV"/>
@@ -97,6 +102,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="MfD-Rn-RoI">
+                    <connections>
+                        <action selector="onTapGesture:" destination="BYZ-38-t0r" id="yF0-Y4-13v"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="8.8000000000000007" y="2.9556650246305418"/>
         </scene>
