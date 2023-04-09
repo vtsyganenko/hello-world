@@ -15,6 +15,7 @@
 		D8C2941D29E1E4A5003434D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8C2941B29E1E4A5003434D0 /* LaunchScreen.storyboard */; };
 		D8C2942029E1E4A5003434D0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C2941F29E1E4A5003434D0 /* main.m */; };
 		D8C2942829E1E955003434D0 /* ViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C2942729E1E955003434D0 /* ViewController2.m */; };
+		D8C512BC29E342C9006D20CF /* ViewController3.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C512BB29E342C9006D20CF /* ViewController3.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,8 @@
 		D8C2941F29E1E4A5003434D0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D8C2942629E1E955003434D0 /* ViewController2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController2.h; sourceTree = "<group>"; };
 		D8C2942729E1E955003434D0 /* ViewController2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController2.m; sourceTree = "<group>"; };
+		D8C512BA29E342C9006D20CF /* ViewController3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController3.h; sourceTree = "<group>"; };
+		D8C512BB29E342C9006D20CF /* ViewController3.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController3.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +80,8 @@
 				D8C2941F29E1E4A5003434D0 /* main.m */,
 				D8C2942629E1E955003434D0 /* ViewController2.h */,
 				D8C2942729E1E955003434D0 /* ViewController2.m */,
+				D8C512BA29E342C9006D20CF /* ViewController3.h */,
+				D8C512BB29E342C9006D20CF /* ViewController3.m */,
 			);
 			path = TestProject;
 			sourceTree = "<group>";
@@ -153,6 +158,7 @@
 			files = (
 				D8C2941529E1E4A4003434D0 /* ViewController.m in Sources */,
 				D8C2940F29E1E4A4003434D0 /* AppDelegate.m in Sources */,
+				D8C512BC29E342C9006D20CF /* ViewController3.m in Sources */,
 				D8C2942829E1E955003434D0 /* ViewController2.m in Sources */,
 				D8C2942029E1E4A5003434D0 /* main.m in Sources */,
 				D8C2941229E1E4A4003434D0 /* SceneDelegate.m in Sources */,

@@ -9,6 +9,9 @@
 
 @interface ViewController2 ()
 
+@property (strong, nonatomic) IBOutlet UITextField* alertTitleTextField;
+@property (strong, nonatomic) IBOutlet UITextField* alertMessageTextField;
+
 @end
 
 @implementation ViewController2
@@ -20,6 +23,26 @@
 
 -(IBAction) onUnwindAction: (UIStoryboardSegue*) unwindSegue {
     NSLog(@"ViewController2 unwind action");
+}
+
+-(IBAction) showAlert {
+    NSLog(@"show alert!");
+    
+    UIAlertController* alert = [UIAlertController
+        alertControllerWithTitle: self.alertTitleTextField.text.length == 0 ? @"Default title" : self.alertTitleTextField.text
+        message: self.alertMessageTextField.text.length == 0 ? @"Default message" : self.alertMessageTextField.text
+        preferredStyle: UIAlertControllerStyleAlert];
+    
+    UIAlertAction* buttonOK = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+    
+    [alert addAction:buttonOK];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (IBAction)onTapGesture:(id)sender {
+    [self.alertTitleTextField resignFirstResponder];
+    [self.alertMessageTextField resignFirstResponder];
 }
 
 /*
