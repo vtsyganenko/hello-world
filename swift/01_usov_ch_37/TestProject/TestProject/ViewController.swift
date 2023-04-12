@@ -8,6 +8,9 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    @IBOutlet var textField: UITextField!
+    @IBOutlet var label: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,6 +19,18 @@ class ViewController: UIViewController {
 
     @IBAction func onUnwindAction(unwindSegue: UIStoryboardSegue) {
         print("ViewController::onUnwindAction")
+    }
+    
+    @IBAction func textToLog() {
+        print("ViewController: ", textField.text!)
+    }
+    
+    @IBAction func textToLabel() {
+        label.text = textField.text
+    }
+    
+    @IBAction func onTapGesture() {
+        textField.resignFirstResponder()
     }
 
 }
