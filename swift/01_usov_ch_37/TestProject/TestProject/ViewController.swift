@@ -12,6 +12,8 @@ class ViewController: UIViewController {
     @IBOutlet var textField: UITextField!
     @IBOutlet var label: UILabel!
 
+    @IBOutlet var myLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -33,5 +35,12 @@ class ViewController: UIViewController {
         textField.resignFirstResponder()
     }
 
+    @IBAction func changeLabelText(_ sender: UIButton) {
+        if let buttonText = sender.titleLabel!.text {
+            self.myLabel.text = buttonText
+            print("\(buttonText) was pressed")
+        }
+    }
+    
 }
 
