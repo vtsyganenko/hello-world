@@ -12,6 +12,7 @@
 @property (strong, nonatomic) IBOutlet UITextField* textField;
 @property (strong, nonatomic) IBOutlet UILabel* label;
 
+@property (strong, nonatomic) IBOutlet UILabel *myLabel;
 @end
 
 @implementation ViewController
@@ -36,5 +37,14 @@
 - (IBAction)onTapGesture:(id)sender {
     [self.textField resignFirstResponder];
 }
+
+- (IBAction)changeLabelText:(UIButton *)sender {
+    if(sender.titleLabel && sender.titleLabel.text) {
+        NSString* buttonText = sender.titleLabel.text;
+        [self.myLabel setText:buttonText];
+        NSLog(@"%@ button was pressed", buttonText);
+    }
+}
+
 
 @end

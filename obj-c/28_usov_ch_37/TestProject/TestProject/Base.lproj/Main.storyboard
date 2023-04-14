@@ -85,6 +85,40 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Vok-bL-Hem">
+                                <rect key="frame" x="40" y="466.33333333333331" width="295" height="49.999999999999943"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k3k-Io-7fr">
+                                        <rect key="frame" x="0.0" y="0.0" width="88.333333333333329" height="50"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Left">
+                                            <color key="baseBackgroundColor" systemColor="systemYellowColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="changeLabelText:" destination="BYZ-38-t0r" eventType="touchUpInside" id="87E-2S-0Te"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7O8-2p-T4b">
+                                        <rect key="frame" x="103.33333333333334" y="0.0" width="88.333333333333343" height="50"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8vi-g9-vDn">
+                                        <rect key="frame" x="206.66666666666666" y="0.0" width="88.333333333333343" height="50"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Right">
+                                            <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="changeLabelText:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cGe-yx-eAb"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="xaD-wM-WWJ"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
@@ -95,9 +129,12 @@
                             <constraint firstItem="wM2-dA-hC2" firstAttribute="top" secondItem="ncT-Q7-4Kj" secondAttribute="bottom" constant="60" id="BTe-Rt-b5h"/>
                             <constraint firstItem="HIs-w0-JO5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="HPI-6E-LZO"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bxf-0m-W8b" secondAttribute="trailing" constant="20" id="WPq-8b-Ghp"/>
+                            <constraint firstItem="Vok-bL-Hem" firstAttribute="top" secondItem="HIs-w0-JO5" secondAttribute="bottom" constant="50" id="Z65-id-xDP"/>
+                            <constraint firstItem="Vok-bL-Hem" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="j8o-a1-muf"/>
                             <constraint firstItem="wM2-dA-hC2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="qeX-Qg-uKw"/>
                             <constraint firstItem="HIs-w0-JO5" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="rSA-f5-lfm"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wM2-dA-hC2" secondAttribute="trailing" constant="40" id="sl0-bK-LJb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Vok-bL-Hem" secondAttribute="trailing" constant="40" id="toU-A3-mCA"/>
                             <constraint firstItem="ncT-Q7-4Kj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zFx-x7-yRC"/>
                         </constraints>
                         <connections>
@@ -106,6 +143,7 @@
                     </view>
                     <connections>
                         <outlet property="label" destination="8cQ-WP-fPR" id="ZWM-KX-dBV"/>
+                        <outlet property="myLabel" destination="7O8-2p-T4b" id="FPf-FN-79F"/>
                         <outlet property="textField" destination="niD-pL-Un1" id="Cds-jx-9cQ"/>
                     </connections>
                 </viewController>
@@ -315,6 +353,12 @@
     <resources>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
