@@ -47,6 +47,7 @@
     self.mainLabel.layer.borderColor = [UIColor blueColor].CGColor;
     self.mainLabel.layer.borderWidth = 1.0;
     
+    /*
     self.buttonC.layer.borderWidth = 1.0;
     self.buttonPlus.layer.borderWidth = 1.0;
     self.buttonMinus.layer.borderWidth = 1.0;
@@ -62,6 +63,7 @@
     self.number9.layer.borderWidth = 1.0;
     self.signPoint.layer.borderWidth = 1.0;
     self.buttonEqual.layer.borderWidth = 1.0;
+     */
 }
 
 - (void) setCalcController:(CalcController *)calcCont {

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -38,258 +39,365 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="first operand" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x4P-5a-AUa">
-                    <rect key="frame" x="296.5" y="64" width="97.5" height="21"/>
+                    <rect key="frame" x="296.5" y="68" width="97.5" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="action" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qwg-mQ-Ehw">
-                    <rect key="frame" x="347" y="105" width="47" height="21"/>
+                    <rect key="frame" x="347" y="108.5" width="47" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="second operand" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iQa-oe-O4E">
-                    <rect key="frame" x="270" y="146" width="124" height="21"/>
+                    <rect key="frame" x="270" y="149" width="124" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BLM-Lt-GiY">
-                    <rect key="frame" x="20" y="187" width="374" height="60"/>
+                    <rect key="frame" x="20" y="189.5" width="374" height="60"/>
                     <fontDescription key="fontDescription" type="system" pointSize="50"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yqj-QV-fLt">
-                    <rect key="frame" x="10" y="353" width="72" height="72"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
-                    <color key="tintColor" systemColor="darkTextColor"/>
-                    <state key="normal" title="7"/>
-                    <buttonConfiguration key="configuration" style="filled" title="7">
-                        <fontDescription key="titleFontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
-                        <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
-                    </buttonConfiguration>
-                    <connections>
-                        <action selector="NumberHandler:" destination="-1" eventType="touchUpInside" id="oof-lR-CRD"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wfU-js-gpi">
-                    <rect key="frame" x="86" y="353" width="72" height="72"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
-                    <color key="tintColor" systemColor="darkTextColor"/>
-                    <state key="normal" title="8"/>
-                    <buttonConfiguration key="configuration" style="filled" title="8">
-                        <fontDescription key="titleFontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
-                        <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
-                    </buttonConfiguration>
-                    <connections>
-                        <action selector="NumberHandler:" destination="-1" eventType="touchUpInside" id="fPs-Tk-Qf4"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Rd-6a-7dX">
-                    <rect key="frame" x="163" y="353" width="72" height="72"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
-                    <color key="tintColor" systemColor="darkTextColor"/>
-                    <state key="normal" title="9"/>
-                    <buttonConfiguration key="configuration" style="filled" title="9">
-                        <fontDescription key="titleFontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
-                        <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
-                    </buttonConfiguration>
-                    <connections>
-                        <action selector="NumberHandler:" destination="-1" eventType="touchUpInside" id="kcQ-sh-hJc"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MGD-72-uDJ">
-                    <rect key="frame" x="258" y="353" width="70" height="70"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
-                    <color key="tintColor" systemColor="darkTextColor"/>
-                    <state key="normal" title="+"/>
-                    <buttonConfiguration key="configuration" style="filled" title="+">
-                        <fontDescription key="titleFontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
-                        <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
-                    </buttonConfiguration>
-                    <connections>
-                        <action selector="actionButtonHandler:" destination="-1" eventType="touchUpInside" id="b0P-jW-3bH"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vS0-bt-HU5">
-                    <rect key="frame" x="10" y="430" width="72" height="72"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
-                    <color key="tintColor" systemColor="darkTextColor"/>
-                    <state key="normal" title="4"/>
-                    <buttonConfiguration key="configuration" style="filled" title="4">
-                        <fontDescription key="titleFontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
-                        <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
-                    </buttonConfiguration>
-                    <connections>
-                        <action selector="NumberHandler:" destination="-1" eventType="touchUpInside" id="NYk-4a-Dwg"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AWu-z9-KAM">
-                    <rect key="frame" x="86" y="430" width="72" height="72"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
-                    <color key="tintColor" systemColor="darkTextColor"/>
-                    <state key="normal" title="5"/>
-                    <buttonConfiguration key="configuration" style="filled" title="5">
-                        <fontDescription key="titleFontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
-                        <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
-                    </buttonConfiguration>
-                    <connections>
-                        <action selector="NumberHandler:" destination="-1" eventType="touchUpInside" id="OBD-Ww-Ey9"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2rV-so-PDP">
-                    <rect key="frame" x="163" y="430" width="72" height="72"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
-                    <color key="tintColor" systemColor="darkTextColor"/>
-                    <state key="normal" title="6"/>
-                    <buttonConfiguration key="configuration" style="filled" title="6">
-                        <fontDescription key="titleFontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
-                        <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
-                    </buttonConfiguration>
-                    <connections>
-                        <action selector="NumberHandler:" destination="-1" eventType="touchUpInside" id="8ER-n7-f3l"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xuy-2M-WjX">
-                    <rect key="frame" x="10" y="507" width="72" height="72"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
-                    <color key="tintColor" systemColor="darkTextColor"/>
-                    <state key="normal" title="1"/>
-                    <buttonConfiguration key="configuration" style="filled" title="1">
-                        <fontDescription key="titleFontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
-                        <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
-                    </buttonConfiguration>
-                    <connections>
-                        <action selector="NumberHandler:" destination="-1" eventType="touchUpInside" id="zNc-Fr-e6Q"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tkV-44-N3a">
-                    <rect key="frame" x="86" y="507" width="72" height="72"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
-                    <color key="tintColor" systemColor="darkTextColor"/>
-                    <state key="normal" title="2"/>
-                    <buttonConfiguration key="configuration" style="filled" title="2">
-                        <fontDescription key="titleFontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
-                        <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
-                    </buttonConfiguration>
-                    <connections>
-                        <action selector="NumberHandler:" destination="-1" eventType="touchUpInside" id="jei-wk-0R4"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZLH-T7-bVA">
-                    <rect key="frame" x="163" y="507" width="72" height="72"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
-                    <color key="tintColor" systemColor="darkTextColor"/>
-                    <state key="normal" title="3"/>
-                    <buttonConfiguration key="configuration" style="filled" title="3">
-                        <fontDescription key="titleFontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
-                        <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
-                    </buttonConfiguration>
-                    <connections>
-                        <action selector="NumberHandler:" destination="-1" eventType="touchUpInside" id="c1f-WU-FvB"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FgE-sT-bHl">
-                    <rect key="frame" x="333" y="278" width="70" height="70"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
-                    <color key="tintColor" systemColor="darkTextColor"/>
-                    <state key="normal" title="C"/>
-                    <buttonConfiguration key="configuration" style="filled" title="C">
-                        <fontDescription key="titleFontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
-                        <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
-                    </buttonConfiguration>
-                    <connections>
-                        <action selector="cButtonHandler" destination="-1" eventType="touchUpInside" id="Pbh-ds-AR8"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ipn-Tb-b7K">
-                    <rect key="frame" x="10" y="584" width="72" height="72"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
-                    <color key="tintColor" systemColor="darkTextColor"/>
-                    <state key="normal" title="0"/>
-                    <buttonConfiguration key="configuration" style="filled" title="0">
-                        <fontDescription key="titleFontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
-                        <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
-                    </buttonConfiguration>
-                    <connections>
-                        <action selector="NumberHandler:" destination="-1" eventType="touchUpInside" id="U4v-dO-R3z"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LJv-WP-iTh">
-                    <rect key="frame" x="86" y="584" width="72" height="72"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
-                    <color key="tintColor" systemColor="darkTextColor"/>
-                    <state key="normal" title="."/>
-                    <buttonConfiguration key="configuration" style="filled" title=".">
-                        <fontDescription key="titleFontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
-                        <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
-                    </buttonConfiguration>
-                    <connections>
-                        <action selector="NumberHandler:" destination="-1" eventType="touchUpInside" id="jQo-yz-IR5"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hm3-db-U14">
-                    <rect key="frame" x="333" y="353" width="70" height="70"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
-                    <color key="tintColor" systemColor="darkTextColor"/>
-                    <state key="normal" title="-"/>
-                    <buttonConfiguration key="configuration" style="filled" title="-">
-                        <fontDescription key="titleFontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
-                        <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
-                    </buttonConfiguration>
-                    <connections>
-                        <action selector="actionButtonHandler:" destination="-1" eventType="touchUpInside" id="ABZ-Rw-oa6"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y6u-9U-8hp">
-                    <rect key="frame" x="333" y="584" width="70" height="70"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
-                    <color key="tintColor" systemColor="darkTextColor"/>
-                    <state key="normal" title="="/>
-                    <buttonConfiguration key="configuration" style="filled" title="=">
-                        <fontDescription key="titleFontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
-                        <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
-                    </buttonConfiguration>
-                    <connections>
-                        <action selector="equalButtonHandler:" destination="-1" eventType="touchUpInside" id="oZ4-nz-ft6"/>
-                    </connections>
-                </button>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="cqF-JR-bZt">
+                    <rect key="frame" x="312" y="349" width="82" height="493"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MGD-72-uDJ">
+                            <rect key="frame" x="0.0" y="0.0" width="82" height="91"/>
+                            <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
+                            <color key="tintColor" systemColor="darkTextColor"/>
+                            <state key="normal" title="+"/>
+                            <buttonConfiguration key="configuration" style="filled" image="plus" catalog="system">
+                                <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                            </buttonConfiguration>
+                            <connections>
+                                <action selector="actionButtonHandler:" destination="-1" eventType="touchUpInside" id="b0P-jW-3bH"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hm3-db-U14">
+                            <rect key="frame" x="0.0" y="101" width="82" height="90.5"/>
+                            <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
+                            <color key="tintColor" systemColor="darkTextColor"/>
+                            <state key="normal" title="-"/>
+                            <buttonConfiguration key="configuration" style="filled" image="minus" catalog="system">
+                                <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                            </buttonConfiguration>
+                            <connections>
+                                <action selector="actionButtonHandler:" destination="-1" eventType="touchUpInside" id="ABZ-Rw-oa6"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y8W-Jg-lRx">
+                            <rect key="frame" x="0.0" y="201.5" width="82" height="90.5"/>
+                            <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
+                            <color key="tintColor" systemColor="darkTextColor"/>
+                            <state key="normal" title="+"/>
+                            <buttonConfiguration key="configuration" style="filled" image="multiply" catalog="system" title="">
+                                <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                            </buttonConfiguration>
+                            <connections>
+                                <action selector="actionButtonHandler:" destination="-1" eventType="touchUpInside" id="lve-Tn-14e"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqw-Gp-sOf">
+                            <rect key="frame" x="0.0" y="302" width="82" height="90.5"/>
+                            <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
+                            <color key="tintColor" systemColor="darkTextColor"/>
+                            <state key="normal" title="+"/>
+                            <buttonConfiguration key="configuration" style="filled" image="divide" catalog="system" title="">
+                                <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                            </buttonConfiguration>
+                            <connections>
+                                <action selector="actionButtonHandler:" destination="-1" eventType="touchUpInside" id="PB0-Vf-LyN"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y6u-9U-8hp">
+                            <rect key="frame" x="0.0" y="402.5" width="82" height="90.5"/>
+                            <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
+                            <color key="tintColor" systemColor="darkTextColor"/>
+                            <state key="normal" title="="/>
+                            <buttonConfiguration key="configuration" style="filled" image="equal" catalog="system">
+                                <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                            </buttonConfiguration>
+                            <connections>
+                                <action selector="equalButtonHandler:" destination="-1" eventType="touchUpInside" id="oZ4-nz-ft6"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </stackView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hsO-xw-bLu">
+                    <rect key="frame" x="20" y="349" width="262" height="493"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="k33-Nz-8jp">
+                            <rect key="frame" x="0.0" y="0.0" width="262" height="91"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FgE-sT-bHl">
+                                    <rect key="frame" x="0.0" y="0.0" width="80.5" height="91"/>
+                                    <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
+                                    <color key="tintColor" systemColor="darkTextColor"/>
+                                    <state key="normal" title="C"/>
+                                    <buttonConfiguration key="configuration" style="filled" image="c.circle" catalog="system">
+                                        <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                                    </buttonConfiguration>
+                                    <connections>
+                                        <action selector="cButtonHandler" destination="-1" eventType="touchUpInside" id="Pbh-ds-AR8"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nc6-WG-YoN">
+                                    <rect key="frame" x="90.5" y="0.0" width="81" height="91"/>
+                                    <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
+                                    <color key="tintColor" systemColor="darkTextColor"/>
+                                    <state key="normal" title="C"/>
+                                    <buttonConfiguration key="configuration" style="filled">
+                                        <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                                    </buttonConfiguration>
+                                    <connections>
+                                        <action selector="cButtonHandler" destination="-1" eventType="touchUpInside" id="pm6-Ds-dcb"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cYE-Al-FHQ">
+                                    <rect key="frame" x="181.5" y="0.0" width="80.5" height="91"/>
+                                    <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
+                                    <color key="tintColor" systemColor="darkTextColor"/>
+                                    <state key="normal" title="C"/>
+                                    <buttonConfiguration key="configuration" style="filled">
+                                        <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                                    </buttonConfiguration>
+                                    <connections>
+                                        <action selector="cButtonHandler" destination="-1" eventType="touchUpInside" id="qxH-YB-9hZ"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="yYl-Zw-pjO">
+                            <rect key="frame" x="0.0" y="101" width="262" height="90.5"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yqj-QV-fLt">
+                                    <rect key="frame" x="0.0" y="0.0" width="80.5" height="90.5"/>
+                                    <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
+                                    <color key="tintColor" systemColor="darkTextColor"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="7"/>
+                                    <buttonConfiguration key="configuration" style="filled" image="7.square" catalog="system">
+                                        <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                                    </buttonConfiguration>
+                                    <connections>
+                                        <action selector="NumberHandler:" destination="-1" eventType="touchUpInside" id="oof-lR-CRD"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wfU-js-gpi">
+                                    <rect key="frame" x="90.5" y="0.0" width="81" height="90.5"/>
+                                    <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
+                                    <color key="tintColor" systemColor="darkTextColor"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="8"/>
+                                    <buttonConfiguration key="configuration" style="filled" image="8.square" catalog="system">
+                                        <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                                    </buttonConfiguration>
+                                    <connections>
+                                        <action selector="NumberHandler:" destination="-1" eventType="touchUpInside" id="fPs-Tk-Qf4"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Rd-6a-7dX">
+                                    <rect key="frame" x="181.5" y="0.0" width="80.5" height="90.5"/>
+                                    <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
+                                    <color key="tintColor" systemColor="darkTextColor"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="9"/>
+                                    <buttonConfiguration key="configuration" style="filled" image="9.square" catalog="system">
+                                        <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                                    </buttonConfiguration>
+                                    <connections>
+                                        <action selector="NumberHandler:" destination="-1" eventType="touchUpInside" id="kcQ-sh-hJc"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ByK-Du-uyi">
+                            <rect key="frame" x="0.0" y="201.5" width="262" height="90.5"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vS0-bt-HU5">
+                                    <rect key="frame" x="0.0" y="0.0" width="80.5" height="90.5"/>
+                                    <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
+                                    <color key="tintColor" systemColor="darkTextColor"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="4"/>
+                                    <buttonConfiguration key="configuration" style="filled" image="4.square" catalog="system">
+                                        <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                                    </buttonConfiguration>
+                                    <connections>
+                                        <action selector="NumberHandler:" destination="-1" eventType="touchUpInside" id="NYk-4a-Dwg"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AWu-z9-KAM">
+                                    <rect key="frame" x="90.5" y="0.0" width="81" height="90.5"/>
+                                    <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
+                                    <color key="tintColor" systemColor="darkTextColor"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="5"/>
+                                    <buttonConfiguration key="configuration" style="filled" image="5.square" catalog="system">
+                                        <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                                    </buttonConfiguration>
+                                    <connections>
+                                        <action selector="NumberHandler:" destination="-1" eventType="touchUpInside" id="OBD-Ww-Ey9"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2rV-so-PDP">
+                                    <rect key="frame" x="181.5" y="0.0" width="80.5" height="90.5"/>
+                                    <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
+                                    <color key="tintColor" systemColor="darkTextColor"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="6"/>
+                                    <buttonConfiguration key="configuration" style="filled" image="6.square" catalog="system">
+                                        <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                                    </buttonConfiguration>
+                                    <connections>
+                                        <action selector="NumberHandler:" destination="-1" eventType="touchUpInside" id="8ER-n7-f3l"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Mfg-tz-64f">
+                            <rect key="frame" x="0.0" y="302" width="262" height="90.5"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xuy-2M-WjX">
+                                    <rect key="frame" x="0.0" y="0.0" width="80.5" height="90.5"/>
+                                    <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
+                                    <color key="tintColor" systemColor="darkTextColor"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="1"/>
+                                    <buttonConfiguration key="configuration" style="filled" image="1.square" catalog="system">
+                                        <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                                    </buttonConfiguration>
+                                    <connections>
+                                        <action selector="NumberHandler:" destination="-1" eventType="touchUpInside" id="zNc-Fr-e6Q"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tkV-44-N3a">
+                                    <rect key="frame" x="90.5" y="0.0" width="81" height="90.5"/>
+                                    <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
+                                    <color key="tintColor" systemColor="darkTextColor"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="2"/>
+                                    <buttonConfiguration key="configuration" style="filled" image="2.square" catalog="system">
+                                        <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                                    </buttonConfiguration>
+                                    <connections>
+                                        <action selector="NumberHandler:" destination="-1" eventType="touchUpInside" id="jei-wk-0R4"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZLH-T7-bVA">
+                                    <rect key="frame" x="181.5" y="0.0" width="80.5" height="90.5"/>
+                                    <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
+                                    <color key="tintColor" systemColor="darkTextColor"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="3"/>
+                                    <buttonConfiguration key="configuration" style="filled" image="3.square" catalog="system">
+                                        <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                                    </buttonConfiguration>
+                                    <connections>
+                                        <action selector="NumberHandler:" destination="-1" eventType="touchUpInside" id="c1f-WU-FvB"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="haA-fW-J8H">
+                            <rect key="frame" x="0.0" y="402.5" width="262" height="90.5"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ipn-Tb-b7K">
+                                    <rect key="frame" x="0.0" y="0.0" width="80.5" height="90.5"/>
+                                    <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
+                                    <color key="tintColor" systemColor="darkTextColor"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="0"/>
+                                    <buttonConfiguration key="configuration" style="filled" image="0.square" catalog="system">
+                                        <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                                    </buttonConfiguration>
+                                    <connections>
+                                        <action selector="NumberHandler:" destination="-1" eventType="touchUpInside" id="U4v-dO-R3z"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LJv-WP-iTh">
+                                    <rect key="frame" x="90.5" y="0.0" width="81" height="90.5"/>
+                                    <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
+                                    <color key="tintColor" systemColor="darkTextColor"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="."/>
+                                    <buttonConfiguration key="configuration" style="filled" image="dot.square" catalog="system">
+                                        <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                                    </buttonConfiguration>
+                                    <connections>
+                                        <action selector="NumberHandler:" destination="-1" eventType="touchUpInside" id="jQo-yz-IR5"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pHX-D3-UEB">
+                                    <rect key="frame" x="181.5" y="0.0" width="80.5" height="90.5"/>
+                                    <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
+                                    <color key="tintColor" systemColor="darkTextColor"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="+/-"/>
+                                    <buttonConfiguration key="configuration" style="filled" image="plusminus" catalog="system">
+                                        <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                                    </buttonConfiguration>
+                                    <connections>
+                                        <action selector="NumberHandler:" destination="-1" eventType="touchUpInside" id="sCX-RA-ssC"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <color key="backgroundColor" systemColor="systemGray5Color"/>
             <constraints>
                 <constraint firstItem="BLM-Lt-GiY" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="0s5-az-V2i"/>
                 <constraint firstItem="qwg-mQ-Ehw" firstAttribute="top" secondItem="x4P-5a-AUa" secondAttribute="bottom" constant="20" id="3GJ-UN-1Wi"/>
+                <constraint firstItem="hsO-xw-bLu" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="8Un-v7-XbX"/>
+                <constraint firstItem="hsO-xw-bLu" firstAttribute="width" secondItem="cqF-JR-bZt" secondAttribute="width" multiplier="3.2" id="Abv-Ar-9f0"/>
+                <constraint firstItem="cqF-JR-bZt" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.55" id="Mgk-5L-ZBY"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="BLM-Lt-GiY" secondAttribute="trailing" constant="20" id="Rw9-jA-RzG"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="qwg-mQ-Ehw" secondAttribute="trailing" constant="20" id="ScU-Eg-oH5"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="cqF-JR-bZt" secondAttribute="bottom" constant="20" id="avK-NO-vOb"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="iQa-oe-O4E" secondAttribute="trailing" constant="20" id="duN-9w-1v6"/>
+                <constraint firstItem="cqF-JR-bZt" firstAttribute="leading" secondItem="hsO-xw-bLu" secondAttribute="trailing" constant="30" id="e1r-LJ-Jx6"/>
                 <constraint firstItem="iQa-oe-O4E" firstAttribute="top" secondItem="qwg-mQ-Ehw" secondAttribute="bottom" constant="20" id="fRX-6l-hnK"/>
                 <constraint firstItem="BLM-Lt-GiY" firstAttribute="top" secondItem="iQa-oe-O4E" secondAttribute="bottom" constant="20" id="iq2-0T-M73"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="cqF-JR-bZt" secondAttribute="trailing" constant="20" id="oxi-Bw-MP4"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="x4P-5a-AUa" secondAttribute="trailing" constant="20" id="qaD-mU-Nfa"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="hsO-xw-bLu" secondAttribute="bottom" constant="20" id="vmd-pw-OAP"/>
+                <constraint firstItem="hsO-xw-bLu" firstAttribute="height" secondItem="cqF-JR-bZt" secondAttribute="height" id="zek-Z9-uoa"/>
                 <constraint firstItem="x4P-5a-AUa" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="20" id="zmj-Xf-qPU"/>
             </constraints>
             <point key="canvasLocation" x="131.8840579710145" y="153.34821428571428"/>
         </view>
     </objects>
     <resources>
+        <image name="0.square" catalog="system" width="128" height="114"/>
+        <image name="1.square" catalog="system" width="128" height="114"/>
+        <image name="2.square" catalog="system" width="128" height="114"/>
+        <image name="3.square" catalog="system" width="128" height="114"/>
+        <image name="4.square" catalog="system" width="128" height="114"/>
+        <image name="5.square" catalog="system" width="128" height="114"/>
+        <image name="6.square" catalog="system" width="128" height="114"/>
+        <image name="7.square" catalog="system" width="128" height="114"/>
+        <image name="8.square" catalog="system" width="128" height="114"/>
+        <image name="9.square" catalog="system" width="128" height="114"/>
+        <image name="c.circle" catalog="system" width="128" height="123"/>
+        <image name="divide" catalog="system" width="128" height="101"/>
+        <image name="dot.square" catalog="system" width="128" height="114"/>
+        <image name="equal" catalog="system" width="128" height="73"/>
+        <image name="minus" catalog="system" width="128" height="26"/>
+        <image name="multiply" catalog="system" width="128" height="111"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="plusminus" catalog="system" width="114" height="128"/>
         <systemColor name="darkTextColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
