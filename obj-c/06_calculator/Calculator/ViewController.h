@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 // view's modifiers
 - (void) showFirstOperand: (NSString*) str;
 - (void) showAction: (NSString*) str;
+- (void) updateAction: (NSString*) str;
 - (void) showSecondOperand: (NSString*) str;
 - (void) clearMain;
 - (void) showResult: (NSString*) str;

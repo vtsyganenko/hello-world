@@ -18,7 +18,7 @@
 - (void) setFirstOperand: (double) value;
 - (void) setAction: (enum Action) action;
 - (void) setSecondOperand: (double) value;
-- (double) calc;
+- (double) calculate;
 
 - (double) lastResult;
 - (void) drop;

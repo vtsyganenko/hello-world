@@ -14,10 +14,11 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *mainLabel;
 
-@property (weak, nonatomic) IBOutlet UILabel *firstOperandLabel;
-@property (weak, nonatomic) IBOutlet UILabel *actionLabel;
-@property (weak, nonatomic) IBOutlet UILabel *secondOperandLabel;
+@property (weak, nonatomic) IBOutlet UILabel *topHistoryLabel;
+@property (weak, nonatomic) IBOutlet UILabel *middleHistoryLabel;
+@property (weak, nonatomic) IBOutlet UILabel *bottomHistoryLabel;
 
+/*
 @property (weak, nonatomic) IBOutlet UIButton *buttonC;
 @property (weak, nonatomic) IBOutlet UIButton *buttonPlus;
 @property (weak, nonatomic) IBOutlet UIButton *buttonMinus;
@@ -33,7 +34,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *number9;
 @property (weak, nonatomic) IBOutlet UIButton *signPoint;
 @property (weak, nonatomic) IBOutlet UIButton *buttonEqual;
-
+*/
 @end
 
 @implementation ViewController
@@ -44,8 +45,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.mainLabel.layer.borderColor = [UIColor blueColor].CGColor;
-    self.mainLabel.layer.borderWidth = 1.0;
+    self.mainLabel.layer.borderColor = [UIColor systemGreenColor].CGColor;
+    self.mainLabel.layer.borderWidth = 2.0;
+    
+    self.topHistoryLabel.text = nil;
+    self.middleHistoryLabel.text = nil;
+    self.bottomHistoryLabel.text = nil;
     
     /*
     self.buttonC.layer.borderWidth = 1.0;
@@ -73,15 +78,25 @@
 #pragma mark - View's modifiers (used by ViewController user - calcController)
 
 - (void) showFirstOperand: (NSString*) str {
-    self.firstOperandLabel.text = str;
+    //NSLog(@"showFirstOperand: %@", str);
+    self.bottomHistoryLabel.text = str;
 }
 
 - (void) showAction: (NSString*) str {
-    self.actionLabel.text = str;
+    //NSLog(@"showAction: %@", str);
+    self.middleHistoryLabel.text = self.bottomHistoryLabel.text;
+    self.bottomHistoryLabel.text = str;
+}
+
+- (void) updateAction: (NSString*) str {
+    self.bottomHistoryLabel.text = str;
 }
 
 - (void) showSecondOperand: (NSString*) str {
-    self.secondOperandLabel.text = str;
+    //NSLog(@"showSecondOperand: %@", str);
+    self.topHistoryLabel.text = self.middleHistoryLabel.text;
+    self.middleHistoryLabel.text = self.bottomHistoryLabel.text;
+    self.bottomHistoryLabel.text = str;
 }
 
 - (void) clearMain {
@@ -93,15 +108,15 @@
 }
 
 - (void) clearHistory {
-    self.firstOperandLabel.text = @"";
-    self.actionLabel.text = @"";
-    self.secondOperandLabel.text = @"";
+    self.topHistoryLabel.text = nil;
+    self.middleHistoryLabel.text = nil;
+    self.bottomHistoryLabel.text = nil;
 }
 
 #pragma mark - UI elements action handlers
 
 - (IBAction) NumberHandler: (UIButton*) sender {
-    NSLog(@"[ViewController] Pressed %@ button", sender.titleLabel.text);
+    //NSLog(@"[ViewController] Pressed %@ button", sender.titleLabel.text);
     
     [calcController inputNumbersNotify];
     
@@ -140,21 +155,30 @@
     [calcController dropCalculation];
 }
 
+- (IBAction) backspaceButtonHandler {
+    if(self.mainLabel.text) {
+        NSUInteger newEnd = self.mainLabel.text.length - 1;
+        [self showResult: [self.mainLabel.text substringToIndex:newEnd]];
+    }
+}
+
 - (IBAction) actionButtonHandler: (UIButton *)sender {
-    NSLog(@"[ViewController] actionButtonHandler (%@)",
-          sender.titleLabel.text);
+    enum Action action = (enum Action)sender.tag;
+    //NSString* actionString = [ActionHelper actionToString:action];
+    
+    //NSLog(@"[ViewController] actionButtonHandler (%@)", actionString);
     
     double operand = [self.mainLabel.text doubleValue];
     [calcController addNextOperand: operand];
     
-    [calcController addAction: [ActionHelper stringToAction: sender.titleLabel.text]];
-    [self showAction: sender.titleLabel.text];
+    [calcController addAction: action];
+    //[self showAction: actionString];
 }
 
 - (IBAction) equalButtonHandler: (UIButton *)sender {
     // get second (next) operand and make calculation
     double operand = [self.mainLabel.text doubleValue];
-    NSLog(@"[ViewController] equalButtonHandler: next operand is %f", operand);
+    //NSLog(@"[ViewController] equalButtonHandler: next operand is %f", operand);
 
     [calcController addNextOperand: operand];
     [calcController makeCalculation];

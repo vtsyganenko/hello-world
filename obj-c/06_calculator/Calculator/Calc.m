@@ -42,14 +42,20 @@
     secondOperand = value;
 }
 
-- (double) calc
+- (double) calculate
 {
     switch (currentAction) {
-        case ADD:
+        case ADDITION:
             result = firstOperand + secondOperand;
             break;
-        case SUB:
+        case SUBTRACTION:
             result = firstOperand - secondOperand;
+            break;
+        case MULTIPLICATION:
+            result = firstOperand * secondOperand;
+            break;
+        case DIVISION:
+            result = firstOperand / secondOperand;
             break;
         default:
             break;

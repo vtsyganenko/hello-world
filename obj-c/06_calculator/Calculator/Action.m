@@ -15,23 +15,27 @@
 + (enum Action) stringToAction: (NSString*) str
 {
     if([str isEqualToString: @"+"]) {
-        return ADD;
+        return ADDITION;
     }
     if([str isEqualToString: @"-"]) {
-        return SUB;
+        return SUBTRACTION;
     }
 
     NSLog(@"ADD");
-    return ADD; // ?
+    return ADDITION; // ?
 }
 
 + (NSString*) actionToString: (enum Action) action
 {
     switch (action) {
-        case ADD:
+        case ADDITION:
             return @"+";
-        case SUB:
+        case SUBTRACTION:
             return @"-";
+        case MULTIPLICATION:
+            return @"*";
+        case DIVISION:
+            return @"/";
         default:
             break;
     }

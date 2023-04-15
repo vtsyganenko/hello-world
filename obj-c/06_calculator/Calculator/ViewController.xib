@@ -11,25 +11,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewController">
             <connections>
-                <outlet property="Number0" destination="Ipn-Tb-b7K" id="rnK-7X-u3K"/>
-                <outlet property="Number1" destination="Xuy-2M-WjX" id="LyO-97-Vjz"/>
-                <outlet property="Number2" destination="tkV-44-N3a" id="aEa-cL-eXX"/>
-                <outlet property="Number3" destination="ZLH-T7-bVA" id="fxD-uj-Muz"/>
-                <outlet property="Number4" destination="vS0-bt-HU5" id="zRU-gd-80c"/>
-                <outlet property="Number5" destination="AWu-z9-KAM" id="95R-wy-K2C"/>
-                <outlet property="Number6" destination="2rV-so-PDP" id="qPl-3y-17w"/>
-                <outlet property="SignPoint" destination="LJv-WP-iTh" id="1P6-6w-zpM"/>
-                <outlet property="actionLabel" destination="qwg-mQ-Ehw" id="fZm-e7-XvK"/>
-                <outlet property="buttonC" destination="FgE-sT-bHl" id="ajs-dz-HrQ"/>
-                <outlet property="buttonEqual" destination="Y6u-9U-8hp" id="rys-LM-z2T"/>
-                <outlet property="buttonMinus" destination="hm3-db-U14" id="9Cl-lR-reW"/>
-                <outlet property="buttonPlus" destination="MGD-72-uDJ" id="cCM-Y5-xgT"/>
-                <outlet property="firstOperandLabel" destination="x4P-5a-AUa" id="Ga6-bA-5ki"/>
+                <outlet property="bottomHistoryLabel" destination="iQa-oe-O4E" id="8W9-PE-kow"/>
                 <outlet property="mainLabel" destination="BLM-Lt-GiY" id="zBC-64-KBw"/>
-                <outlet property="number7" destination="Yqj-QV-fLt" id="Zfl-MY-OaG"/>
-                <outlet property="number8" destination="wfU-js-gpi" id="NT5-Ft-AGa"/>
-                <outlet property="number9" destination="6Rd-6a-7dX" id="phV-9W-Qf5"/>
-                <outlet property="secondOperandLabel" destination="iQa-oe-O4E" id="8W9-PE-kow"/>
+                <outlet property="middleHistoryLabel" destination="qwg-mQ-Ehw" id="fZm-e7-XvK"/>
+                <outlet property="topHistoryLabel" destination="x4P-5a-AUa" id="Ga6-bA-5ki"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -39,25 +24,25 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="first operand" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x4P-5a-AUa">
-                    <rect key="frame" x="296.5" y="68" width="97.5" height="20.5"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <rect key="frame" x="258" y="68" width="136" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="action" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qwg-mQ-Ehw">
-                    <rect key="frame" x="347" y="108.5" width="47" height="20.5"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <rect key="frame" x="327.5" y="118" width="66.5" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="second operand" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iQa-oe-O4E">
-                    <rect key="frame" x="270" y="149" width="124" height="20.5"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <rect key="frame" x="219.5" y="168" width="174.5" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BLM-Lt-GiY">
-                    <rect key="frame" x="20" y="189.5" width="374" height="60"/>
+                    <rect key="frame" x="20" y="218" width="374" height="60"/>
                     <fontDescription key="fontDescription" type="system" pointSize="50"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -65,7 +50,7 @@
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="cqF-JR-bZt">
                     <rect key="frame" x="312" y="349" width="82" height="493"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MGD-72-uDJ">
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MGD-72-uDJ">
                             <rect key="frame" x="0.0" y="0.0" width="82" height="91"/>
                             <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
                             <color key="tintColor" systemColor="darkTextColor"/>
@@ -77,7 +62,7 @@
                                 <action selector="actionButtonHandler:" destination="-1" eventType="touchUpInside" id="b0P-jW-3bH"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hm3-db-U14">
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hm3-db-U14">
                             <rect key="frame" x="0.0" y="101" width="82" height="90.5"/>
                             <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
                             <color key="tintColor" systemColor="darkTextColor"/>
@@ -89,7 +74,7 @@
                                 <action selector="actionButtonHandler:" destination="-1" eventType="touchUpInside" id="ABZ-Rw-oa6"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y8W-Jg-lRx">
+                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y8W-Jg-lRx">
                             <rect key="frame" x="0.0" y="201.5" width="82" height="90.5"/>
                             <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
                             <color key="tintColor" systemColor="darkTextColor"/>
@@ -101,7 +86,7 @@
                                 <action selector="actionButtonHandler:" destination="-1" eventType="touchUpInside" id="lve-Tn-14e"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqw-Gp-sOf">
+                        <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqw-Gp-sOf">
                             <rect key="frame" x="0.0" y="302" width="82" height="90.5"/>
                             <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
                             <color key="tintColor" systemColor="darkTextColor"/>
@@ -153,20 +138,17 @@
                                     <buttonConfiguration key="configuration" style="filled">
                                         <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
                                     </buttonConfiguration>
-                                    <connections>
-                                        <action selector="cButtonHandler" destination="-1" eventType="touchUpInside" id="pm6-Ds-dcb"/>
-                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cYE-Al-FHQ">
                                     <rect key="frame" x="181.5" y="0.0" width="80.5" height="91"/>
                                     <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
                                     <color key="tintColor" systemColor="darkTextColor"/>
                                     <state key="normal" title="C"/>
-                                    <buttonConfiguration key="configuration" style="filled">
+                                    <buttonConfiguration key="configuration" style="filled" image="arrow.left" catalog="system">
                                         <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
                                     </buttonConfiguration>
                                     <connections>
-                                        <action selector="cButtonHandler" destination="-1" eventType="touchUpInside" id="qxH-YB-9hZ"/>
+                                        <action selector="backspaceButtonHandler" destination="-1" eventType="touchUpInside" id="DNr-08-W04"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -180,7 +162,14 @@
                                     <color key="tintColor" systemColor="darkTextColor"/>
                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                     <state key="normal" title="7"/>
-                                    <buttonConfiguration key="configuration" style="filled" image="7.square" catalog="system">
+                                    <buttonConfiguration key="configuration" style="filled">
+                                        <attributedString key="attributedTitle">
+                                            <fragment content="7">
+                                                <attributes>
+                                                    <font key="NSFont" size="40" name="Helvetica"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
                                         <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
                                     </buttonConfiguration>
                                     <connections>
@@ -193,7 +182,15 @@
                                     <color key="tintColor" systemColor="darkTextColor"/>
                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                     <state key="normal" title="8"/>
-                                    <buttonConfiguration key="configuration" style="filled" image="8.square" catalog="system">
+                                    <buttonConfiguration key="configuration" style="filled">
+                                        <attributedString key="attributedTitle">
+                                            <fragment content="8">
+                                                <attributes>
+                                                    <font key="NSFont" size="40" name="Helvetica"/>
+                                                    <font key="NSOriginalFont" size="40" name="Helvetica"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
                                         <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
                                     </buttonConfiguration>
                                     <connections>
@@ -206,7 +203,14 @@
                                     <color key="tintColor" systemColor="darkTextColor"/>
                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                     <state key="normal" title="9"/>
-                                    <buttonConfiguration key="configuration" style="filled" image="9.square" catalog="system">
+                                    <buttonConfiguration key="configuration" style="filled">
+                                        <attributedString key="attributedTitle">
+                                            <fragment content="9">
+                                                <attributes>
+                                                    <font key="NSFont" size="40" name="Helvetica"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
                                         <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
                                     </buttonConfiguration>
                                     <connections>
@@ -224,7 +228,14 @@
                                     <color key="tintColor" systemColor="darkTextColor"/>
                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                     <state key="normal" title="4"/>
-                                    <buttonConfiguration key="configuration" style="filled" image="4.square" catalog="system">
+                                    <buttonConfiguration key="configuration" style="filled">
+                                        <attributedString key="attributedTitle">
+                                            <fragment content="4">
+                                                <attributes>
+                                                    <font key="NSFont" size="40" name="Helvetica"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
                                         <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
                                     </buttonConfiguration>
                                     <connections>
@@ -237,7 +248,14 @@
                                     <color key="tintColor" systemColor="darkTextColor"/>
                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                     <state key="normal" title="5"/>
-                                    <buttonConfiguration key="configuration" style="filled" image="5.square" catalog="system">
+                                    <buttonConfiguration key="configuration" style="filled">
+                                        <attributedString key="attributedTitle">
+                                            <fragment content="5">
+                                                <attributes>
+                                                    <font key="NSFont" size="40" name="Helvetica"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
                                         <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
                                     </buttonConfiguration>
                                     <connections>
@@ -250,7 +268,14 @@
                                     <color key="tintColor" systemColor="darkTextColor"/>
                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                     <state key="normal" title="6"/>
-                                    <buttonConfiguration key="configuration" style="filled" image="6.square" catalog="system">
+                                    <buttonConfiguration key="configuration" style="filled">
+                                        <attributedString key="attributedTitle">
+                                            <fragment content="6">
+                                                <attributes>
+                                                    <font key="NSFont" size="40" name="Helvetica"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
                                         <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
                                     </buttonConfiguration>
                                     <connections>
@@ -268,7 +293,14 @@
                                     <color key="tintColor" systemColor="darkTextColor"/>
                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                     <state key="normal" title="1"/>
-                                    <buttonConfiguration key="configuration" style="filled" image="1.square" catalog="system">
+                                    <buttonConfiguration key="configuration" style="filled">
+                                        <attributedString key="attributedTitle">
+                                            <fragment content="1">
+                                                <attributes>
+                                                    <font key="NSFont" size="40" name="Helvetica"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
                                         <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
                                     </buttonConfiguration>
                                     <connections>
@@ -281,7 +313,14 @@
                                     <color key="tintColor" systemColor="darkTextColor"/>
                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                     <state key="normal" title="2"/>
-                                    <buttonConfiguration key="configuration" style="filled" image="2.square" catalog="system">
+                                    <buttonConfiguration key="configuration" style="filled">
+                                        <attributedString key="attributedTitle">
+                                            <fragment content="2">
+                                                <attributes>
+                                                    <font key="NSFont" size="40" name="Helvetica"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
                                         <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
                                     </buttonConfiguration>
                                     <connections>
@@ -294,7 +333,14 @@
                                     <color key="tintColor" systemColor="darkTextColor"/>
                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                     <state key="normal" title="3"/>
-                                    <buttonConfiguration key="configuration" style="filled" image="3.square" catalog="system">
+                                    <buttonConfiguration key="configuration" style="filled">
+                                        <attributedString key="attributedTitle">
+                                            <fragment content="3">
+                                                <attributes>
+                                                    <font key="NSFont" size="40" name="Helvetica"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
                                         <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
                                     </buttonConfiguration>
                                     <connections>
@@ -312,7 +358,14 @@
                                     <color key="tintColor" systemColor="darkTextColor"/>
                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                     <state key="normal" title="0"/>
-                                    <buttonConfiguration key="configuration" style="filled" image="0.square" catalog="system">
+                                    <buttonConfiguration key="configuration" style="filled">
+                                        <attributedString key="attributedTitle">
+                                            <fragment content="0">
+                                                <attributes>
+                                                    <font key="NSFont" size="40" name="Helvetica"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
                                         <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
                                     </buttonConfiguration>
                                     <connections>
@@ -357,10 +410,12 @@
                 <constraint firstItem="qwg-mQ-Ehw" firstAttribute="top" secondItem="x4P-5a-AUa" secondAttribute="bottom" constant="20" id="3GJ-UN-1Wi"/>
                 <constraint firstItem="hsO-xw-bLu" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="8Un-v7-XbX"/>
                 <constraint firstItem="hsO-xw-bLu" firstAttribute="width" secondItem="cqF-JR-bZt" secondAttribute="width" multiplier="3.2" id="Abv-Ar-9f0"/>
+                <constraint firstItem="qwg-mQ-Ehw" firstAttribute="height" secondItem="BLM-Lt-GiY" secondAttribute="height" multiplier="0.5" id="KLk-3u-GQu"/>
                 <constraint firstItem="cqF-JR-bZt" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.55" id="Mgk-5L-ZBY"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="BLM-Lt-GiY" secondAttribute="trailing" constant="20" id="Rw9-jA-RzG"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="qwg-mQ-Ehw" secondAttribute="trailing" constant="20" id="ScU-Eg-oH5"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="cqF-JR-bZt" secondAttribute="bottom" constant="20" id="avK-NO-vOb"/>
+                <constraint firstItem="iQa-oe-O4E" firstAttribute="height" secondItem="BLM-Lt-GiY" secondAttribute="height" multiplier="0.5" id="bM5-od-wQ8"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="iQa-oe-O4E" secondAttribute="trailing" constant="20" id="duN-9w-1v6"/>
                 <constraint firstItem="cqF-JR-bZt" firstAttribute="leading" secondItem="hsO-xw-bLu" secondAttribute="trailing" constant="30" id="e1r-LJ-Jx6"/>
                 <constraint firstItem="iQa-oe-O4E" firstAttribute="top" secondItem="qwg-mQ-Ehw" secondAttribute="bottom" constant="20" id="fRX-6l-hnK"/>
@@ -368,6 +423,7 @@
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="cqF-JR-bZt" secondAttribute="trailing" constant="20" id="oxi-Bw-MP4"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="x4P-5a-AUa" secondAttribute="trailing" constant="20" id="qaD-mU-Nfa"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="hsO-xw-bLu" secondAttribute="bottom" constant="20" id="vmd-pw-OAP"/>
+                <constraint firstItem="x4P-5a-AUa" firstAttribute="height" secondItem="BLM-Lt-GiY" secondAttribute="height" multiplier="0.5" id="wy9-9Z-kbs"/>
                 <constraint firstItem="hsO-xw-bLu" firstAttribute="height" secondItem="cqF-JR-bZt" secondAttribute="height" id="zek-Z9-uoa"/>
                 <constraint firstItem="x4P-5a-AUa" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="20" id="zmj-Xf-qPU"/>
             </constraints>
@@ -375,16 +431,7 @@
         </view>
     </objects>
     <resources>
-        <image name="0.square" catalog="system" width="128" height="114"/>
-        <image name="1.square" catalog="system" width="128" height="114"/>
-        <image name="2.square" catalog="system" width="128" height="114"/>
-        <image name="3.square" catalog="system" width="128" height="114"/>
-        <image name="4.square" catalog="system" width="128" height="114"/>
-        <image name="5.square" catalog="system" width="128" height="114"/>
-        <image name="6.square" catalog="system" width="128" height="114"/>
-        <image name="7.square" catalog="system" width="128" height="114"/>
-        <image name="8.square" catalog="system" width="128" height="114"/>
-        <image name="9.square" catalog="system" width="128" height="114"/>
+        <image name="arrow.left" catalog="system" width="128" height="95"/>
         <image name="c.circle" catalog="system" width="128" height="123"/>
         <image name="divide" catalog="system" width="128" height="101"/>
         <image name="dot.square" catalog="system" width="128" height="114"/>
