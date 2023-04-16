@@ -173,7 +173,7 @@
                                         <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
                                     </buttonConfiguration>
                                     <connections>
-                                        <action selector="NumberHandler:" destination="-1" eventType="touchUpInside" id="oof-lR-CRD"/>
+                                        <action selector="numberButtonHandler:" destination="-1" eventType="touchUpInside" id="oof-lR-CRD"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wfU-js-gpi">
@@ -194,7 +194,7 @@
                                         <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
                                     </buttonConfiguration>
                                     <connections>
-                                        <action selector="NumberHandler:" destination="-1" eventType="touchUpInside" id="fPs-Tk-Qf4"/>
+                                        <action selector="numberButtonHandler:" destination="-1" eventType="touchUpInside" id="fPs-Tk-Qf4"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Rd-6a-7dX">
@@ -214,7 +214,7 @@
                                         <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
                                     </buttonConfiguration>
                                     <connections>
-                                        <action selector="NumberHandler:" destination="-1" eventType="touchUpInside" id="kcQ-sh-hJc"/>
+                                        <action selector="numberButtonHandler:" destination="-1" eventType="touchUpInside" id="kcQ-sh-hJc"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -239,7 +239,7 @@
                                         <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
                                     </buttonConfiguration>
                                     <connections>
-                                        <action selector="NumberHandler:" destination="-1" eventType="touchUpInside" id="NYk-4a-Dwg"/>
+                                        <action selector="numberButtonHandler:" destination="-1" eventType="touchUpInside" id="NYk-4a-Dwg"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AWu-z9-KAM">
@@ -259,7 +259,7 @@
                                         <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
                                     </buttonConfiguration>
                                     <connections>
-                                        <action selector="NumberHandler:" destination="-1" eventType="touchUpInside" id="OBD-Ww-Ey9"/>
+                                        <action selector="numberButtonHandler:" destination="-1" eventType="touchUpInside" id="OBD-Ww-Ey9"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2rV-so-PDP">
@@ -279,7 +279,7 @@
                                         <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
                                     </buttonConfiguration>
                                     <connections>
-                                        <action selector="NumberHandler:" destination="-1" eventType="touchUpInside" id="8ER-n7-f3l"/>
+                                        <action selector="numberButtonHandler:" destination="-1" eventType="touchUpInside" id="8ER-n7-f3l"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -304,7 +304,7 @@
                                         <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
                                     </buttonConfiguration>
                                     <connections>
-                                        <action selector="NumberHandler:" destination="-1" eventType="touchUpInside" id="zNc-Fr-e6Q"/>
+                                        <action selector="numberButtonHandler:" destination="-1" eventType="touchUpInside" id="zNc-Fr-e6Q"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tkV-44-N3a">
@@ -324,7 +324,7 @@
                                         <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
                                     </buttonConfiguration>
                                     <connections>
-                                        <action selector="NumberHandler:" destination="-1" eventType="touchUpInside" id="jei-wk-0R4"/>
+                                        <action selector="numberButtonHandler:" destination="-1" eventType="touchUpInside" id="jei-wk-0R4"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZLH-T7-bVA">
@@ -344,7 +344,7 @@
                                         <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
                                     </buttonConfiguration>
                                     <connections>
-                                        <action selector="NumberHandler:" destination="-1" eventType="touchUpInside" id="c1f-WU-FvB"/>
+                                        <action selector="numberButtonHandler:" destination="-1" eventType="touchUpInside" id="c1f-WU-FvB"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -369,7 +369,7 @@
                                         <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
                                     </buttonConfiguration>
                                     <connections>
-                                        <action selector="NumberHandler:" destination="-1" eventType="touchUpInside" id="U4v-dO-R3z"/>
+                                        <action selector="numberButtonHandler:" destination="-1" eventType="touchUpInside" id="U4v-dO-R3z"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LJv-WP-iTh">
@@ -382,7 +382,7 @@
                                         <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
                                     </buttonConfiguration>
                                     <connections>
-                                        <action selector="NumberHandler:" destination="-1" eventType="touchUpInside" id="jQo-yz-IR5"/>
+                                        <action selector="dotButtonHandler:" destination="-1" eventType="touchUpInside" id="IHb-5m-Obw"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pHX-D3-UEB">
@@ -395,7 +395,7 @@
                                         <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
                                     </buttonConfiguration>
                                     <connections>
-                                        <action selector="NumberHandler:" destination="-1" eventType="touchUpInside" id="sCX-RA-ssC"/>
+                                        <action selector="signButtonHandler:" destination="-1" eventType="touchUpInside" id="BfN-Pu-oMP"/>
                                     </connections>
                                 </button>
                             </subviews>

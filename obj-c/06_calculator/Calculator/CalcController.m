@@ -18,10 +18,9 @@
     Calc* calc;
     
     enum CalculationStep {
-        FIRST_OPERAND,
-        SET_ACTION,
-        UPDATE_ACTION,
-        SECOND_OPERAND,
+        INPUT_FIRST_OPERAND,
+        SET_OR_CHANGE_ACTION,
+        INPUT_SECOND_OPERAND,
         CALCULATED
     };
     enum CalculationStep currentStep;
@@ -34,7 +33,7 @@
         view = vc;
         calc = [[Calc alloc] init];
         
-        [self setCalculationStep:FIRST_OPERAND];
+        [self setCalculationStep:INPUT_FIRST_OPERAND];
     }
     return self;
 }
@@ -42,12 +41,12 @@
 -(void) setCalculationStep: (enum CalculationStep) newStep
 {
     NSString* stepString = @"";
-    if(newStep == FIRST_OPERAND)
-        stepString = @"FIRST_OPERAND";
-    else if(newStep == SET_ACTION)
-        stepString = @"ACTION";
-    else if(newStep == SECOND_OPERAND)
-        stepString = @"SECOND_OPERAND";
+    if(newStep == INPUT_FIRST_OPERAND)
+        stepString = @"INPUT_FIRST_OPERAND";
+    else if(newStep == SET_OR_CHANGE_ACTION)
+        stepString = @"SET_OR_CHANGE_ACTION";
+    else if(newStep == INPUT_SECOND_OPERAND)
+        stepString = @"INPUT_SECOND_OPERAND";
     else if(newStep == CALCULATED)
         stepString = @"CALCULATED";
     NSLog(@"[CalcController] setCalculationStep %@", stepString);
@@ -61,13 +60,13 @@
 {
     NSLog(@"[CalcController] addNextOperand %f", value);
     
-    if(currentStep == FIRST_OPERAND) {
+    if(currentStep == INPUT_FIRST_OPERAND) {
         NSLog(@"first operand");
         [calc setFirstOperand: value];
         [view showFirstOperand: [NSString stringWithFormat:@"%g", value]];
         [view clearMain];
     }
-    else if(currentStep == SECOND_OPERAND) {
+    else if(currentStep == INPUT_SECOND_OPERAND) {
         NSLog(@"second operand");
         [calc setSecondOperand: value];
         [view showSecondOperand: [NSString stringWithFormat:@"%g", value]];
@@ -75,11 +74,24 @@
 }
 
 - (void) inputNumbersNotify {
-    if(currentStep == SET_ACTION || currentStep == UPDATE_ACTION) {
-        [self setCalculationStep:SECOND_OPERAND];
+    if(currentStep == SET_OR_CHANGE_ACTION) {
+        [self setCalculationStep:INPUT_SECOND_OPERAND];
     }
     else if(currentStep == CALCULATED) {
         [self dropCalculation];
+    }
+}
+
+- (void) editValueNofify {
+    if(currentStep == CALCULATED) {
+        [self setCalculationStep:INPUT_FIRST_OPERAND];
+    }
+}
+
+- (void) changeSignNotify {
+    if(currentStep == CALCULATED) {
+        [self setCalculationStep:INPUT_FIRST_OPERAND];
+        [view clearHistory];
     }
 }
 
@@ -87,14 +99,14 @@
     NSLog(@"[CalcController] addAction %@", [ActionHelper actionToString:action]);
     
     switch(currentStep) {
-        case FIRST_OPERAND:
+        case INPUT_FIRST_OPERAND:
         {
             [calc setAction: action];
             [view showAction: [ActionHelper actionToString:action]];
-            [self setCalculationStep:SET_ACTION];
+            [self setCalculationStep:SET_OR_CHANGE_ACTION];
             break;
         }
-        case SET_ACTION:
+        case SET_OR_CHANGE_ACTION:
         {
             [calc setAction: action];
             [view updateAction: [ActionHelper actionToString:action]];
@@ -107,7 +119,7 @@
         //    [view updateAction: [ActionHelper actionToString:action]];
        //     break;
         //}
-        case SECOND_OPERAND:
+        case INPUT_SECOND_OPERAND:
         {
             [view clearHistory];
             
@@ -121,7 +133,7 @@
             //[view showSecondOperand: @""];
             [view clearMain];
             
-            [self setCalculationStep:SET_ACTION];
+            [self setCalculationStep:SET_OR_CHANGE_ACTION];
             break;
         }
         case CALCULATED:
@@ -138,7 +150,7 @@
             //[view showSecondOperand: @""];
             [view clearMain];
             
-            [self setCalculationStep:SET_ACTION];
+            [self setCalculationStep:SET_OR_CHANGE_ACTION];
             break;
         }
         default:
@@ -148,7 +160,7 @@
 
 - (void) makeCalculation {
     NSLog(@"[CalcController] makeCalculation");
-    if(currentStep == SECOND_OPERAND) {
+    if(currentStep == INPUT_SECOND_OPERAND) {
         [view showResult: [NSString stringWithFormat:@"%g", [calc calculate]]];
         [self setCalculationStep:CALCULATED];
     }
@@ -167,7 +179,7 @@
     [calc drop];
     [view clearMain];
     [view clearHistory];
-    [self setCalculationStep:FIRST_OPERAND];
+    [self setCalculationStep:INPUT_FIRST_OPERAND];
 }
 
 @end

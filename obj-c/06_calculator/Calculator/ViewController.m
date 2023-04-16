@@ -18,23 +18,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *middleHistoryLabel;
 @property (weak, nonatomic) IBOutlet UILabel *bottomHistoryLabel;
 
-/*
-@property (weak, nonatomic) IBOutlet UIButton *buttonC;
-@property (weak, nonatomic) IBOutlet UIButton *buttonPlus;
-@property (weak, nonatomic) IBOutlet UIButton *buttonMinus;
-@property (weak, nonatomic) IBOutlet UIButton *number0;
-@property (weak, nonatomic) IBOutlet UIButton *number1;
-@property (weak, nonatomic) IBOutlet UIButton *number2;
-@property (weak, nonatomic) IBOutlet UIButton *number3;
-@property (weak, nonatomic) IBOutlet UIButton *number4;
-@property (weak, nonatomic) IBOutlet UIButton *number5;
-@property (weak, nonatomic) IBOutlet UIButton *number6;
-@property (weak, nonatomic) IBOutlet UIButton *number7;
-@property (weak, nonatomic) IBOutlet UIButton *number8;
-@property (weak, nonatomic) IBOutlet UIButton *number9;
-@property (weak, nonatomic) IBOutlet UIButton *signPoint;
-@property (weak, nonatomic) IBOutlet UIButton *buttonEqual;
-*/
 @end
 
 @implementation ViewController
@@ -52,23 +35,6 @@
     self.middleHistoryLabel.text = nil;
     self.bottomHistoryLabel.text = nil;
     
-    /*
-    self.buttonC.layer.borderWidth = 1.0;
-    self.buttonPlus.layer.borderWidth = 1.0;
-    self.buttonMinus.layer.borderWidth = 1.0;
-    self.number0.layer.borderWidth = 1.0;
-    self.number1.layer.borderWidth = 1.0;
-    self.number2.layer.borderWidth = 1.0;
-    self.number3.layer.borderWidth = 1.0;
-    self.number4.layer.borderWidth = 1.0;
-    self.number5.layer.borderWidth = 1.0;
-    self.number6.layer.borderWidth = 1.0;
-    self.number7.layer.borderWidth = 1.0;
-    self.number8.layer.borderWidth = 1.0;
-    self.number9.layer.borderWidth = 1.0;
-    self.signPoint.layer.borderWidth = 1.0;
-    self.buttonEqual.layer.borderWidth = 1.0;
-     */
 }
 
 - (void) setCalcController:(CalcController *)calcCont {
@@ -115,39 +81,20 @@
 
 #pragma mark - UI elements action handlers
 
-- (IBAction) NumberHandler: (UIButton*) sender {
+- (IBAction) numberButtonHandler: (UIButton*) sender {
     //NSLog(@"[ViewController] Pressed %@ button", sender.titleLabel.text);
     
     [calcController inputNumbersNotify];
     
-    // replace "0" by the either number except "."
-    if([self.mainLabel.text isEqualToString: @"0"] == YES &&
-       [sender.titleLabel.text isEqualToString: @"."] == NO)
+    // replace "0" by the either number
+    if([self.mainLabel.text isEqualToString: @"0"] == YES)
     {
-        self.mainLabel.text = [NSString stringWithFormat:@"%@",
-                               sender.titleLabel.text];
+        self.mainLabel.text = [NSString stringWithFormat:@"%@", sender.titleLabel.text];
     }
     else
     {
-        // "" + "." = "0."
-        if([self.mainLabel.text isEqualToString: @""] == YES &&
-           [sender.titleLabel.text isEqualToString: @"."] == YES)
-        {
-            self.mainLabel.text = [NSString stringWithFormat:@"0%@",
-            sender.titleLabel.text];
-        }
-        // "0." + "." = "."
-        else if([self.mainLabel.text isEqualToString: @"0."] == YES &&
-                 [sender.titleLabel.text isEqualToString: @"."] == YES)
-        {
-            //...
-        }
-        else
-        {
-            self.mainLabel.text = [NSString stringWithFormat:@"%@%@",
-                                   self.mainLabel.text,
-                                   sender.titleLabel.text];
-        }
+        // regular case - just add next number
+        self.mainLabel.text = [self.mainLabel.text stringByAppendingString: sender.titleLabel.text];
     }
 }
 
@@ -157,8 +104,33 @@
 
 - (IBAction) backspaceButtonHandler {
     if(self.mainLabel.text) {
+        // "0" - do nothing
+        if([self.mainLabel.text isEqualToString:@"0"] == YES) {
+            return;
+        }
+        
+        // one number - set 0
+        if(self.mainLabel.text.length == 1) {
+            self.mainLabel.text = @"0";
+            //[calcController dropCalculation];
+            return;
+        }
+        
+        // minus and one number - set 0
+        if(self.mainLabel.text.length == 2) {
+            NSString* firstLetter = [self.mainLabel.text substringToIndex:1];
+            if([firstLetter isEqualToString:@"-"]) {
+                self.mainLabel.text = @"0";
+                //[calcController dropCalculation];
+                return;
+            }
+        }
+        
+        // other cases - remove last character
         NSUInteger newEnd = self.mainLabel.text.length - 1;
         [self showResult: [self.mainLabel.text substringToIndex:newEnd]];
+        [self clearHistory];
+        [calcController editValueNofify];
     }
 }
 
@@ -182,6 +154,46 @@
 
     [calcController addNextOperand: operand];
     [calcController makeCalculation];
+}
+
+- (IBAction) dotButtonHandler: (UIButton *)sender {
+    if(self.mainLabel.text) {
+        if([self.mainLabel.text containsString:@"."] == NO) {
+            
+            // "" + "." = "0."
+            //if([self.mainLabel.text isEqualToString: @""] == YES &&
+            //   [sender.titleLabel.text isEqualToString: @"."] == YES)
+            //{
+            //    self.mainLabel.text = [NSString stringWithFormat:@"0%@",
+             //   sender.titleLabel.text];
+            //}
+            // "0." + "." = "."
+            //else if([self.mainLabel.text isEqualToString: @"0."] == YES &&
+              //       [sender.titleLabel.text isEqualToString: @"."] == YES)
+            //{
+                //...
+            //}
+            
+            // add "."
+            self.mainLabel.text = [self.mainLabel.text stringByAppendingString: @"."];
+        }
+    }
+}
+
+- (IBAction) signButtonHandler: (id)sender {
+    if(self.mainLabel.text) {
+        
+        // "0" - do nothing
+        if([self.mainLabel.text isEqualToString:@"0"] == YES) {
+            return;
+        }
+        
+        // change sign of the value
+        double value = self.mainLabel.text.doubleValue * -1;
+        self.mainLabel.text = [NSString stringWithFormat:@"%g", value];
+        
+        [calcController changeSignNotify];
+    }
 }
 
 @end
