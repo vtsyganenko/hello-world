@@ -21,6 +21,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) showAction: (NSString*) str;
 - (void) updateAction: (NSString*) str;
 - (void) showSecondOperand: (NSString*) str;
+- (void) showFullCalculationWithFirst: (NSString*) first
+                            action: (NSString*) action
+                            andSecond: (NSString*) second;
 - (void) clearMain;
 - (void) showResult: (NSString*) str;
 - (void) clearHistory;

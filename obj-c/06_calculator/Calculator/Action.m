@@ -12,19 +12,6 @@
 {
 }
 
-+ (enum Action) stringToAction: (NSString*) str
-{
-    if([str isEqualToString: @"+"]) {
-        return ADDITION;
-    }
-    if([str isEqualToString: @"-"]) {
-        return SUBTRACTION;
-    }
-
-    NSLog(@"ADD");
-    return ADDITION; // ?
-}
-
 + (NSString*) actionToString: (enum Action) action
 {
     switch (action) {

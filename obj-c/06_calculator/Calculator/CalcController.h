@@ -20,7 +20,9 @@
 // calc operations (used by ViewController)
 - (void) addNextOperand: (double) value;
 - (void) inputNumbersNotify;
-- (void) editValueNofify;
+//- (void) editValueNofify;
+- (void) removeValueNotify;
+- (void) removeLastValueNotify;
 - (void) changeSignNotify;
 - (void) addAction: (enum Action) action;
 - (void) makeCalculation;

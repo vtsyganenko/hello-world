@@ -65,6 +65,14 @@
     self.bottomHistoryLabel.text = str;
 }
 
+- (void) showFullCalculationWithFirst: (NSString*) first
+                            action: (NSString*) action
+                            andSecond: (NSString*) second {
+    self.topHistoryLabel.text = first;
+    self.middleHistoryLabel.text = action;
+    self.bottomHistoryLabel.text = second;
+}
+
 - (void) clearMain {
     self.mainLabel.text = @"0";
 }
@@ -111,8 +119,7 @@
         
         // one number - set 0
         if(self.mainLabel.text.length == 1) {
-            self.mainLabel.text = @"0";
-            //[calcController dropCalculation];
+            [calcController removeLastValueNotify];
             return;
         }
         
@@ -120,17 +127,15 @@
         if(self.mainLabel.text.length == 2) {
             NSString* firstLetter = [self.mainLabel.text substringToIndex:1];
             if([firstLetter isEqualToString:@"-"]) {
-                self.mainLabel.text = @"0";
-                //[calcController dropCalculation];
+                [calcController removeLastValueNotify];
                 return;
             }
         }
         
         // other cases - remove last character
+        [calcController removeValueNotify];
         NSUInteger newEnd = self.mainLabel.text.length - 1;
         [self showResult: [self.mainLabel.text substringToIndex:newEnd]];
-        [self clearHistory];
-        [calcController editValueNofify];
     }
 }
 
@@ -159,21 +164,6 @@
 - (IBAction) dotButtonHandler: (UIButton *)sender {
     if(self.mainLabel.text) {
         if([self.mainLabel.text containsString:@"."] == NO) {
-            
-            // "" + "." = "0."
-            //if([self.mainLabel.text isEqualToString: @""] == YES &&
-            //   [sender.titleLabel.text isEqualToString: @"."] == YES)
-            //{
-            //    self.mainLabel.text = [NSString stringWithFormat:@"0%@",
-             //   sender.titleLabel.text];
-            //}
-            // "0." + "." = "."
-            //else if([self.mainLabel.text isEqualToString: @"0."] == YES &&
-              //       [sender.titleLabel.text isEqualToString: @"."] == YES)
-            //{
-                //...
-            //}
-            
             // add "."
             self.mainLabel.text = [self.mainLabel.text stringByAppendingString: @"."];
         }
@@ -190,7 +180,17 @@
         
         // change sign of the value
         double value = self.mainLabel.text.doubleValue * -1;
-        self.mainLabel.text = [NSString stringWithFormat:@"%g", value];
+        
+        // corner case "12."
+        unichar last = [self.mainLabel.text characterAtIndex: self.mainLabel.text.length - 1];
+        if(last == '.') {
+            self.mainLabel.text = [NSString stringWithFormat:@"%g.", value];
+        }
+        else {
+            // regular case
+            self.mainLabel.text = [NSString stringWithFormat:@"%g", value];
+        }
+        
         
         [calcController changeSignNotify];
     }

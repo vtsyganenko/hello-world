@@ -31,7 +31,7 @@
     NSLog(@"ViewController connected with CalcController");
 
     self.window.rootViewController = view;
-    self.window.backgroundColor = [UIColor whiteColor];
+    //self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
 }

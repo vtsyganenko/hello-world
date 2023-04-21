@@ -81,10 +81,28 @@
         [self dropCalculation];
     }
 }
-
+/*
 - (void) editValueNofify {
     if(currentStep == CALCULATED) {
         [self setCalculationStep:INPUT_FIRST_OPERAND];
+    }
+}
+*/
+
+- (void) removeValueNotify {
+    if(currentStep == CALCULATED) {
+        [view clearHistory];
+        [calc drop];
+        [self setCalculationStep:INPUT_FIRST_OPERAND];
+    }
+}
+
+- (void) removeLastValueNotify {
+    if(currentStep == CALCULATED) {
+        [self dropCalculation];
+    }
+    else {
+        [view clearMain];
     }
 }
 
@@ -168,7 +186,11 @@
         // repeat all
         double firstOperand = [calc lastResult];
         [calc setFirstOperand: firstOperand];
-        [view showFirstOperand: [NSString stringWithFormat:@"%g", firstOperand]];
+        //[view showFirstOperand: [NSString stringWithFormat:@"%g", firstOperand]];
+        
+        [view showFullCalculationWithFirst: [NSString stringWithFormat:@"%g", firstOperand]
+                    action: [ActionHelper actionToString:[calc action]]
+                    andSecond: [NSString stringWithFormat:@"%g", [calc secondOperand]]];
         
         [view showResult: [NSString stringWithFormat:@"%g", [calc calculate]]];
     }

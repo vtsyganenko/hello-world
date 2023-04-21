@@ -15,11 +15,11 @@
 
 @interface Calc : NSObject
 
-- (void) setFirstOperand: (double) value;
-- (void) setAction: (enum Action) action;
-- (void) setSecondOperand: (double) value;
-- (double) calculate;
+@property (nonatomic) double firstOperand;
+@property (nonatomic) enum Action action;
+@property (nonatomic) double secondOperand;
 
+- (double) calculate;
 - (double) lastResult;
 - (void) drop;
 

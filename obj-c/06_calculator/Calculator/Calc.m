@@ -10,41 +10,16 @@
 
 @implementation Calc
 {
-    enum Action currentAction;
-    
-    double firstOperand;
-    double secondOperand;
     double result;
 }
 
--(id) init
-{
-    if(self = [super init])
-    {
-        // initialization
-        [self drop];
-    }
-    return self;
-}
-
-- (void) setFirstOperand: (double) value
-{
-    firstOperand = value;
-}
-
-- (void) setAction: (enum Action) action
-{
-    self->currentAction = action;
-}
-
-- (void) setSecondOperand: (double) value
-{
-    secondOperand = value;
-}
+@synthesize firstOperand;
+@synthesize action;
+@synthesize secondOperand;
 
 - (double) calculate
 {
-    switch (currentAction) {
+    switch (action) {
         case ADDITION:
             result = firstOperand + secondOperand;
             break;
@@ -60,7 +35,8 @@
         default:
             break;
     }
-    NSLog(@"Calc: %f %@ %f = %f", firstOperand, [ActionHelper actionToString:currentAction], secondOperand, result);
+    NSLog(@"[Calc] %f %@ %f = %f", firstOperand, [ActionHelper actionToString:action],
+          secondOperand, result);
     return result;
 }
 

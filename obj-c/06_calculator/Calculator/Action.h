@@ -12,14 +12,13 @@
 #import <Foundation/Foundation.h>
 
 enum Action {
-    ADDITION = 1,    // +
+    ADDITION = 1,       // +
     SUBTRACTION = 2,    // -
-    MULTIPLICATION = 3,
-    DIVISION = 4
+    MULTIPLICATION = 3, // *
+    DIVISION = 4        // /
 };
 
 @interface ActionHelper : NSObject
-+ (enum Action) stringToAction: (NSString*) str;
 + (NSString*) actionToString: (enum Action) action;
 @end
 
