@@ -61,13 +61,11 @@
     NSLog(@"[CalcController] addNextOperand %f", value);
     
     if(currentStep == INPUT_FIRST_OPERAND) {
-        NSLog(@"first operand");
         [calc setFirstOperand: value];
         [view showFirstOperand: [NSString stringWithFormat:@"%g", value]];
         [view clearMain];
     }
     else if(currentStep == INPUT_SECOND_OPERAND) {
-        NSLog(@"second operand");
         [calc setSecondOperand: value];
         [view showSecondOperand: [NSString stringWithFormat:@"%g", value]];
     }
@@ -128,15 +126,8 @@
         {
             [calc setAction: action];
             [view updateAction: [ActionHelper actionToString:action]];
-            //[self setCalculationStep:UPDATE_ACTION];
             break;
         }
-        //case UPDATE_ACTION:
-        //{
-        //    [calc setAction: action];
-        //    [view updateAction: [ActionHelper actionToString:action]];
-       //     break;
-        //}
         case INPUT_SECOND_OPERAND:
         {
             [view clearHistory];
@@ -148,7 +139,6 @@
             [calc setAction: action];
             [view showAction: [ActionHelper actionToString:action]];
             
-            //[view showSecondOperand: @""];
             [view clearMain];
             
             [self setCalculationStep:SET_OR_CHANGE_ACTION];
@@ -165,7 +155,6 @@
             [calc setAction: action];
             [view showAction: [ActionHelper actionToString:action]];
             
-            //[view showSecondOperand: @""];
             [view clearMain];
             
             [self setCalculationStep:SET_OR_CHANGE_ACTION];

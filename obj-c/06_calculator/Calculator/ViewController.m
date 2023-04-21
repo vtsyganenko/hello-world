@@ -10,6 +10,8 @@
 
 #import "CalcController.h"
 
+const int MAX_CHARACTERS_COUNT_FOR_MAIN_LABEL = 11;
+
 @interface ViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *mainLabel;
@@ -44,12 +46,10 @@
 #pragma mark - View's modifiers (used by ViewController user - calcController)
 
 - (void) showFirstOperand: (NSString*) str {
-    //NSLog(@"showFirstOperand: %@", str);
     self.bottomHistoryLabel.text = str;
 }
 
 - (void) showAction: (NSString*) str {
-    //NSLog(@"showAction: %@", str);
     self.middleHistoryLabel.text = self.bottomHistoryLabel.text;
     self.bottomHistoryLabel.text = str;
 }
@@ -59,7 +59,6 @@
 }
 
 - (void) showSecondOperand: (NSString*) str {
-    //NSLog(@"showSecondOperand: %@", str);
     self.topHistoryLabel.text = self.middleHistoryLabel.text;
     self.middleHistoryLabel.text = self.bottomHistoryLabel.text;
     self.bottomHistoryLabel.text = str;
@@ -78,7 +77,12 @@
 }
 
 - (void) showResult: (NSString *) str {
-    self.mainLabel.text = str;
+    if([str isEqualToString:@"-0"]) {
+        self.mainLabel.text = @"0";
+    }
+    else {
+        self.mainLabel.text = str;
+    }
 }
 
 - (void) clearHistory {
@@ -90,8 +94,6 @@
 #pragma mark - UI elements action handlers
 
 - (IBAction) numberButtonHandler: (UIButton*) sender {
-    //NSLog(@"[ViewController] Pressed %@ button", sender.titleLabel.text);
-    
     [calcController inputNumbersNotify];
     
     // replace "0" by the either number
@@ -99,10 +101,11 @@
     {
         self.mainLabel.text = [NSString stringWithFormat:@"%@", sender.titleLabel.text];
     }
-    else
+    else // regular case - just add next number
     {
-        // regular case - just add next number
-        self.mainLabel.text = [self.mainLabel.text stringByAppendingString: sender.titleLabel.text];
+        if(self.mainLabel.text.length < MAX_CHARACTERS_COUNT_FOR_MAIN_LABEL) {
+            self.mainLabel.text = [self.mainLabel.text stringByAppendingString: sender.titleLabel.text];
+        }
     }
 }
 
@@ -141,21 +144,16 @@
 
 - (IBAction) actionButtonHandler: (UIButton *)sender {
     enum Action action = (enum Action)sender.tag;
-    //NSString* actionString = [ActionHelper actionToString:action];
-    
-    //NSLog(@"[ViewController] actionButtonHandler (%@)", actionString);
     
     double operand = [self.mainLabel.text doubleValue];
     [calcController addNextOperand: operand];
     
     [calcController addAction: action];
-    //[self showAction: actionString];
 }
 
 - (IBAction) equalButtonHandler: (UIButton *)sender {
     // get second (next) operand and make calculation
     double operand = [self.mainLabel.text doubleValue];
-    //NSLog(@"[ViewController] equalButtonHandler: next operand is %f", operand);
 
     [calcController addNextOperand: operand];
     [calcController makeCalculation];
@@ -186,11 +184,9 @@
         if(last == '.') {
             self.mainLabel.text = [NSString stringWithFormat:@"%g.", value];
         }
-        else {
-            // regular case
+        else { // regular case
             self.mainLabel.text = [NSString stringWithFormat:@"%g", value];
         }
-        
         
         [calcController changeSignNotify];
     }
