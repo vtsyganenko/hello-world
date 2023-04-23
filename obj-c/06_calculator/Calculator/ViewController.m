@@ -113,6 +113,12 @@ NSString* errorMessage = @"ERROR";
     [calcController dropCalculation];
 }
 
+- (IBAction) mainLableLeftSwipeHandler: (UISwipeGestureRecognizer*) sender {
+    if(sender.state == UIGestureRecognizerStateEnded) {
+        [self backspaceButtonHandler];
+    }
+}
+
 - (IBAction) backspaceButtonHandler {
     if(self.mainLabel.text) {
         if([self handleErrorCase] == YES)

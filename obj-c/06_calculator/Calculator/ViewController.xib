@@ -41,11 +41,15 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BLM-Lt-GiY">
+                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BLM-Lt-GiY">
                     <rect key="frame" x="20" y="218" width="374" height="60"/>
+                    <gestureRecognizers/>
                     <fontDescription key="fontDescription" type="system" pointSize="50"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="aJ8-0U-rnO" appends="YES" id="JCR-pv-WKm"/>
+                    </connections>
                 </label>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="cqF-JR-bZt">
                     <rect key="frame" x="312" y="349" width="82" height="493"/>
@@ -429,6 +433,11 @@
             </constraints>
             <point key="canvasLocation" x="131.8840579710145" y="153.34821428571428"/>
         </view>
+        <swipeGestureRecognizer direction="left" id="aJ8-0U-rnO">
+            <connections>
+                <action selector="mainLableLeftSwipeHandler:" destination="-1" id="hXX-cP-z7h"/>
+            </connections>
+        </swipeGestureRecognizer>
     </objects>
     <resources>
         <image name="arrow.left" catalog="system" width="128" height="95"/>
