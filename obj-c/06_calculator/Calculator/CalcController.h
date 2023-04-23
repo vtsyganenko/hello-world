@@ -27,6 +27,7 @@
 - (void) addAction: (enum Action) action;
 - (void) makeCalculation;
 - (void) dropCalculation;
+- (BOOL) isCalculationAvailable;
 
 @end
 

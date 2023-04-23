@@ -11,6 +11,7 @@
 #import "CalcController.h"
 
 const int MAX_CHARACTERS_COUNT_FOR_MAIN_LABEL = 11;
+NSString* errorMessage = @"ERROR";
 
 @interface ViewController ()
 
@@ -65,6 +66,10 @@ const int MAX_CHARACTERS_COUNT_FOR_MAIN_LABEL = 11;
     self.bottomHistoryLabel.text = second;
 }
 
+- (void) showErrorMessage {
+    self.mainLabel.text = errorMessage;
+}
+
 - (void) clearMain {
     self.mainLabel.text = @"0";
 }
@@ -87,6 +92,8 @@ const int MAX_CHARACTERS_COUNT_FOR_MAIN_LABEL = 11;
 #pragma mark - UI elements action handlers
 
 - (IBAction) numberButtonHandler: (UIButton*) sender {
+    [self handleErrorCase];
+    
     [calcController inputNumbersNotify];
     
     // replace "0" by the either number
@@ -108,6 +115,9 @@ const int MAX_CHARACTERS_COUNT_FOR_MAIN_LABEL = 11;
 
 - (IBAction) backspaceButtonHandler {
     if(self.mainLabel.text) {
+        if([self handleErrorCase] == YES)
+            return;
+        
         // "0" - do nothing
         if([self.mainLabel.text isEqualToString:@"0"] == YES) {
             return;
@@ -136,6 +146,9 @@ const int MAX_CHARACTERS_COUNT_FOR_MAIN_LABEL = 11;
 }
 
 - (IBAction) actionButtonHandler: (UIButton *)sender {
+    if([self handleErrorCase] == YES)
+        return;
+    
     enum Action action = (enum Action)sender.tag;
     
     double operand = [self.mainLabel.text doubleValue];
@@ -145,6 +158,12 @@ const int MAX_CHARACTERS_COUNT_FOR_MAIN_LABEL = 11;
 }
 
 - (IBAction) equalButtonHandler: (UIButton *)sender {
+    if([self handleErrorCase] == YES)
+        return;
+    
+    if([calcController isCalculationAvailable] == NO)
+        return;
+    
     // get second (next) operand and make calculation
     double operand = [self.mainLabel.text doubleValue];
 
@@ -154,6 +173,10 @@ const int MAX_CHARACTERS_COUNT_FOR_MAIN_LABEL = 11;
 
 - (IBAction) dotButtonHandler: (UIButton *)sender {
     if(self.mainLabel.text) {
+        [self handleErrorCase];
+        
+        [calcController inputNumbersNotify];
+        
         if([self.mainLabel.text containsString:@"."] == NO) {
             // add "."
             self.mainLabel.text = [self.mainLabel.text stringByAppendingString: @"."];
@@ -163,6 +186,8 @@ const int MAX_CHARACTERS_COUNT_FOR_MAIN_LABEL = 11;
 
 - (IBAction) signButtonHandler: (id)sender {
     if(self.mainLabel.text) {
+        if([self handleErrorCase] == YES)
+            return;
         
         // "0" - do nothing
         if([self.mainLabel.text isEqualToString:@"0"] == YES) {
@@ -183,6 +208,14 @@ const int MAX_CHARACTERS_COUNT_FOR_MAIN_LABEL = 11;
         
         [calcController changeSignNotify];
     }
+}
+
+- (BOOL) handleErrorCase {
+    if([self.mainLabel.text isEqualToString:errorMessage] == YES) {
+        [calcController dropCalculation];
+        return YES;
+    }
+    return NO;
 }
 
 @end

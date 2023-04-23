@@ -19,7 +19,7 @@
 @property (nonatomic) enum Action action;
 @property (nonatomic) double secondOperand;
 
-- (double) calculate;
+- (BOOL) calculate: (double*) result;
 - (double) lastResult;
 - (void) drop;
 

@@ -8,47 +8,70 @@
 
 #import "Calc.h"
 
+#import <math.h>
+
 @implementation Calc
 {
-    double result;
+    double lastResult;
+    BOOL isGoodResult;
 }
 
 @synthesize firstOperand;
 @synthesize action;
 @synthesize secondOperand;
 
-- (double) calculate
+- (id) init {
+    if(self = [super init]) {
+        isGoodResult = YES;
+    }
+    return self;
+}
+
+- (BOOL) calculate: (double*) result
 {
+    double res = 0.0;
+    isGoodResult = YES;
+    
     switch (action) {
         case ADDITION:
-            result = firstOperand + secondOperand;
+            res = firstOperand + secondOperand;
             break;
         case SUBTRACTION:
-            result = firstOperand - secondOperand;
+            res = firstOperand - secondOperand;
             break;
         case MULTIPLICATION:
-            result = firstOperand * secondOperand;
+            res = firstOperand * secondOperand;
             break;
         case DIVISION:
-            result = firstOperand / secondOperand;
+            res = firstOperand / secondOperand;
             break;
         default:
             break;
     }
     NSLog(@"[Calc] %f %@ %f = %f", firstOperand, [ActionHelper actionToString:action],
-          secondOperand, result);
-    return result;
+          secondOperand, res);
+    
+    if(res == INFINITY || res == -INFINITY || isnan(res)) {
+        isGoodResult = NO;
+        lastResult = 0.0;
+    }
+    if(result) {
+        *result = res;
+        lastResult = res;
+    }
+    return isGoodResult;
 }
 
 - (double) lastResult {
-    return result;
+    return lastResult;
 }
 
 - (void) drop
 {
     firstOperand = 0.0;
     secondOperand = 0.0;
-    result = 0.0;
+    lastResult = 0.0;
+    isGoodResult = YES;
 }
 
 @end

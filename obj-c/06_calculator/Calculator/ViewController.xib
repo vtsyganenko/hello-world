@@ -130,7 +130,7 @@
                                         <action selector="cButtonHandler" destination="-1" eventType="touchUpInside" id="Pbh-ds-AR8"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nc6-WG-YoN">
+                                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nc6-WG-YoN">
                                     <rect key="frame" x="90.5" y="0.0" width="81" height="91"/>
                                     <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
                                     <color key="tintColor" systemColor="darkTextColor"/>

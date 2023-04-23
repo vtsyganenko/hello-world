@@ -19,9 +19,10 @@
 
 enum CalculationStep {
     INPUT_FIRST_OPERAND,
-    SET_OR_CHANGE_ACTION,
+    INPUT_ACTION,
     INPUT_SECOND_OPERAND,
-    CALCULATED
+    CALCULATED,
+    ERROR_RESULT
 };
 @end
 
@@ -49,12 +50,14 @@ enum CalculationStep {
     NSString* stepString = @"";
     if(newStep == INPUT_FIRST_OPERAND)
         stepString = @"INPUT_FIRST_OPERAND";
-    else if(newStep == SET_OR_CHANGE_ACTION)
-        stepString = @"SET_OR_CHANGE_ACTION";
+    else if(newStep == INPUT_ACTION)
+        stepString = @"INPUT_ACTION";
     else if(newStep == INPUT_SECOND_OPERAND)
         stepString = @"INPUT_SECOND_OPERAND";
     else if(newStep == CALCULATED)
         stepString = @"CALCULATED";
+    else if(newStep == ERROR_RESULT)
+        stepString = @"ERROR_RESULT";
     NSLog(@"[CalcController] setCalculationStep %@", stepString);
     
     currentStep = newStep;
@@ -78,7 +81,7 @@ enum CalculationStep {
 }
 
 - (void) inputNumbersNotify {
-    if(currentStep == SET_OR_CHANGE_ACTION) {
+    if(currentStep == INPUT_ACTION) {
         [self setCalculationStep:INPUT_SECOND_OPERAND];
     }
     else if(currentStep == CALCULATED) {
@@ -114,36 +117,43 @@ enum CalculationStep {
     NSLog(@"[CalcController] addAction %@", [ActionHelper actionToString:action]);
     
     switch(currentStep) {
-        case INPUT_FIRST_OPERAND:
+        case INPUT_FIRST_OPERAND:   // regular case
         {
             [calc setAction: action];
             [view showAction: [ActionHelper actionToString:action]];
-            [self setCalculationStep:SET_OR_CHANGE_ACTION];
+            [self setCalculationStep:INPUT_ACTION];
             break;
         }
-        case SET_OR_CHANGE_ACTION:
+        case INPUT_ACTION:      // change action
         {
             [calc setAction: action];
             [view updateAction: [ActionHelper actionToString:action]];
             break;
         }
-        case INPUT_SECOND_OPERAND:
+        case INPUT_SECOND_OPERAND:  // make calculation and use result as first operand
         {
             [view clearHistory];
+                        
+            double result = 0.0;
+            BOOL goodResult = [calc calculate: &result];
             
-            double firstOperand = [calc calculate];
-            [calc setFirstOperand: firstOperand];
-            [view showFirstOperand: [NSString stringWithFormat:@"%g", firstOperand]];
-            
-            [calc setAction: action];
-            [view showAction: [ActionHelper actionToString:action]];
-            
-            [view clearMain];
-            
-            [self setCalculationStep:SET_OR_CHANGE_ACTION];
+            if(goodResult) {
+                [calc setFirstOperand: result];
+                [view showFirstOperand: [NSString stringWithFormat:@"%g", result]];
+                
+                [calc setAction: action];
+                [view showAction: [ActionHelper actionToString:action]];
+                
+                [view clearMain];
+                [self setCalculationStep:INPUT_ACTION];
+            }
+            else {
+                [self setCalculationStep:ERROR_RESULT];
+                [view showErrorMessage];
+            }
             break;
         }
-        case CALCULATED:
+        case CALCULATED:    // use result as first operand
         {
             [view clearHistory];
             
@@ -156,7 +166,7 @@ enum CalculationStep {
             
             [view clearMain];
             
-            [self setCalculationStep:SET_OR_CHANGE_ACTION];
+            [self setCalculationStep:INPUT_ACTION];
             break;
         }
         default:
@@ -166,12 +176,21 @@ enum CalculationStep {
 
 - (void) makeCalculation {
     NSLog(@"[CalcController] makeCalculation");
+    // regular case
     if(currentStep == INPUT_SECOND_OPERAND) {
-        [view showResult: [NSString stringWithFormat:@"%g", [calc calculate]]];
-        [self setCalculationStep:CALCULATED];
+        double result = 0.0;
+        BOOL goodResult = [calc calculate: &result];
+        
+        if(goodResult) {
+            [view showResult: [NSString stringWithFormat:@"%g", result]];
+            [self setCalculationStep:CALCULATED];
+        }
+        else {
+            [self setCalculationStep:ERROR_RESULT];
+            [view showErrorMessage];
+        }
     }
-    else if(currentStep == CALCULATED) {
-        // repeat all
+    else if(currentStep == CALCULATED) { // repeat last calculation with result as first operand
         double firstOperand = [calc lastResult];
         [calc setFirstOperand: firstOperand];
         
@@ -179,7 +198,16 @@ enum CalculationStep {
                     action: [ActionHelper actionToString:[calc action]]
                     andSecond: [NSString stringWithFormat:@"%g", [calc secondOperand]]];
         
-        [view showResult: [NSString stringWithFormat:@"%g", [calc calculate]]];
+        double result = 0.0;
+        BOOL goodResult = [calc calculate: &result];
+        
+        if(goodResult) {
+            [view showResult: [NSString stringWithFormat:@"%g", result]];
+        }
+        else {
+            [self setCalculationStep:ERROR_RESULT];
+            [view showErrorMessage];
+        }
     }
 }
 
@@ -189,6 +217,13 @@ enum CalculationStep {
     [view clearMain];
     [view clearHistory];
     [self setCalculationStep:INPUT_FIRST_OPERAND];
+}
+
+- (BOOL) isCalculationAvailable {
+    if(currentStep == INPUT_SECOND_OPERAND || currentStep == CALCULATED)
+        return YES;
+    else
+        return NO;
 }
 
 @end
