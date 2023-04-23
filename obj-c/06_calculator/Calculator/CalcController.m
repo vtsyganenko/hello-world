@@ -12,27 +12,33 @@
 #import "ViewController.h"
 #import "Calc.h"
 
+@interface CalcController()
+
+@property (nonatomic, weak) ViewController* view;
+@property (nonatomic, strong) Calc* calc;
+
+enum CalculationStep {
+    INPUT_FIRST_OPERAND,
+    SET_OR_CHANGE_ACTION,
+    INPUT_SECOND_OPERAND,
+    CALCULATED
+};
+@end
+
 @implementation CalcController
 {
-    ViewController* view;
-    Calc* calc;
-    
-    enum CalculationStep {
-        INPUT_FIRST_OPERAND,
-        SET_OR_CHANGE_ACTION,
-        INPUT_SECOND_OPERAND,
-        CALCULATED
-    };
     enum CalculationStep currentStep;
 }
+
+@synthesize view;
+@synthesize calc;
 
 - (id) initWithViewController: (ViewController *) vc
 {
     if(self = [super init]) {
-        // init
         view = vc;
         calc = [[Calc alloc] init];
-        
+
         [self setCalculationStep:INPUT_FIRST_OPERAND];
     }
     return self;
@@ -79,13 +85,6 @@
         [self dropCalculation];
     }
 }
-/*
-- (void) editValueNofify {
-    if(currentStep == CALCULATED) {
-        [self setCalculationStep:INPUT_FIRST_OPERAND];
-    }
-}
-*/
 
 - (void) removeValueNotify {
     if(currentStep == CALCULATED) {
@@ -175,7 +174,6 @@
         // repeat all
         double firstOperand = [calc lastResult];
         [calc setFirstOperand: firstOperand];
-        //[view showFirstOperand: [NSString stringWithFormat:@"%g", firstOperand]];
         
         [view showFullCalculationWithFirst: [NSString stringWithFormat:@"%g", firstOperand]
                     action: [ActionHelper actionToString:[calc action]]

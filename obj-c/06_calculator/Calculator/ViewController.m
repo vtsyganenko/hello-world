@@ -15,7 +15,6 @@ const int MAX_CHARACTERS_COUNT_FOR_MAIN_LABEL = 11;
 @interface ViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *mainLabel;
-
 @property (weak, nonatomic) IBOutlet UILabel *topHistoryLabel;
 @property (weak, nonatomic) IBOutlet UILabel *middleHistoryLabel;
 @property (weak, nonatomic) IBOutlet UILabel *bottomHistoryLabel;
@@ -23,9 +22,8 @@ const int MAX_CHARACTERS_COUNT_FOR_MAIN_LABEL = 11;
 @end
 
 @implementation ViewController
-{
-    CalcController* calcController;
-}
+
+@synthesize calcController;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -36,11 +34,6 @@ const int MAX_CHARACTERS_COUNT_FOR_MAIN_LABEL = 11;
     self.topHistoryLabel.text = nil;
     self.middleHistoryLabel.text = nil;
     self.bottomHistoryLabel.text = nil;
-    
-}
-
-- (void) setCalcController:(CalcController *)calcCont {
-    calcController = calcCont;
 }
 
 #pragma mark - View's modifiers (used by ViewController user - calcController)

@@ -14,19 +14,20 @@
 @class ViewController;
 
 @interface CalcController : NSObject
+
 // init with mandatory view controller
 - (id) initWithViewController: (ViewController*) vc;
 
 // calc operations (used by ViewController)
 - (void) addNextOperand: (double) value;
 - (void) inputNumbersNotify;
-//- (void) editValueNofify;
 - (void) removeValueNotify;
 - (void) removeLastValueNotify;
 - (void) changeSignNotify;
 - (void) addAction: (enum Action) action;
 - (void) makeCalculation;
 - (void) dropCalculation;
+
 @end
 
 #endif /* CalcController_h */

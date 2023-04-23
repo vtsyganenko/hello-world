@@ -24,14 +24,10 @@
     
     // ViewController and CalcController should be interconnected
     ViewController* view = [[ViewController alloc] init];
-    NSLog(@"ViewController created");
-    CalcController* calc = [[CalcController alloc] initWithViewController: view];
-    NSLog(@"CalcController created");
-    [view setCalcController: calc];
-    NSLog(@"ViewController connected with CalcController");
+    CalcController* controller = [[CalcController alloc] initWithViewController: view];
+    [view setCalcController: controller];
 
     self.window.rootViewController = view;
-    //self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
 }

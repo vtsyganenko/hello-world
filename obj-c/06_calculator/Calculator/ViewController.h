@@ -13,8 +13,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ViewController : UIViewController
-// set object for interaction
-- (void) setCalcController: (CalcController*) calcCont;
+
+@property (nonatomic, strong) CalcController* calcController;
 
 // view's modifiers
 - (void) showFirstOperand: (NSString*) str;
