@@ -8,6 +8,7 @@
 #import <Foundation/Foundation.h>
 
 #import "converter_wrapper.h"
+#import "TestValue.h"
 
 struct IntegerValue {
     int value;
@@ -70,6 +71,58 @@ void run_test_isCorrectRomanString() {
     printf("\n");
 }
 
+void readTestData(NSString* filePath, NSMutableArray* outTestData) {
+    NSFileManager* fm = [NSFileManager defaultManager];
+    BOOL fileAvailable = [fm fileExistsAtPath:filePath];
+    if(fileAvailable == NO) {
+        NSLog(@"readTestData: file \"%@\" is not exist!", filePath);
+        return;
+    }
+    
+    NSError* error;
+    NSString* content = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&error];
+    if(error) {
+        NSLog(@"File reading error: %@", error.localizedDescription);
+    }
+    
+    NSArray* lines = [content componentsSeparatedByString:@"\n"];
+    for(int i=0; i<lines.count; ++i) {
+        
+        NSArray* elements = [lines[i] componentsSeparatedByString:@"="];
+        if(elements) {
+            TestValue* value = [[TestValue alloc] initWithNumber:[elements[0] intValue]
+                                                        andRoman:elements[elements.count - 1]];
+            [outTestData addObject:value];
+        }
+    }
+}
+
+void run_test_romanToInt(NSMutableArray<TestValue*> *testData) {
+    int testCount = 0;
+    int failuresCount = 0;
+    ConverterWrapper* obj = [[ConverterWrapper alloc] init];
+    for(TestValue* value in testData) {
+        int number = [obj romanToInt:value.roman];
+        if(number != value.number)
+            failuresCount++;
+        testCount++;
+    }
+    printf("run_test_romanToInt for %d tests: %d failuries\n", testCount, failuresCount);
+}
+
+void run_test_intToRoman(NSMutableArray<TestValue*> *testData) {
+    int testCount = 0;
+    int failuresCount = 0;
+    ConverterWrapper* obj = [[ConverterWrapper alloc] init];
+    for(TestValue* value in testData) {
+        NSString* roman = [obj intToRoman:value.number];
+        if([roman isEqualToString:value.roman] == NO)
+            failuresCount++;
+        testCount++;
+    }
+    printf("run_test_intToRoman for %d tests: %d failuries\n", testCount, failuresCount);
+}
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         
@@ -77,6 +130,19 @@ int main(int argc, const char * argv[]) {
         
         run_test_isCorrectRomanString();
         
+        NSMutableArray* data20 = [NSMutableArray array];
+        readTestData(
+        @"/Users/vitaly/Documents/github/hello-world/obj-c/12_intToRoman_romanToInt/01_cpp_console/test_1_to_20.txt", data20);
+
+        run_test_romanToInt(data20);
+        run_test_intToRoman(data20);
+        
+        NSMutableArray* data5000 = [NSMutableArray array];
+        readTestData(
+        @"/Users/vitaly/Documents/github/hello-world/obj-c/12_intToRoman_romanToInt/01_cpp_console/test_1_to_4999.txt", data5000);
+        
+        run_test_romanToInt(data5000);
+        run_test_intToRoman(data5000);
     }
     return 0;
 }

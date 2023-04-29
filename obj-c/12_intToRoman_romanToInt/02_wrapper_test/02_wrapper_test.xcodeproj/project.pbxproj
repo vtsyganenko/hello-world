@@ -10,6 +10,7 @@
 		D847AA6F29FC563000A9ED35 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D847AA6E29FC563000A9ED35 /* main.m */; };
 		D847AA7729FC581900A9ED35 /* int_roman_converter.cc in Sources */ = {isa = PBXBuildFile; fileRef = D847AA7629FC581900A9ED35 /* int_roman_converter.cc */; };
 		D847AA7A29FC586000A9ED35 /* converter_wrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = D847AA7929FC586000A9ED35 /* converter_wrapper.mm */; };
+		D84DFCD629FDA931006E57F8 /* TestFile.m in Sources */ = {isa = PBXBuildFile; fileRef = D84DFCD529FDA931006E57F8 /* TestFile.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +32,8 @@
 		D847AA7629FC581900A9ED35 /* int_roman_converter.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = int_roman_converter.cc; path = ../../01_cpp_console/int_roman_converter.cc; sourceTree = "<group>"; };
 		D847AA7829FC583100A9ED35 /* converter_wrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = converter_wrapper.h; sourceTree = "<group>"; };
 		D847AA7929FC586000A9ED35 /* converter_wrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = converter_wrapper.mm; sourceTree = "<group>"; };
+		D84DFCD429FDA914006E57F8 /* TestValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestValue.h; sourceTree = "<group>"; };
+		D84DFCD529FDA931006E57F8 /* TestFile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestFile.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +71,8 @@
 				D847AA6E29FC563000A9ED35 /* main.m */,
 				D847AA7629FC581900A9ED35 /* int_roman_converter.cc */,
 				D847AA7529FC580C00A9ED35 /* int_roman_converter.h */,
+				D84DFCD429FDA914006E57F8 /* TestValue.h */,
+				D84DFCD529FDA931006E57F8 /* TestFile.m */,
 			);
 			path = 02_wrapper_test;
 			sourceTree = "<group>";
@@ -130,6 +135,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D847AA7729FC581900A9ED35 /* int_roman_converter.cc in Sources */,
+				D84DFCD629FDA931006E57F8 /* TestFile.m in Sources */,
 				D847AA6F29FC563000A9ED35 /* main.m in Sources */,
 				D847AA7A29FC586000A9ED35 /* converter_wrapper.mm in Sources */,
 			);
