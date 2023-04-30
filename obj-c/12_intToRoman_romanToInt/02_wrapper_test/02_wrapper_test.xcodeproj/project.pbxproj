@@ -11,6 +11,7 @@
 		D847AA7729FC581900A9ED35 /* int_roman_converter.cc in Sources */ = {isa = PBXBuildFile; fileRef = D847AA7629FC581900A9ED35 /* int_roman_converter.cc */; };
 		D847AA7A29FC586000A9ED35 /* converter_wrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = D847AA7929FC586000A9ED35 /* converter_wrapper.mm */; };
 		D84DFCD629FDA931006E57F8 /* TestFile.m in Sources */ = {isa = PBXBuildFile; fileRef = D84DFCD529FDA931006E57F8 /* TestFile.m */; };
+		D84DFCD929FDB2EF006E57F8 /* RomanValueVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = D84DFCD829FDB2EF006E57F8 /* RomanValueVerifier.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,6 +35,8 @@
 		D847AA7929FC586000A9ED35 /* converter_wrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = converter_wrapper.mm; sourceTree = "<group>"; };
 		D84DFCD429FDA914006E57F8 /* TestValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestValue.h; sourceTree = "<group>"; };
 		D84DFCD529FDA931006E57F8 /* TestFile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestFile.m; sourceTree = "<group>"; };
+		D84DFCD729FDB2E1006E57F8 /* RomanValueVerifier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RomanValueVerifier.h; sourceTree = "<group>"; };
+		D84DFCD829FDB2EF006E57F8 /* RomanValueVerifier.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RomanValueVerifier.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +76,8 @@
 				D847AA7529FC580C00A9ED35 /* int_roman_converter.h */,
 				D84DFCD429FDA914006E57F8 /* TestValue.h */,
 				D84DFCD529FDA931006E57F8 /* TestFile.m */,
+				D84DFCD729FDB2E1006E57F8 /* RomanValueVerifier.h */,
+				D84DFCD829FDB2EF006E57F8 /* RomanValueVerifier.m */,
 			);
 			path = 02_wrapper_test;
 			sourceTree = "<group>";
@@ -138,6 +143,7 @@
 				D84DFCD629FDA931006E57F8 /* TestFile.m in Sources */,
 				D847AA6F29FC563000A9ED35 /* main.m in Sources */,
 				D847AA7A29FC586000A9ED35 /* converter_wrapper.mm in Sources */,
+				D84DFCD929FDB2EF006E57F8 /* RomanValueVerifier.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

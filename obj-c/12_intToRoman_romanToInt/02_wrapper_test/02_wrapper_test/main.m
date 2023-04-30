@@ -9,6 +9,7 @@
 
 #import "converter_wrapper.h"
 #import "TestValue.h"
+#import "RomanValueVerifier.h"
 
 struct IntegerValue {
     int value;
@@ -123,12 +124,49 @@ void run_test_intToRoman(NSMutableArray<TestValue*> *testData) {
     printf("run_test_intToRoman for %d tests: %d failuries\n", testCount, failuresCount);
 }
 
+void run_test_RomanValueVerifier() {
+    printf("run_test_RomanValueVerifier:\n");
+    
+    struct StringValue v1 = {@"", NO};
+    struct StringValue v2 = {@"IVXLCDM", NO};
+    struct StringValue v3 = {@"ABEGH", NO};
+    struct StringValue v4 = {@"IVXZNOP", NO};
+    struct StringValue v5 = {@"MMMDCCIII", YES};
+    struct StringValue v6 = {@"MDCCLIII", YES};
+    
+    NSArray* testData = @[ [NSValue value:&v1 withObjCType:@encode(struct StringValue)],
+                           [NSValue value:&v2 withObjCType:@encode(struct StringValue)],
+                           [NSValue value:&v3 withObjCType:@encode(struct StringValue)],
+                           [NSValue value:&v4 withObjCType:@encode(struct StringValue)],
+                           [NSValue value:&v5 withObjCType:@encode(struct StringValue)],
+                           [NSValue value:&v6 withObjCType:@encode(struct StringValue)] ];
+    
+    RomanValueVerifier* obj = [[RomanValueVerifier alloc] init];
+    
+    if([obj isSuccessfullyInited] == NO) {
+        printf("\n");
+        return;
+    }
+    
+    for(NSValue* value in testData) {
+        struct StringValue tmp;
+        [value getValue:&tmp];
+        
+        BOOL result = [obj verify: tmp.value];
+        printf("verify(%s) = %d -> %s \n", [tmp.value UTF8String], result,
+              result == tmp.correct ? "passed" : "failed");
+    }
+    printf("\n");
+}
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         
         run_test_isAppropriateIntegerValue();
         
         run_test_isCorrectRomanString();
+         
+        run_test_RomanValueVerifier();
         
         NSMutableArray* data20 = [NSMutableArray array];
         readTestData(
