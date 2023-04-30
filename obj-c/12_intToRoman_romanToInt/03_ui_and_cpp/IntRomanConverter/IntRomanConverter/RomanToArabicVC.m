@@ -7,16 +7,26 @@
 
 #import "RomanToArabicVC.h"
 
+#import "converter_wrapper.h"
+#import "RomanValueVerifier.h"
+
 @interface RomanToArabicVC ()
 @property (nonatomic, weak) IBOutlet UILabel* arabicLabel;
 @property (nonatomic, weak) IBOutlet UILabel* romanLabel;
+
+@property (nonatomic, strong) RomanValueVerifier* romanVerifier;
 @end
 
 @implementation RomanToArabicVC
 
+@synthesize converter;
+@synthesize romanVerifier;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.romanVerifier = [[RomanValueVerifier alloc] init];
 }
 
 /*

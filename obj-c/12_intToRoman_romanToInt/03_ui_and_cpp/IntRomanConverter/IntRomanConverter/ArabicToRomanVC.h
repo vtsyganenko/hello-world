@@ -7,9 +7,15 @@
 
 #import <UIKit/UIKit.h>
 
+#import "ConverterProtocol.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ArabicToRomanVC : UIViewController
+//@class ConverterWrapper;
+
+@interface ArabicToRomanVC : UIViewController <ConverterProtocol>
+
+//@property (nonatomic, weak) ConverterWrapper* converter;
 
 @end
 

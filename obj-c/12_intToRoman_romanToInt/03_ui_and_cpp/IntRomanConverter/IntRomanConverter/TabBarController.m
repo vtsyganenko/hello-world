@@ -7,8 +7,11 @@
 
 #import "TabBarController.h"
 
-@interface TabBarController ()
+#import "converter_wrapper.h"
+#import "ConverterProtocol.h"
 
+@interface TabBarController ()
+@property (nonatomic, strong) ConverterWrapper* converter;
 @end
 
 @implementation TabBarController
@@ -16,6 +19,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.converter = [[ConverterWrapper alloc] init];
+    
+    for(UIViewController<ConverterProtocol>* tab in self.viewControllers) {
+        [tab setConverter:self.converter];
+    }
+    
     
     // ?
     self.tabBar.unselectedItemTintColor = UIColor.whiteColor;

@@ -7,12 +7,16 @@
 
 #import "ArabicToRomanVC.h"
 
+#import "converter_wrapper.h"
+
 @interface ArabicToRomanVC ()
 @property (nonatomic, weak) IBOutlet UILabel* romanLabel;
 @property (nonatomic, weak) IBOutlet UILabel* arabicLabel;
 @end
 
 @implementation ArabicToRomanVC
+
+@synthesize converter;
 
 - (void)viewDidLoad {
     [super viewDidLoad];

@@ -13,6 +13,9 @@
 		D8093CBF29F6740800097E0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8093CBE29F6740800097E0A /* Assets.xcassets */; };
 		D8093CC229F6740800097E0A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8093CC029F6740800097E0A /* LaunchScreen.storyboard */; };
 		D8093CC529F6740800097E0A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D8093CC429F6740800097E0A /* main.m */; };
+		D843C7E529FE7A5000DA42BB /* int_roman_converter.cc in Sources */ = {isa = PBXBuildFile; fileRef = D843C7E429FE7A5000DA42BB /* int_roman_converter.cc */; };
+		D843C7EA29FE7A7400DA42BB /* converter_wrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = D843C7E629FE7A7300DA42BB /* converter_wrapper.mm */; };
+		D843C7EB29FE7A7400DA42BB /* RomanValueVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = D843C7E929FE7A7400DA42BB /* RomanValueVerifier.m */; };
 		D8C326BF29F6BC3C00C871FD /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C326BE29F6BC3C00C871FD /* TabBarController.m */; };
 		D8DA86A029F71D7200265033 /* ArabicToRomanVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DA869F29F71D7200265033 /* ArabicToRomanVC.m */; };
 		D8DA86A329F71D9500265033 /* RomanToArabicVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DA86A229F71D9500265033 /* RomanToArabicVC.m */; };
@@ -29,12 +32,19 @@
 		D8093CC129F6740800097E0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D8093CC329F6740800097E0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D8093CC429F6740800097E0A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D843C7E329FE7A5000DA42BB /* int_roman_converter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = int_roman_converter.h; path = ../../../01_cpp_console/int_roman_converter.h; sourceTree = "<group>"; };
+		D843C7E429FE7A5000DA42BB /* int_roman_converter.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = int_roman_converter.cc; path = ../../../01_cpp_console/int_roman_converter.cc; sourceTree = "<group>"; };
+		D843C7E629FE7A7300DA42BB /* converter_wrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = converter_wrapper.mm; path = ../../../02_wrapper_test/02_wrapper_test/converter_wrapper.mm; sourceTree = "<group>"; };
+		D843C7E729FE7A7400DA42BB /* converter_wrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = converter_wrapper.h; path = ../../../02_wrapper_test/02_wrapper_test/converter_wrapper.h; sourceTree = "<group>"; };
+		D843C7E829FE7A7400DA42BB /* RomanValueVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RomanValueVerifier.h; path = ../../../02_wrapper_test/02_wrapper_test/RomanValueVerifier.h; sourceTree = "<group>"; };
+		D843C7E929FE7A7400DA42BB /* RomanValueVerifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RomanValueVerifier.m; path = ../../../02_wrapper_test/02_wrapper_test/RomanValueVerifier.m; sourceTree = "<group>"; };
 		D8C326BD29F6BC3C00C871FD /* TabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
 		D8C326BE29F6BC3C00C871FD /* TabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 		D8DA869E29F71D7200265033 /* ArabicToRomanVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArabicToRomanVC.h; sourceTree = "<group>"; };
 		D8DA869F29F71D7200265033 /* ArabicToRomanVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArabicToRomanVC.m; sourceTree = "<group>"; };
 		D8DA86A129F71D9500265033 /* RomanToArabicVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RomanToArabicVC.h; sourceTree = "<group>"; };
 		D8DA86A229F71D9500265033 /* RomanToArabicVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RomanToArabicVC.m; sourceTree = "<group>"; };
+		D8E27B2B29FEFE6A00C9FF4E /* ConverterProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConverterProtocol.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,8 +77,8 @@
 		D8093CB129F6740700097E0A /* IntRomanConverter */ = {
 			isa = PBXGroup;
 			children = (
-				D8DA869E29F71D7200265033 /* ArabicToRomanVC.h */,
-				D8DA869F29F71D7200265033 /* ArabicToRomanVC.m */,
+				D843C7EC29FE7B5D00DA42BB /* View */,
+				D843C7E129FE7A2900DA42BB /* ConverterWrapper */,
 				D8093CB229F6740700097E0A /* AppDelegate.h */,
 				D8093CB329F6740700097E0A /* AppDelegate.m */,
 				D8093CB529F6740700097E0A /* SceneDelegate.h */,
@@ -78,12 +88,43 @@
 				D8093CC029F6740800097E0A /* LaunchScreen.storyboard */,
 				D8093CC329F6740800097E0A /* Info.plist */,
 				D8093CC429F6740800097E0A /* main.m */,
+			);
+			path = IntRomanConverter;
+			sourceTree = "<group>";
+		};
+		D843C7E129FE7A2900DA42BB /* ConverterWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				D843C7E729FE7A7400DA42BB /* converter_wrapper.h */,
+				D843C7E629FE7A7300DA42BB /* converter_wrapper.mm */,
+				D843C7E829FE7A7400DA42BB /* RomanValueVerifier.h */,
+				D843C7E929FE7A7400DA42BB /* RomanValueVerifier.m */,
+				D843C7E229FE7A3D00DA42BB /* cpp */,
+			);
+			name = ConverterWrapper;
+			sourceTree = "<group>";
+		};
+		D843C7E229FE7A3D00DA42BB /* cpp */ = {
+			isa = PBXGroup;
+			children = (
+				D843C7E429FE7A5000DA42BB /* int_roman_converter.cc */,
+				D843C7E329FE7A5000DA42BB /* int_roman_converter.h */,
+			);
+			name = cpp;
+			sourceTree = "<group>";
+		};
+		D843C7EC29FE7B5D00DA42BB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D8DA869E29F71D7200265033 /* ArabicToRomanVC.h */,
+				D8DA869F29F71D7200265033 /* ArabicToRomanVC.m */,
 				D8C326BD29F6BC3C00C871FD /* TabBarController.h */,
 				D8C326BE29F6BC3C00C871FD /* TabBarController.m */,
 				D8DA86A129F71D9500265033 /* RomanToArabicVC.h */,
 				D8DA86A229F71D9500265033 /* RomanToArabicVC.m */,
+				D8E27B2B29FEFE6A00C9FF4E /* ConverterProtocol.h */,
 			);
-			path = IntRomanConverter;
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,8 +201,11 @@
 				D8C326BF29F6BC3C00C871FD /* TabBarController.m in Sources */,
 				D8DA86A029F71D7200265033 /* ArabicToRomanVC.m in Sources */,
 				D8093CC529F6740800097E0A /* main.m in Sources */,
+				D843C7EA29FE7A7400DA42BB /* converter_wrapper.mm in Sources */,
 				D8093CB729F6740700097E0A /* SceneDelegate.m in Sources */,
 				D8DA86A329F71D9500265033 /* RomanToArabicVC.m in Sources */,
+				D843C7EB29FE7A7400DA42BB /* RomanValueVerifier.m in Sources */,
+				D843C7E529FE7A5000DA42BB /* int_roman_converter.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
