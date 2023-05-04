@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T7I-jT-AhA">
+                                <rect key="frame" x="161" y="72" width="53.333333333333343" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tD1-pC-W56">
+                                <rect key="frame" x="121" y="132" width="133" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Text to Label 1"/>
+                                <connections>
+                                    <action selector="actionTextToLabel" destination="BYZ-38-t0r" eventType="touchUpInside" id="epJ-NP-52g"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kgn-Y0-bVw">
+                                <rect key="frame" x="306" y="65" width="49" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="clear" catalog="system"/>
+                                <connections>
+                                    <action selector="actionClearLabel1" destination="BYZ-38-t0r" eventType="touchUpInside" id="AqC-Qu-b02"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LGM-vH-DQo">
+                                <rect key="frame" x="67.666666666666686" y="286" width="240" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="SpE-bg-K6n"/>
+                                    <constraint firstAttribute="height" constant="240" id="VLx-PM-y99"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gGV-SC-vph">
+                                <rect key="frame" x="129" y="573" width="117" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Show Image"/>
+                                <connections>
+                                    <action selector="actionShowImage" destination="BYZ-38-t0r" eventType="touchUpInside" id="mQv-Ze-y1U"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ePS-ff-1dJ">
+                                <rect key="frame" x="306" y="573" width="49" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="clear" catalog="system"/>
+                                <connections>
+                                    <action selector="actionClearImageView" destination="BYZ-38-t0r" eventType="touchUpInside" id="Uqj-xf-GRQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yZy-qd-GF3">
+                                <rect key="frame" x="111.33333333333333" y="723" width="152.66666666666669" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Codes to Label 2"/>
+                                <connections>
+                                    <action selector="actionTextToLabel2" destination="BYZ-38-t0r" eventType="touchUpInside" id="HEs-um-psF"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5mj-Zg-Anr">
+                                <rect key="frame" x="159.66666666666666" y="682" width="56" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1As-Z6-cOI">
+                                <rect key="frame" x="306" y="723" width="49" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="clear" catalog="system"/>
+                                <connections>
+                                    <action selector="actionClearLabel2" destination="BYZ-38-t0r" eventType="touchUpInside" id="5f7-4m-hON"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="1As-Z6-cOI" secondAttribute="bottom" constant="20" id="3h0-Fs-IiU"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gGV-SC-vph" secondAttribute="bottom" constant="170" id="3oi-y8-pp4"/>
+                            <constraint firstItem="gGV-SC-vph" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3pl-ac-Vr7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kgn-Y0-bVw" secondAttribute="trailing" constant="20" id="4oy-0w-paX"/>
+                            <constraint firstItem="yZy-qd-GF3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DY5-ne-qAp"/>
+                            <constraint firstItem="tD1-pC-W56" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="85" id="F60-cX-hl0"/>
+                            <constraint firstItem="tD1-pC-W56" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="MxY-M9-hAZ"/>
+                            <constraint firstItem="5mj-Zg-Anr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Wfr-n9-y6V"/>
+                            <constraint firstItem="kgn-Y0-bVw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="18" id="YDz-oh-sJL"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1As-Z6-cOI" secondAttribute="trailing" constant="20" id="ltb-QD-Ihu"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="yZy-qd-GF3" secondAttribute="bottom" constant="20" id="m4Y-aV-9HW"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ePS-ff-1dJ" secondAttribute="bottom" constant="170" id="ofL-rL-Nnd"/>
+                            <constraint firstItem="T7I-jT-AhA" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="25" id="oo9-Ty-Xqh"/>
+                            <constraint firstItem="yZy-qd-GF3" firstAttribute="top" secondItem="5mj-Zg-Anr" secondAttribute="bottom" constant="20" id="q1q-71-9Rb"/>
+                            <constraint firstItem="T7I-jT-AhA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="s3N-sD-JTy"/>
+                            <constraint firstItem="LGM-vH-DQo" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sWb-S8-dqE"/>
+                            <constraint firstItem="LGM-vH-DQo" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="vGt-j0-Wja"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ePS-ff-1dJ" secondAttribute="trailing" constant="20" id="zYm-2s-dvg"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="image" destination="LGM-vH-DQo" id="IGv-ff-4OH"/>
+                        <outlet property="label1" destination="T7I-jT-AhA" id="joB-Yz-aL5"/>
+                        <outlet property="label2" destination="5mj-Zg-Anr" id="AXs-e5-0No"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="36" y="3.6945812807881775"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="clear" catalog="system" width="128" height="114"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
