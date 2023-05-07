@@ -1,0 +1,53 @@
+{
+    "coord": {
+        "lon": 43.9427,
+        "lat": 56.323
+    },
+    "weather": [
+        {
+            "id": 500,
+            "main": "Rain",
+            "description": "light rain",
+            "icon": "10n"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 7.76,
+        "feels_like": 5.82,
+        "temp_min": 7.6,
+        "temp_max": 7.98,
+        "pressure": 1018,
+        "sea_level": 1001,
+        "grnd_level": 1005,
+        "humidity": 87
+    },
+    "visibility": 10000,
+    "wind": {
+        "speed": 3,
+        "deg": 300,
+        "gust": 2
+    },
+    "rain": {
+        "1h": 0.21
+    },
+    "snow": {
+        "1h": 0.5,
+        "3h": 1.1
+    },
+    "clouds": {
+        "all": 41
+    },
+    "dt": 1683311845,
+    "sys": {
+        "type": 2,
+        "id": 48933,
+        "country": "RU",
+        "sunrise": 1683249063,
+        "sunset": 1683305447
+    },
+    "timezone": 10800,
+    "id": 520555,
+    "name": "Nizhny Novgorod",
+    "cod": 200
+}
