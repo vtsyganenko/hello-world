@@ -10,7 +10,9 @@
 		D853ED452A04EF3300889CF3 /* CurrentWeatherRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D853ED442A04EF3300889CF3 /* CurrentWeatherRequest.m */; };
 		D853ED482A04EF5300889CF3 /* CurrentWeatherData.m in Sources */ = {isa = PBXBuildFile; fileRef = D853ED472A04EF5300889CF3 /* CurrentWeatherData.m */; };
 		D8805F572A04441C009F08CA /* key.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = D8805F552A0443FE009F08CA /* key.txt */; };
+		D89F15362A08466C005D10B8 /* CurrentWeatherInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D89F15352A08466B005D10B8 /* CurrentWeatherInfo.m */; };
 		D8C069C42A01A13900D91477 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C069C32A01A13900D91477 /* main.m */; };
+		D8E6E9392A1142C2003AA680 /* TestData.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = D8E6E9382A114055003AA680 /* TestData.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -20,6 +22,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				D8E6E9392A1142C2003AA680 /* TestData.json in CopyFiles */,
 				D8805F572A04441C009F08CA /* key.txt in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -32,8 +35,11 @@
 		D853ED462A04EF4500889CF3 /* CurrentWeatherData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CurrentWeatherData.h; sourceTree = "<group>"; };
 		D853ED472A04EF5300889CF3 /* CurrentWeatherData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CurrentWeatherData.m; sourceTree = "<group>"; };
 		D8805F552A0443FE009F08CA /* key.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = key.txt; sourceTree = "<group>"; };
+		D89F15342A08465F005D10B8 /* CurrentWeatherInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CurrentWeatherInfo.h; sourceTree = "<group>"; };
+		D89F15352A08466B005D10B8 /* CurrentWeatherInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CurrentWeatherInfo.m; sourceTree = "<group>"; };
 		D8C069C02A01A13900D91477 /* WeatherRequestExample */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = WeatherRequestExample; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8C069C32A01A13900D91477 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D8E6E9382A114055003AA680 /* TestData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = TestData.json; path = ../../TestData.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,10 +74,13 @@
 			children = (
 				D8C069C32A01A13900D91477 /* main.m */,
 				D8805F552A0443FE009F08CA /* key.txt */,
+				D8E6E9382A114055003AA680 /* TestData.json */,
 				D853ED432A04EF2600889CF3 /* CurrentWeatherRequest.h */,
 				D853ED442A04EF3300889CF3 /* CurrentWeatherRequest.m */,
 				D853ED462A04EF4500889CF3 /* CurrentWeatherData.h */,
 				D853ED472A04EF5300889CF3 /* CurrentWeatherData.m */,
+				D89F15342A08465F005D10B8 /* CurrentWeatherInfo.h */,
+				D89F15352A08466B005D10B8 /* CurrentWeatherInfo.m */,
 			);
 			path = WeatherRequestExample;
 			sourceTree = "<group>";
@@ -135,6 +144,7 @@
 			files = (
 				D853ED452A04EF3300889CF3 /* CurrentWeatherRequest.m in Sources */,
 				D8C069C42A01A13900D91477 /* main.m in Sources */,
+				D89F15362A08466C005D10B8 /* CurrentWeatherInfo.m in Sources */,
 				D853ED482A04EF5300889CF3 /* CurrentWeatherData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

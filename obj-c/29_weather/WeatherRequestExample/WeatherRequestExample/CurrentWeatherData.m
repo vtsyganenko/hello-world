@@ -34,9 +34,10 @@
 
 -(NSString*) description {
     return [NSString stringWithFormat:@"\n\
-    Weather: id %d %@ (%@) icon %@ \n \
+    WeatherData: \n \
+    id %d %@ (%@) icon %@ \n \
     Main: t %@ tMin %@ tMax %@ tFeel %@ humidity %d%% pressure %d hPa on sea level %d on ground level %d \n \
-    Visibility: %d m \n \
+    Visibility: %@ m \n \
     Wind: speed %d direction %@ gust %d \n \
     Cloudiness: %d%% \n \
     Rain voulme: one last hour %@ three last hours %@ \n \

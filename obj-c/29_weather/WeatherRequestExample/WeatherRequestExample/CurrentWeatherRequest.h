@@ -17,7 +17,8 @@
 
 +(CurrentWeatherData*) get: (NSString*) apiKey ForLatitude: (double) latitude ForLongitude: (double) longitude;
 
-+(void) test;
+// for testing
++(CurrentWeatherData*) testFromJson: (NSString*) jsonResponse;
 
 @end
 

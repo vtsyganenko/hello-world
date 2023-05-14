@@ -60,25 +60,28 @@ static NSMutableDictionary* parserDict;
     return result;
 }
 
-+(void) test {
++(CurrentWeatherData*) testFromJson: (NSString*) jsonResponse {
     CurrentWeatherData* result = [[CurrentWeatherData alloc] init];
     
-    NSError* error;
-    NSString* testResponse = [NSString stringWithContentsOfFile:@"/Users/vitaly/Documents/github/hello-world/obj-c/29_weather/TestData.json" encoding:NSUTF8StringEncoding error:&error];
-    if(error) {
-        NSLog(@"CurrentWeatherRequest::test error %@", error);
-        return;
-    }
+    BOOL status = [self parseJsonData: jsonResponse toObject: result];
+    NSLog(@"CurrentWeatherRequest::testFromJson json parsed with status %@", status ? @"Ok" : @"Failed");
     
-    BOOL status = [self parseJsonData: testResponse toObject: result];
-    NSLog(@"CurrentWeatherRequest::test json parsed with status %@", status ? @"Ok" : @"Failed");
-    NSLog(@"CurrentWeatherRequest::test %@", result);
+    return result;
 }
 
 +(BOOL) parseJsonData: (NSString*) response toObject: (CurrentWeatherData*) result {
     
     if([parserDict count] == 0) {
         NSLog(@"CurrentWeatherRequest::parseJsonData parser is not initialized - call initializeParsing:");
+        return NO;
+    }
+    
+    if(!response) {
+        NSLog(@"CurrentWeatherRequest::parseJsonData no response string");
+        return NO;
+    }
+    if([response isEqual:@""]) {
+        NSLog(@"CurrentWeatherRequest::parseJsonData response string is empty");
         return NO;
     }
     
@@ -157,7 +160,7 @@ static NSMutableDictionary* parserDict;
 
 +(void) parseFieldVisibility: (id) data toObject: (CurrentWeatherData*) result {
     if([data isKindOfClass:[NSNumber class]] == YES) {
-        [result setVisibilityMeter: [data intValue]];
+        [result setVisibilityMeter: data];
     }
 }
 

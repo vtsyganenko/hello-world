@@ -27,7 +27,7 @@
 @property (nonatomic) unsigned pressureGroundLevelhPa;
 
 // visibility
-@property (nonatomic) unsigned visibilityMeter;
+@property (nonatomic, nullable) NSNumber* visibilityMeter;      // unsigned
 
 // wind
 @property (nonatomic) unsigned windSpeedMS;
