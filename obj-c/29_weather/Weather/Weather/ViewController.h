@@ -7,12 +7,12 @@
 
 #import <UIKit/UIKit.h>
 
-@class LocationService;
+@class LocationController;
 @class RequestsController;
 
 @interface ViewController : UIViewController
 
--(void) setLocationServiceObject: (LocationService*) service;
+-(void) setLocationControllerObject: (LocationController*) controller;
 -(void) setRequestsControllerObject: (RequestsController*) controller;
 
 @end

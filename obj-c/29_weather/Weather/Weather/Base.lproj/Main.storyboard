@@ -128,6 +128,10 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Confirm"/>
+                                <connections>
+                                    <action selector="onConfirmButton" destination="vWZ-mA-Aph" eventType="touchUpInside" id="4XE-L1-Qf5"/>
+                                    <segue destination="s62-6Q-f8r" kind="unwind" unwindAction="unwindAction:" id="xcj-TW-kbN"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oFV-eM-FPu">
                                 <rect key="frame" x="205" y="690.66666666666663" width="150" height="34.333333333333371"/>
@@ -143,14 +147,17 @@
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="qA7-Us-ihm">
                                 <rect key="frame" x="20" y="117" width="335" height="31"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use GPS coordinates" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMf-5z-wUG">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use manual coordinates" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMf-5z-wUG">
                                         <rect key="frame" x="0.0" y="0.0" width="186" height="31"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TGs-mJ-lVL">
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="TGs-mJ-lVL">
                                         <rect key="frame" x="286" y="0.0" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="onUseGPSCoordinatesSwitch" destination="vWZ-mA-Aph" eventType="valueChanged" id="jxo-CB-NV1"/>
+                                        </connections>
                                     </switch>
                                 </subviews>
                             </stackView>
@@ -181,11 +188,17 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="185" height="34.333333333333336"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="onLatitudeTextEditing" destination="vWZ-mA-Aph" eventType="editingChanged" id="GPt-yg-STT"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZrX-M8-XaE">
                                                 <rect key="frame" x="0.0" y="54.333333333333343" width="185" height="34.333333333333343"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="onLongitudeTextEditing" destination="vWZ-mA-Aph" eventType="editingChanged" id="3gV-w3-3Wd"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -196,11 +209,17 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="49" height="34.333333333333336"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="clear" catalog="system"/>
+                                                <connections>
+                                                    <action selector="onLatitudeClearButton" destination="vWZ-mA-Aph" eventType="touchUpInside" id="GK2-75-A8h"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cGX-le-Cns">
                                                 <rect key="frame" x="0.0" y="54.333333333333343" width="49" height="34.333333333333343"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="clear" catalog="system"/>
+                                                <connections>
+                                                    <action selector="onLongitudeClearButton" destination="vWZ-mA-Aph" eventType="touchUpInside" id="qMT-Tk-c8Y"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -223,6 +242,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="94J-Ks-mPN"/>
+                    <connections>
+                        <outlet property="confirmButton" destination="ZOe-sK-A0T" id="nZ8-5f-Elg"/>
+                        <outlet property="latutudeTextField" destination="lnV-LE-Pvj" id="uAW-u1-gMc"/>
+                        <outlet property="longitudeTextField" destination="ZrX-M8-XaE" id="MzL-3f-ZwZ"/>
+                        <outlet property="useManualCoordinatesSwitch" destination="TGs-mJ-lVL" id="AMp-7K-KVK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fww-yd-XBv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="s62-6Q-f8r" userLabel="Exit" sceneMemberID="exit"/>

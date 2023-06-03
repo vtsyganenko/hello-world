@@ -7,14 +7,14 @@
 
 #import "SceneDelegate.h"
 
-#import "LocationService.h"
-
 #import "ViewController.h"
 #import "CoordinatesViewController.h"
+
+#import "LocationController.h"
 #import "RequestsController.h"
 
 @interface SceneDelegate ()
-@property (strong, nonatomic) LocationService* locationService;
+@property (strong, nonatomic) LocationController* locationController;
 @property (strong, nonatomic) RequestsController* requestsController;
 @end
 
@@ -26,14 +26,14 @@
     // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
     // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
     
-    self.locationService = [[LocationService alloc] init];
+    self.locationController = [[LocationController alloc] init];
     
     self.requestsController = [[RequestsController alloc] init];
     
     UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     
     ViewController* view = [storyboard instantiateInitialViewController];
-    [view setLocationServiceObject: self.locationService];
+    [view setLocationControllerObject: self.locationController];
     [view setRequestsControllerObject: self.requestsController];
     
     self.window.rootViewController = view;

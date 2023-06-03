@@ -12,8 +12,10 @@
 
 @interface LocationService ()
 @property (strong, nonatomic) CLLocationManager* locationManager;
+
 @property (nonatomic) double latitude;
 @property (nonatomic) double longitude;
+@property (nonatomic) BOOL locationEnabled;
 @end
 
 @implementation LocationService
@@ -33,15 +35,26 @@
 }
 
 -(void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
-    NSLog(@"didUpdateLocations");
     CLLocation* location = [self.locationManager location];
     self.latitude = location.coordinate.latitude;
     self.longitude = location.coordinate.longitude;
-    NSLog(@"LocationManager got %g %g", self.latitude, self.longitude);
+    NSLog(@"LocationService got %g %g", self.latitude, self.longitude);
 }
 
 -(void) locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
-    NSLog(@"%@", error);
+    NSLog(@"LocationService error: %@", error);
+}
+
+-(void) locationManagerDidChangeAuthorization:(CLLocationManager *)manager {
+    if(manager.authorizationStatus == kCLAuthorizationStatusAuthorizedAlways ||
+       manager.authorizationStatus == kCLAuthorizationStatusAuthorizedWhenInUse) {
+        self.locationEnabled = YES;
+        NSLog(@"LocationService locationEnabled");
+    }
+    else {
+        self.locationEnabled = NO;
+        NSLog(@"LocationService locationDisabled");
+    }
 }
 
 @end

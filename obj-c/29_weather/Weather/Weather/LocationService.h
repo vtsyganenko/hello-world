@@ -15,6 +15,8 @@
 @property (nonatomic, readonly) double latitude;
 @property (nonatomic, readonly) double longitude;
 
+@property (nonatomic, readonly) BOOL locationEnabled;
+
 @end
 
 #endif /* LocationService_h */

@@ -10,7 +10,6 @@
 #import "WeatherInfoView.h"
 #import "WeatherInfoViewController.h"
 
-#import "LocationService.h"
 #import "LocationController.h"
 #import "RequestsController.h"
 
@@ -23,14 +22,21 @@
 @property (strong, nonatomic) IBOutlet UIImageView *coordinatesStatusImage;
 @property (strong, nonatomic) IBOutlet UIStackView* buttonsStackView;
 
-@property (weak, nonatomic) LocationService* locationService;
+@property (weak, nonatomic) LocationController* locationController;
 @property (weak, nonatomic) RequestsController* requestsController;
 
 @property (strong, nonatomic) WeatherInfoViewController* weatherInfoViewController;
 
 @end
 
-@implementation ViewController
+static NSString* const locationLatitudeContext = @"LocationLatitudeChanged";
+static NSString* const locationLongitudeContext = @"LocationLongitudeChanged";
+static NSString* const locationStatusContext = @"LocationStatusChanged";
+static NSString* const locationGPSAvailabilityContext = @"LocationGPSAvailabilityChanged";
+
+@implementation ViewController {
+    NSMutableArray* locationObservedKeys;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -101,10 +107,69 @@
     sv.contentSize = sz;
     
     self.weatherInfoViewController = [[WeatherInfoViewController alloc] initWithView: weatherInfoView];
+    
+    locationObservedKeys = [[NSMutableArray alloc] init];
+    [self.locationController addObserver:self forKeyPath:@"latitude" options:0 context:(void*)locationLatitudeContext];
+    [locationObservedKeys addObject:@"latitude"];
+    [self.locationController addObserver:self forKeyPath:@"longitude" options:0 context:(void*)locationLongitudeContext];
+    [locationObservedKeys addObject:@"longitude"];
+    [self.locationController addObserver:self forKeyPath:@"coordinatesUsageStatus" options:0 context:(void*)locationStatusContext];
+    [locationObservedKeys addObject:@"coordinatesUsageStatus"];
+    [self.locationController addObserver:self forKeyPath:@"gpsAvailable" options:0 context:(void*)locationGPSAvailabilityContext];
+    [locationObservedKeys addObject:@"gpsAvailable"];
+    
 }
 
--(void) setLocationServiceObject: (LocationService*) service {
-    self.locationService = service;
+-(void) dealloc {
+    for(NSString* key in locationObservedKeys) {
+        [self.locationController removeObserver:self forKeyPath:key];
+    }
+}
+
+-(void) observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary<NSKeyValueChangeKey,id> *)change
+                       context:(void *)context {
+    
+    if(context == CFBridgingRetain(locationLatitudeContext)) {
+        [self.latitudeLabel setText: [NSString stringWithFormat:@"%g", self.locationController.latitude]];
+        return;
+    }
+    if(context == CFBridgingRetain(locationLongitudeContext)) {
+        [self.longitudeLabel setText: [NSString stringWithFormat:@"%g", self.locationController.longitude]];
+        return;
+    }
+    if(context == CFBridgingRetain(locationStatusContext)) {
+        [self showCoordinatesUsageStatus: self.locationController.coordinatesUsageStatus];
+        return;
+    }
+    if(context == CFBridgingRetain(locationGPSAvailabilityContext)) {
+        if(self.locationController.coordinatesUsageStatus == CoordinatesUsageStatusManual &&
+           self.locationController.gpsAvailable == YES) {
+            
+            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"GPS" message:@"Location from GPS is available" preferredStyle:UIAlertControllerStyleAlert];
+            
+            void (^okHandler) (UIAlertAction* action) =
+                ^(UIAlertAction* action) {
+                    if(self.locationController.gpsAvailable) {
+                        [self.locationController useCoordinatesFromGPS];
+                    }
+            };
+            
+            UIAlertAction* buttonOk = [UIAlertAction actionWithTitle:@"Use GPS" style:UIAlertActionStyleDefault handler:okHandler];
+            UIAlertAction* buttonCancel = [UIAlertAction actionWithTitle:@"Remain manual" style:UIAlertActionStyleDefault handler:0];
+            
+            [alert addAction:buttonOk];
+            [alert addAction:buttonCancel];
+            
+            [self presentViewController:alert animated:YES completion:0];
+        }
+        return;
+    }
+}
+
+-(void) setLocationControllerObject: (LocationController*) controller {
+    self.locationController = controller;
 }
 
 -(void) setRequestsControllerObject: (RequestsController*) controller {
@@ -113,12 +178,8 @@
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([segue.identifier isEqualToString:@"SegueToCoordinatesScene"]) {
-        NSLog(@"go to coordinates");
-        CoordinatesViewController* c = (CoordinatesViewController*)segue.destinationViewController;
-        [c setLocationService: self.locationService];
-    }
-    else if([segue.identifier isEqualToString:@"SegueToAboutScene"]) {
-        NSLog(@"go to about");
+        CoordinatesViewController* coordinatesView = (CoordinatesViewController*)segue.destinationViewController;
+        [coordinatesView setLocationController: self.locationController];
     }
 }
 
@@ -128,24 +189,24 @@
 
 - (IBAction) requestButtonClick:(id)sender {
     
-    NSLog(@"%g %g", self.locationService.latitude, self.locationService.longitude);
+    NSLog(@"Coordinates for request: %g %g", self.locationController.latitude, self.locationController.longitude);
     
-    CurrentWeatherInfo* info = [self.requestsController getCurrentWeatherRequest];
 
-    [self.weatherInfoViewController showWeatherInfo: info];
+    //CurrentWeatherInfo* info = [self.requestsController getCurrentWeatherRequest];
+    //[self.weatherInfoViewController showWeatherInfo: info];
 }
 
--(void) showCoordinatesUsageStatus: (coordinatesUsageStatus) status {
+-(void) showCoordinatesUsageStatus: (CoordinatesUsageStatus) status {
     switch(status) {
-        case CoordinateUsageStatusUnavailable:
+        case CoordinatesUsageStatusUnknown:
             [self.coordinatesStatusLabel setText:@"Current coordinates (No data):"];
             [self.coordinatesStatusImage setImage:[UIImage systemImageNamed:@"xmark"]];
             break;
-        case CoordinateUsageStatusAvailable:
+        case CoordinatesUsageStatusGPS:
             [self.coordinatesStatusLabel setText:@"Current coordinates (GPS):"];
             [self.coordinatesStatusImage setImage:[UIImage systemImageNamed:@"location"]];
             break;
-        case CoordinateUsageStatusManual:
+        case CoordinatesUsageStatusManual:
             [self.coordinatesStatusLabel setText:@"Current coordinates (Manual):"];
             [self.coordinatesStatusImage setImage:[UIImage systemImageNamed:@"gearshape"]];
             break;

@@ -10,11 +10,11 @@
 
 #import <UIKit/UIKit.h>
 
-@class LocationService;
+@class LocationController;
 
 @interface CoordinatesViewController : UIViewController
 
--(void) setLocationService: (LocationService*) service;
+-(void) setLocationController: (LocationController*) controller;
 
 @end
 
