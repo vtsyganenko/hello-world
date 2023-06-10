@@ -1,4 +1,14 @@
+// print()
+
+let a = 10
+let b = 22.31
+let c = true
+print("a =", a, "b =", b, "c =", c)
+print("a = \(a) b = \(b) c = \(c)")
+
+
 // return values
+print()
 
 func f1() {
     print("f1() has no parameters and return statements")
@@ -26,9 +36,10 @@ f2()
 f3()
 print("f4() result", f4())
 print("f5() result", f5())
-print()
+
 
 // external parameter names
+print()
 
 // suppress external name
 func f6(_ line:String) {
@@ -48,9 +59,10 @@ func f8(line:String) {
 f6("Hello")
 f7(lineForPrint:"Hello")
 f8(line:"Hello")
-print()
+
 
 // function with two parameters
+print()
 
 func sum(_ x:Int, _ y:Int) -> Int {
     return x+y
@@ -67,9 +79,10 @@ func echoString(_ string:String, times:Int) -> String {
 }
 
 print("Hello 4 times:", echoString("Hello", times:4))
-print()
+
 
 // overloading
+print()
 
 func printValue(_ val:String) {
     print(val)
@@ -105,9 +118,10 @@ func receiveStringValue(_ s:String) {
 }
 
 receiveStringValue(getValue())
-print()
+
 
 // default parameters values
+print()
 
 func incrementValue(_ value:Int, times n:Int = 1) -> Int {
     var result = value // since value is let
@@ -117,9 +131,10 @@ func incrementValue(_ value:Int, times n:Int = 1) -> Int {
 
 print("increment 10 ->", incrementValue(10))
 print("increment 20 four times ->", incrementValue(20, times:4))
-print()
+
 
 // variadic parameters
+print()
 
 func printAll(_ arrayOfStrings:String ...) {
     for s in arrayOfStrings { print(s) }
@@ -154,3 +169,118 @@ func printValues(_ arrayOfIntegers:Int ..., terminator:String) {
 printAllWithParams("1", "2", "3")
 printAllWithParams("1", "2", "3", separator:"_", terminator:"!")
 printValues(10, 20, 30, 40, terminator:"end!")
+
+
+// ignored parameters
+print()
+
+func f9(_ string:String, loudly _:Bool) {
+    print(string)
+    // variable with external name "loudly" has no name and unable to use
+}
+
+// f9("Hello") - ERROR
+f9("Hello", loudly:true)
+
+
+// modifiable parameters
+print()
+
+func removeCharacter(_ c:Character, from s: inout String) -> Int {
+    var count = 0
+    while let index = s.firstIndex(of:c) {
+        s.remove(at:index)
+        count += 1
+    }
+    return count
+}
+
+var str = "Hell1o 1Wo1rld!1"
+let ch : Character = "1"
+print("remove character", ch, "from", str)
+let count = removeCharacter(ch, from:&str)
+print("count:", count, "result:", str)
+
+class Dog {
+    var name = ""
+
+    func printName() {
+        print(name)
+    }
+}
+
+func changeName(of dog:Dog, to newName:String) {
+    d.name = newName
+}
+
+let d = Dog()
+d.name = "Fido"
+d.printName()
+changeName(of:d, to:"Rover")
+d.printName()
+
+func getDog(_ dog: inout Dog, withName name:String) {
+    dog = Dog()
+    dog.name = name
+}
+
+var dog = Dog()
+dog.name = "Barbos"
+dog.printName()
+getDog(&dog, withName:"Sharik")
+dog.printName()
+
+
+// function in function
+print()
+
+func f10() {
+    func f() {
+        print("Hello from f")
+    }
+
+    f()
+}
+
+f10()
+
+
+// recursion
+print()
+
+func countDownFrom(_ x:Int) {
+    print(x)
+    if x > 0 {
+        countDownFrom(x-1)
+    }
+}
+
+countDownFrom(5)
+
+
+// function as value
+print()
+
+func f11(_ f:(Int) -> ()) {
+    f(10)
+    f(11)
+    f(12)
+}
+
+func funcForPassing(_ val:Int) {
+    print("funcForPassing has value", val)
+}
+
+f11(funcForPassing)
+
+typealias Calculation = (Int, Int) -> Int
+func f12(_ calc:Calculation) {
+    //...
+    print("result is \(calc(10, 20))")
+}
+
+func formula(_ val1:Int, _ val2:Int) -> Int {
+    return (val1 + val2) * 2
+}
+
+f12(formula)
