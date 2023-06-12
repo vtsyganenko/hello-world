@@ -3,6 +3,9 @@
 class ValueWrapper : CustomStringConvertible {
     var value = 0
 
+    init() {
+    }
+
     init(_ val:Int) {
         value = val
     }
@@ -166,4 +169,56 @@ printThisMessage({
 })
 
 //---------------------------------------------------------------------------------------
+
+// 3. define-and-call
+print()
+
+func workWithWrapper(object obj:ValueWrapper) {
+    print("workWithWrapper with value", obj.value)
+}
+
+// regular call
+let obj1 = ValueWrapper()
+obj1.value = 20
+workWithWrapper(object:obj1)
+
+// use define-and-call
+workWithWrapper(object:{
+    let obj = ValueWrapper()
+    obj.value = 40
+    return obj
+}()
+)
+
+//---------------------------------------------------------------------------------------
+
+// 4. closures
+print()
+
+class Dog {
+    var whatThisDogSays = "woof"
+
+    func bark() {
+        print(self.whatThisDogSays)
+    }
+}
+
+func doThisFunction(_ f:() -> ()) {
+    f()
+}
+
+// example 1
+let d = Dog()
+d.whatThisDogSays = "arf"
+let barkFunction = d.bark
+doThisFunction(barkFunction)    // arf
+// or
+doThisFunction(d.bark)          // arf
+
+// example 2
+let d1 = Dog()
+let barkFunc = d1.bark
+doThisFunction(barkFunc)    // woof
+d1.whatThisDogSays = "arf"
+doThisFunction(barkFunc)    // arf
 
