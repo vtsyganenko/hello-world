@@ -4,6 +4,8 @@
 void two_bytes_value() {
     printf("two_bytes_value\n");
 
+    // from bytes to value
+
     // lets operate with value 500
     // 500
     // binary:       0000 0001 1111 0100
@@ -24,6 +26,16 @@ void two_bytes_value() {
 
     printf("%d \n", res);
 
+    // 
+    uint8_t data[2] = {0,};
+    data[0] = b;
+    data[1] = a;
+    res = 0;
+
+    res = (uint16_t)(data[0])|((uint16_t)data[1]<<8);
+    printf("%d \n", res);
+    
+
     // case 2 - use pointer
     // little endian (x86_64 and arm64)
     uint8_t arr[2] = {b, a};
@@ -32,6 +44,7 @@ void two_bytes_value() {
     printf("%d \n", *ptr);
 
     // from value to bytes
+
     uint8_t output[2] = {0,};
     output[1] = (uint8_t)res;
     output[0] = (uint8_t)(res >>= 8);
@@ -81,6 +94,11 @@ void four_bytes_value() {
 
 int main(int argc, const char* argv[]) {
     
+    // test for endianness
+    uint16_t x = 0x0001;
+    printf("%s-endian\n\n", *((uint8_t *) &x) ? "little" : "big");
+    // we take little byte and if contains 1 - it is little-endian
+
     two_bytes_value();
 
     four_bytes_value();
