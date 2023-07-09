@@ -189,4 +189,17 @@ print("to array", array)
 print( array[range8] )
 print()
 
+//-----------------------------------------------------------------------------
 
+// we have start value
+let range9 = 10...
+// it is a Sequence, but not a Collection
+print(range9)
+// infinite loop!
+for i in range9 {
+    print(i, terminator:" ")
+    if i > 50 {
+        break
+    }
+}
+print()
