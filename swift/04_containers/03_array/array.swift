@@ -97,3 +97,34 @@ let emptyArray : [String] = []
 print(emptyArray)
 let anotherEmptyArray = [String]()
 print(anotherEmptyArray)
+print()
+
+//-------------------------------------------------------------------
+
+// comparing arrays
+
+let array1 = Array(1...5)
+print(array1)
+print(type(of:array1))
+print( array1 == [1, 2, 3, 4, 5] )  // true
+var array2 = Array(repeating:0, count:5)
+for i in 0..<5 {
+    array2[i] = i+1
+}
+print(array2)
+print( array1 == array2 )   // true
+
+// < or > is not applying
+
+//-------------------------------------------------------------------
+
+// concat arrays
+let arrayA = ["a", "b", "c"]
+print(arrayA)
+let arrayB = ["d", "e"]
+print(arrayB)
+var arrayC = arrayA + arrayB
+print(arrayC)
+arrayC += ["f", "g", "h"]
+print(arrayC)
+
