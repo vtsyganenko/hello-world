@@ -78,7 +78,7 @@ print()
 
 //-------------------------------------------------------------------
 
-// array is a value types
+// array is a value type
 
 var a = Array(1...5)
 print("array a:", a)
@@ -115,6 +115,7 @@ print(array2)
 print( array1 == array2 )   // true
 
 // < or > is not applying
+print()
 
 //-------------------------------------------------------------------
 
@@ -127,4 +128,48 @@ var arrayC = arrayA + arrayB
 print(arrayC)
 arrayC += ["f", "g", "h"]
 print(arrayC)
+print()
 
+//-------------------------------------------------------------------
+
+// multidimensional arrays
+var array2d = [[1,2,3], [4,5,6], [7,8,9]]
+print(type(of:array2d))
+print(array2d)
+
+let part = array2d[1]
+print(type(of:part))
+print(part)
+
+array2d[2][0] = 10
+array2d[2][2] = 12
+print(array2d)
+
+print()
+for i in 0...2 {
+    for j in 0...2 {
+        print("[\(i)][\(j)] = \(array2d[i][j])", terminator:" ")
+    }
+    print()
+}
+print()
+
+var array3d = [
+    [ Array(arrayLiteral:100, 200, 300), Array(arrayLiteral:400, 500, 600), Array(arrayLiteral:700, 800, 900)],
+    [ Array(arrayLiteral:1000, 1200, 1300), Array(arrayLiteral:1400, 1500, 1600), Array(arrayLiteral:1700, 1800, 1900)],
+    [ Array(arrayLiteral:10, 20, 30), Array(arrayLiteral:40, 50, 60), Array(arrayLiteral:70, 80, 90)]
+]
+
+print(type(of:array3d))
+print(array3d)
+print()
+
+for i in 0...2 {
+    for j in 0...2 {
+        for k in 0...2 {
+            print("[\(i)][\(j)][\(k)] = \(array3d[i][j][k])", terminator: " ")
+        }
+        print()
+    }
+    print()
+}
