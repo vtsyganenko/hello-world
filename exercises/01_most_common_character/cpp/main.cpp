@@ -1,19 +1,13 @@
 #include <iostream>
 #include <map>
 
-char mostCommonCharacterInString(const std::string& str, uint16_t len) {
+char mostCommonCharacterInString(const std::string& str) {
     char result = 0;
 
     if(str.empty()) {
         std::cout << "mostCommonCharacterInString: ERROR str is empty" << std::endl;
         return result;
-    }
-
-    if(len == 0) {
-        std::cout << "mostCommonCharacterInString: ERROR length is 0" << std::endl;
-        return result;
-    }
-    
+    }    
 
     std::map<char, unsigned> dict;
 
@@ -46,28 +40,28 @@ char mostCommonCharacterInString(const std::string& str, uint16_t len) {
     return result;
 }
 
-void test_wrapper(const std::string& string, unsigned length) {
-    char res = mostCommonCharacterInString(string, length);
+void test_wrapper(const std::string& string) {
+    char res = mostCommonCharacterInString(string);
     std::cout << "for string [" << string << "], most common character is [" << res << "]" << std::endl << std::endl;
 }
 
 int main(int argc, const char* argv[]) {
 
-    test_wrapper("", 1);
+    test_wrapper("");
 
-    test_wrapper("str", 0);
+    test_wrapper("str");
 
-    test_wrapper(" ", 1);
+    test_wrapper(" ");
 
-    test_wrapper("abcdce", 6);
+    test_wrapper("abcdce");
 
-    test_wrapper("aaaa", 4);
+    test_wrapper("aaaa");
 
-    test_wrapper("abcabc", 6);
+    test_wrapper("abcabc");
 
-    test_wrapper("asd asd asa", 11);
+    test_wrapper("asd asd asa");
 
-    test_wrapper("abc5abc5abc5abc55abc5abc5", 26);
+    test_wrapper("abc5abc5abc5abc55abc5abc5");
 
     return 0;
 }
