@@ -2,12 +2,12 @@
 
 let value = 5
 
-if(value > 0) {
+if value > 0 {
     print("\(value) > 0")
 }
 
 // need Bool type here
-//if(value) {
+//if value {
 //    print("\(value)")
 //}
 
@@ -21,28 +21,28 @@ print()
 
 // стандартный синтаксис
 
-if(value > 0) {
+if value > 0 {
     print("value > 0")
 }
 else {
     print("value < 0")
 }
 
-if(!status) {
+if !status {
     print("status is false")
 }
 else {
     print("status is true")
 }
 
-if(value == 5 && status) {
+if value == 5 && status {
     print("meet both conditions")
 }
 else {
     print("don't meet both conditions")
 }
 
-if(!status || value == 5) {
+if !status || value == 5 {
     print("meet one condition")
 }
 
@@ -50,10 +50,10 @@ print()
 
 // расширенный синтаксис
 
-if(value > 10) {
+if value > 10 {
     print("value > 10")
 }
-else if(value > 0) {
+else if value > 0 {
     print("value > 0")
 }
 else {
