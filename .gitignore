@@ -2,3 +2,4 @@ build*
 *.user
 *.d
 *.o
+.DS_Store
