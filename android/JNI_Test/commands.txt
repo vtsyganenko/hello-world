@@ -1,11 +1,11 @@
 cmd:
 
-D:\vit\hello-world\android\JNI_Test\src>D:\JDks\Amazon11\bin\javac -h . AwesomeLib.java
+D:\JDks\Amazon11\bin\javac -h . AwesomeLib.java
 
-D:\vit\hello-world\android\JNI_Test\src>g++ -c -ID:\JDKs\Amazon11\include -ID:\JDKs\Amazon11\include\win32 .\AwesomeLib.cpp -o AwesomeLib.o
+g++ -c -ID:\JDKs\Amazon11\include -ID:\JDKs\Amazon11\include\win32 .\AwesomeLib.cpp -o AwesomeLib.o
 
-D:\vit\hello-world\android\JNI_Test\src>g++ -shared -o native.dll .\AwesomeLib.o -Wl,--add-stdcall-alias
+g++ -shared -o native.dll .\AwesomeLib.o -Wl,--add-stdcall-alias
 
-D:\vit\hello-world\android\JNI_Test\src>D:\JDks\Amazon11\bin\java -cp . -Djava.library.path=D:\vit\hello-world\android\JNI_Test\src .\Main.java
+D:\JDks\Amazon11\bin\java -cp . -Djava.library.path=D:\vit\hello-world\android\JNI_Test\src .\Main.java
 Hello from Java!
 Hello from C++!
