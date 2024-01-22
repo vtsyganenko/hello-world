@@ -1,0 +1,17 @@
+commands:
+
+D:\JDks\Amazon11\bin\javac -h . JavaClass.java
+
+
+g++ -c -ID:\JDKs\Amazon11\include -ID:\JDKs\Amazon11\include\win32 .\JavaClass.cpp -o JavaClass.o
+
+g++ -c -ID:\JDKs\Amazon11\include -ID:\JDKs\Amazon11\include\win32 .\cpp\CppClass.cpp -o .\cpp\CppClass.o
+
+
+g++ -shared -o JavaClassLibrary.dll .\JavaClass.o .\cpp\CppClass.o -Wl,--add-stdcall-alias
+
+
+clean:
+
+rm .\cpp\CppClass.o .\JavaClass.o .\JavaClassLibrary.dll
+

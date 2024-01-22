@@ -1,0 +1,9 @@
+cmake_minimum_required(VERSION 3.20)
+
+project(cpp_test)
+
+set(SOURCES main.cpp ../CppClass.cpp)
+
+include_directories(..)
+
+add_executable(test ${SOURCES})
