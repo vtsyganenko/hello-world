@@ -1,10 +1,17 @@
 cmd:
 
+generate .h and .class:
+
 D:\JDks\Amazon11\bin\javac -h . AwesomeLib.java
+
+build AwesomeLib.o:
 
 g++ -c -ID:\JDKs\Amazon11\include -ID:\JDKs\Amazon11\include\win32 .\AwesomeLib.cpp -o AwesomeLib.o
 
+build native.dll:
+
 g++ -shared -o native.dll .\AwesomeLib.o -Wl,--add-stdcall-alias
+
 
 
 run, edit configurations, add vm options:

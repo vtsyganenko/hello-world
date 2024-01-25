@@ -57,6 +57,14 @@ JNIEXPORT jintArray JNICALL Java_AwesomeLib_createList
 
 /*
  * Class:     AwesomeLib
+ * Method:    create2DList
+ * Signature: (IIF)[[F
+ */
+JNIEXPORT jobjectArray JNICALL Java_AwesomeLib_create2DList
+  (JNIEnv *, jobject, jint, jint, jfloat);
+
+/*
+ * Class:     AwesomeLib
  * Method:    nativeMethod
  * Signature: ()V
  */

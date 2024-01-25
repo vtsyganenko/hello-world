@@ -75,6 +75,27 @@ JNIEXPORT jintArray JNICALL Java_AwesomeLib_createList(JNIEnv *env, jobject, jin
     return result;
 }
 
+JNIEXPORT jobjectArray JNICALL Java_AwesomeLib_create2DList(JNIEnv *env, jobject, jint size1, jint size2, jfloat initialValue) {
+    jclass FloatArrayClass = env->FindClass("[F");
+    if(FloatArrayClass == NULL) return NULL;
+
+    jobjectArray outer = env->NewObjectArray(size1, FloatArrayClass, NULL);
+    if(outer == NULL) return NULL;
+
+    for(int i=0; i<size1; ++i) {
+        jfloat tmp[size2];
+        for(int index=0; index<size2; ++index) tmp[index] = initialValue;
+
+        jfloatArray inner = env->NewFloatArray(size2);
+        if(inner == NULL) return NULL;
+        env->SetFloatArrayRegion(inner, 0, size2, tmp);
+
+        env->SetObjectArrayElement(outer, i, inner);
+        env->DeleteLocalRef(inner);
+    }
+    return outer;
+}
+
 JNIEXPORT void JNICALL Java_AwesomeLib_nativeMethod(JNIEnv *env, jobject thisObject) {
     std::cout << "C++ nativeMethod() is called" << std::endl;
 

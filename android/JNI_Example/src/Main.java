@@ -32,6 +32,13 @@ public class Main {
         System.out.println(Arrays.toString(generatedArray));
         System.out.println();
 
+        System.out.println("Generated array[10][3] with value 3.55");
+        float[][] generated2DAdrray = nativeLib.create2DList(10, 3, 3.55f);
+        for(int i=0; i<generated2DAdrray.length; ++i) {
+            System.out.println(Arrays.toString(generated2DAdrray[i]));
+        }
+        System.out.println();
+
         System.out.println("Call AwesomeLib.nativeMethod()");
         nativeLib.nativeMethod();
     }

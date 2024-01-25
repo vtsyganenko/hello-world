@@ -15,6 +15,8 @@ public class AwesomeLib {
 
     public native int[] createList(int size, int initialValue);
 
+    public native float[][] create2DList(int size1, int size2, float initialValue);
+
     // let's try to call Java from CPP
     public native void nativeMethod();
     public void MultiplyAndPrintResult(float value, int coef) {
