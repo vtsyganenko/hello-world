@@ -1,0 +1,21 @@
+commands:
+
+generate:
+
+D:\JDks\Amazon11\bin\javac -h . JavaClass.java
+
+build JavaClass:
+
+g++ -c -ID:\JDKs\Amazon11\include -ID:\JDKs\Amazon11\include\win32 .\JavaClass.cpp -o JavaClass.o
+
+build dll:
+
+g++ -shared -o JavaClassLibrary.dll .\JavaClass.o -Wl,--add-stdcall-alias
+
+clean:
+
+rm .\cpp\CppClass.o .\JavaClass.o .\JavaClassLibrary.dll
+
+run, edit configurations, add vm options:
+
+-Djava.library.path=D:\vit\hello-world\android\JNI_ReturnObject\src
