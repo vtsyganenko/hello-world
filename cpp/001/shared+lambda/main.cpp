@@ -33,6 +33,7 @@ int main()
 
         std::cout << sp1.use_count() << std::endl; // 2
 
+        //shared ptr is captured 'by value' - i.e. copied -> use_count is 3
         lmb = [sp2]()
         {
             std::cout << "value: " << sp2->getValue() << std::endl;
