@@ -1,2 +1,1 @@
-Hello, its my hello-world repo
-
+This is my self-learning repo. Here I store small (or not) examples of code for remember and future usage.
