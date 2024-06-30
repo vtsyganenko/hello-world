@@ -48,6 +48,8 @@ int main(int argc, const char* argv[]) {
 
         work("All threads are started");
 
+        std::this_thread::sleep_for(300ms);
+
         // .join() is called then we go out of scope
         work("End of scope");
     }
