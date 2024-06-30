@@ -1,1 +1,1 @@
-Simple example with std::thread and three types of tasks: function, functor and lambda.
+Example of passing arguments to std::thread.
